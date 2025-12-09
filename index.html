@@ -6,57 +6,67 @@
 <title>The People's Lottery – No KYC – 100% Freedom</title>
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <style>
-  body{background:#000;color:#00ff41;font-family:'VT323',monospace;margin:0;padding:12px;line-height:1.6;text-align:center;}
-  h1{font-size:clamp(2.4rem,9vw,6rem);margin:20px 0 8px;letter-spacing:6px;text-shadow:0 0 40px #00ff41;}
+  body{background:#fff;color:#0f0;font-family:'VT323',monospace;margin:0;padding:15px;line-height:1.6;text-align:center;}
+  h1{font-size:clamp(2.4rem,9vw,6rem);margin:20px 0 8px;letter-spacing:6px;text-shadow:0 0 40px #0f0;}
   h2{font-size:clamp(1.1rem,3.8vw,1.8rem);margin:8px 0 35px;opacity:0.9;letter-spacing:2px;}
-  .card{background:#001105;border:3px solid #00ff41;padding:30px;margin:38px auto;max-width:900px;box-shadow:0 0 60px #00ff41;border-radius:15px;}
+  .card{background:#000;border:4px solid #0f0;padding:35px;margin:40px auto;max-width:900px;box-shadow:0 0 70px #0f0;border-radius:18px;}
   .pot{font-size:clamp(3.8rem,12vw,9rem);font-weight:bold;margin:15px 0;color:#ffea00;text-shadow:0 0 70px #ff6600;animation:pulse 2.5s infinite;}
-  .tagline{font-size:clamp(1.5rem,5vw,2.8rem);margin:30px auto;max-width:90%;opacity:0.92;line-height:1.7;}
-  .odds{font-size:clamp(1.6rem,5.5vw,2.8rem);color:#00ffff;margin:35px 0;text-shadow:0 0 40px #00ffff;}
-  .price{font-size:clamp(1.4rem,4.8vw,2.3rem);color:#ffea00;margin:20px 0;}
-  .address{font-size:clamp(0.95rem,3.6vw,1.65rem);word-break:break-all;padding:22px;background:#000;border:4px solid #00ff41;border-radius:12px;margin:25px auto;max-width:92%;box-shadow:0 0 50px #00ff41;}
-  .address-note{font-size:clamp(1rem,3.4vw,1.5rem);margin:15px auto 0;max-width:92%;opacity:0.9;}
-  .generate{background:#001105;border:5px solid #ff0066;padding:40px;margin:40px auto;max-width:800px;border-radius:15px;box-shadow:0 0 80px #ff0066;}
-  input[type=text]{background:#000;color:#00ff41;border:3px solid #00ff41;padding:16px;font-size:clamp(1.1rem,3.8vw,1.8rem);width:90%;max-width:700px;margin:20px auto;display:block;border-radius:10px;box-shadow:0 0 30px #00ff41;}
+  .explanation{font-size:clamp(1.3rem,4.5vw,2.2rem);line-height:1.8;max-width:92%;margin:35px auto;opacity:0.95;}
+  .address{font-size:clamp(0.95rem,3.6vw,1.65rem);word-break:break-all;padding:22px;background:#000;border:4px solid #0f0;border-radius:12px;margin:25px auto;max-width:92%;box-shadow:0 0 50px #0f0;}
+  .generate{background:#000;border:5px solid #ff0066;padding:45px;margin:45px auto;max-width:800px;border-radius:20px;box-shadow:0 0 80px #ff0066;}
+  input[type=text]{background:#000;color:#0f0;border:3px solid #0f0;padding:16px;font-size:clamp(1.1rem,3.8vw,1.8rem);width:90%;max-width:700px;margin:20px auto;display:block;border-radius:10px;box-shadow:0 0 30px #0f0;}
   button{background:#ff0066;color:#000;padding:18px 55px;border:none;font-size:clamp(1.4rem,5vw,2.4rem);cursor:pointer;margin:15px;border-radius:12px;transition:all 0.3s;box-shadow:0 0 40px #ff0066;}
   button:hover{background:#ffea00;transform:scale(1.12);box-shadow:0 0 80px #ffea00;}
   table{width:90%;max-width:700px;margin:60px auto;font-size:clamp(1rem,3.8vw,1.7rem);table-layout:fixed;}
-  td{padding:12px 0;border-bottom:1px solid #00ff41;text-align:left;}
-  .flag{font-size:clamp(1.6rem,5.5vw,2.3rem);}
+  td{padding:12px 0;border-bottom:1px solid #0f0;text-align:left;}
+  .flag{font-size:clamp(1.8rem,6.5vw,2.8rem);margin-right:12px;vertical-align:middle;}
+  .bounty-card{background:#000;border:5px solid #ff0066;padding:40px;margin:45px auto;max-width:900px;box-shadow:0 0 90px #ff0066;border-radius:20px;}
+  .note-example{color:#ffea00 !important;font-size:clamp(1.1rem,3.8vw,1.7rem);margin:30px auto;padding:20px;background:#000;border:3px dashed #ffea00;border-radius:12px;max-width:88%;}
   @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.02);}}
 </style>
 </head>
 <body>
 
 <h1>THE PEOPLE'S LOTTERY</h1>
-<h2>A Grand Social Experiment – 100% Anonymous Forever – Unstoppable Private Money</h2>
+<h2>No KYC – 100% Freedom</h2>
 
-<!-- MAIN POT -->
+<!-- TOTAL POT -->
 <div class="card">
   <div class="pot">44.8 ZEC</div>
-  <div class="tagline">
-    This is a growing pot of unstoppable private money that anyone can win
-  </div>
 
-  <div class="odds">
-    Current odds with one ticket:<br>
-    <strong>1 in 44,800</strong>
-  </div>
+  <div class="explanation">
+    This is a growing pot of untraceable money — also known as Zcash.<br><br>
 
-  <div class="price">
-    1 ticket = <strong>0.001 ZEC</strong>
+    To make it fun, we randomly select draw dates (keeps it exciting).<br><br>
+
+    Every draw:<br>
+    → 50% paid to ONE winning Z-address<br>
+    → 40% rolls over → next pot gets even bigger<br>
+    → 10% donated anonymously to The Tor Project<br>
+    &nbsp;&nbsp;&nbsp;(keeps private money alive — donation tx published every draw)
   </div>
 </div>
 
-<!-- HOW IT WORKS — MEMO EXAMPLES REMOVED -->
+<!-- HOW IT WORKS — CLEAN & SIMPLE -->
 <div class="card">
   <h2>How it works</h2>
-  <p style="font-size:clamp(1.35rem,4.5vw,2.1rem);line-height:1.9;margin:30px 0;max-width:90%;margin-left:auto;margin-right:auto;">
+  <p style="font-size:clamp(1.35rem,4.5vw,2.1rem);line-height:1.6;margin:25px 0;max-width:90%;margin-left:auto;margin-right:auto;">
     • 1 ticket = 0.001 ZEC<br><br>
     • Generate your unique code below — linked to your payout address<br><br>
     • Send any amount to buy tickets<br><br>
-    • <strong>Referral bonus:</strong><br>
-      If your friend uses your code → <strong>you both get 100 free tickets</strong>
+    • Optional: Add a friend’s code → they earn cash, you get 25% extra tickets
+  </p>
+</div>
+
+<!-- REFERRAL BOUNTY — INDEPENDENT, CLEAR, VIRAL -->
+<div class="bounty-card">
+  <h2 style="font-size:clamp(2.2rem,7.5vw,3.5rem);margin:10px;color:#ff0066;text-shadow:0 0 40px #ff0066;">
+    Referral Bounty
+  </h2>
+  <p style="font-size:clamp(1.5rem,5vw,2.6rem);line-height:1.8;margin:30px auto;max-width:90%;">
+    Share your code → anyone who uses it gets <strong>25% extra tickets</strong><br><br>
+    You get <strong>5% of their purchase sent instantly</strong> to your address<br><br>
+    They keep all their tickets. You earn cash. Everyone wins.
   </p>
 </div>
 
@@ -78,26 +88,27 @@
 <div class="card">
   <h2 style="font-size:clamp(1.9rem,6vw,3rem);">Lottery Ticket Purchase Address</h2>
   <div class="address" id="address">zs1coming-soon-real-shielded-address-here</div>
-  <p class="address-note">
-    Send ZEC here with your Country + Unique Code + Ref Code<br>
-    and Win Big — Privately
-  </p>
+
+  <div class="note-example">
+    <strong>ZEC Note Example:</strong><br>
+    Country: UAE My Code: AU6771 Ref Code: BA3382
+  </div>
 </div>
 
-<!-- COUNTRIES -->
+<!-- COUNTRIES WITH FLAGS -->
 <div class="card">
   <h2 style="font-size:clamp(1.9rem,6vw,3rem);">Countries that love private money the most</h2>
   <table>
-    <tr><td><span class="flag">US</span> US 10,752 tickets</td></tr>
-    <tr><td><span class="flag">IR</span> IR 8,960 tickets</td></tr>
-    <tr><td><span class="flag">KP</span> KP 7,168 tickets</td></tr>
-    <tr><td><span class="flag">VE</span> VE 6,720 tickets</td></tr>
-    <tr><td><span class="flag">RU</span> RU 6,272 tickets</td></tr>
-    <tr><td><span class="flag">CN</span> CN 5,376 tickets</td></tr>
-    <tr><td><span class="flag">AR</span> AR 4,032 tickets</td></tr>
-    <tr><td><span class="flag">SY</span> SY 3,584 tickets</td></tr>
-    <tr><td><span class="flag">DE</span> DE 2,688 tickets</td></tr>
-    <tr><td><span class="flag">BR</span> BR 2,240 tickets</td></tr>
+    <tr><td><span class="flag">🇺🇸</span> US 10,752 tickets</td></tr>
+    <tr><td><span class="flag">🇮🇷</span> IR 8,960 tickets</td></tr>
+    <tr><td><span class="flag">🇰🇵</span> KP 7,168 tickets</td></tr>
+    <tr><td><span class="flag">🇻🇪</span> VE 6,720 tickets</td></tr>
+    <tr><td><span class="flag">🇷🇺</span> RU 6,272 tickets</td></tr>
+    <tr><td><span class="flag">🇨🇳</span> CN 5,376 tickets</td></tr>
+    <tr><td><span class="flag">🇦🇷</span> AR 4,032 tickets</td></tr>
+    <tr><td><span class="flag">🇸🇾</span> SY 3,584 tickets</td></tr>
+    <tr><td><span class="flag">🇩🇪</span> DE 2,688 tickets</td></tr>
+    <tr><td><span class="flag">🇧🇷</span> BR 2,240 tickets</td></tr>
   </table>
 </div>
 
