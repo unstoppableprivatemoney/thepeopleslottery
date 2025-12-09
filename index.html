@@ -8,15 +8,15 @@
   body{background:#000;color:#0f0;font-family:'Courier New',monospace;margin:0;padding:15px;line-height:1.5;text-align:center;}
   h1{font-size:3.8em;margin:20px 0 5px;letter-spacing:2px;text-shadow:0 0 25px #0f0;}
   h2{font-size:2.2em;margin:15px 0 5px;opacity:0.9;}
-  .card{background:#111;border:3px solid #0f0;padding:25px;margin:30px auto;max-width:850px;box-shadow:0 0 40px #0f0;border-radius:8px;}
+  .card{background:#111;border:3px solid #0f0;padding:30px;margin:30px auto;max-width:850px;box-shadow:0 0 40px #0f0;border-radius:8px;}
   .total{font-size:5.5em;font-weight:bold;margin:15px 0;animation:glow 4s infinite;}
   .payout{font-size:4.8em;color:#ff0;margin:10px 0;}
   .date{font-size:3em;color:#fff;margin:20px 0;}
   .address{font-size:1.6em;word-break:break-all;padding:20px;background:#000;border:2px dashed #0f0;}
   .bounty h3{font-size:3.8em;margin:10px;}
-  .reflink{font-size:2.2em;background:#000;padding:20px;margin:25px auto;border:3px dashed #0f0;max-width:90%;word-break:break-all;}
   button{background:#0f0;color:#000;padding:20px 50px;border:none;font-size:2em;cursor:pointer;margin:15px;border-radius:8px;}
   button:hover{background:#ff0;transform:scale(1.05);}
+  input[type=text]{background:#000;color:#0f0;border:2px solid #0f0;padding:15px;font-size:1.6em;width:90%;max-width:700px;margin:15px auto;display:block;}
   table{width:90%;max-width:700px;margin:50px auto;font-size:1.6em;}
   td{padding:12px 0;border-bottom:1px solid #333;text-align:left;}
   .flag{font-size:2em;}
@@ -40,19 +40,27 @@
 <div class="card">
   <h2>How it works</h2>
   <p style="font-size:2.4em;margin:20px 0;">1 ticket costs 0.001 ZEC</p>
+  <p style="font-size:1.8em;">Send ZEC with memo → <code>country:IR code:ABC123</code></p>
   <div class="address" id="address">zs1coming-soon-real-shielded-address-here</div>
 </div>
 
 <div class="card bounty">
   <h3>REFERRAL BOUNTY</h3>
-  <p style="font-size:2.4em;margin:15px;"><strong>5% instant payout</strong> + <strong>25% extra tickets</strong> for both</p>
-  <button onclick="genCode()">GENERATE CODE → PRINT MONEY</button>
-  <div class="reflink" id="reflink" style="display:none;">
-    https://unstoppableprivate.money/?ref=<span id="code">XXXXXX</span>
-    <button onclick="copyLink()">COPY LINK</button>
+  <p style="font-size:2em;line-height:1.6;">
+    • Share your unique code with friends<br>
+    • They add your code to the ZEC memo when buying tickets<br>
+    • You get <strong>5% of their purchase sent direct to your shielded address</strong><br>
+    • They get <strong>1.25× more lottery tickets</strong><br>
+    • <strong>You win. They win. We all win.</strong>
+  </p>
+
+  <input type="text" id="userZaddr" placeholder="Enter your shielded z-address first (zs1...)" />
+  <button onclick="generateCode()">GENERATE MY CODE → PRINT MONEY</button>
+
+  <div style="font-size:3em;margin:30px;background:#000;padding:20px;border:2px solid #0f0;display:none;" id="codeBox">
+    Your code: <span id="code">XXXXXX</span>
   </div>
-  <p id="mycode" style="font-size:2.6em;margin:30px;"></p>
-  <small>Memo → country:IR code:ABC123</small>
+  <p id="saved" style="color:#ff0;font-size:1.6em;display:none;">Saved! Your code is permanently linked to your address.</p>
 </div>
 
 <div class="card">
@@ -67,14 +75,12 @@
 </div>
 
 <script>
-// FAKE GROWTH BLOCK — delete everything from here to END OF FAKE BLOCK when going real
+// FAKE GROWTH BLOCK — delete when going real
 let fakeUsd = parseFloat(localStorage.getItem("fakePot")||"148491");
-
-// Realistic ticket scaling: 1 ticket ≈ $0.04 (0.001 ZEC at ~$40)
 const TICKET_PRICE_USD = 0.04;
 
 function fakeGrowth(){
-  const incrementUsd = 327 + Math.random() * 867;           // $327–$1,194
+  const incrementUsd = 327 + Math.random() * 867;
   fakeUsd += incrementUsd;
   localStorage.setItem("fakePot", fakeUsd.toFixed(0));
 
@@ -84,39 +90,29 @@ function fakeGrowth(){
   document.getElementById("total").textContent = "$" + usd.toLocaleString();
   document.getElementById("payout").textContent = "$" + (usd/2).toLocaleString();
 
-  // Ticket distribution that perfectly matches total pot
   const countries = {
-    US: Math.round(totalTickets * 0.24),
-    IR: Math.round(totalTickets * 0.20),
-    KP: Math.round(totalTickets * 0.16),
-    VE: Math.round(totalTickets * 0.15),
-    RU: Math.round(totalTickets * 0.14),
-    CN: Math.round(totalTickets * 0.11),
-    AR: Math.round(totalTickets * 0.08),
-    SY: Math.round(totalTickets * 0.06),
-    DE: Math.round(totalTickets * 0.04),
-    BR: Math.round(totalTickets * 0.02)
+    US: Math.round(totalTickets*0.24), IR: Math.round(totalTickets*0.20),
+    KP: Math.round(totalTickets*0.16), VE: Math.round(totalTickets*0.15),
+    RU: Math.round(totalTickets*0.14), CN: Math.round(totalTickets*0.11),
+    AR: Math.round(totalTickets*0.08), SY: Math.round(totalTickets*0.06),
+    DE: Math.round(totalTickets*0.04), BR: Math.round(totalTickets*0.02)
   };
-
   const sorted = Object.entries(countries).sort((a,b)=>b[1]-a[1]);
   document.getElementById("leaderboard").innerHTML = sorted.map(([c,t])=>`
     <tr><td><span class="flag">${countryFlag(c)}</span> ${c} ${t.toLocaleString()} tickets</td></tr>
   `).join("");
 }
-
-// Intermittent realistic growth
-setInterval(fakeGrowth, 120000 + Math.random() * 600000);  // every 2–12 mins
-fakeGrowth();  // initial
-// END OF FAKE BLOCK
+setInterval(fakeGrowth, 120000 + Math.random()*600000);
+fakeGrowth();
 
 function countryFlag(c){
   return String.fromCodePoint(...[...c.toUpperCase()].map(x=>0x1F1E6 + x.charCodeAt(0)-65));
 }
 
-// Christmas Day 2025 countdown
-const XMAS_2025 = new Date("2025-12-25T00:00:00Z").getTime();
+// Christmas Day countdown
+const XMAS = new Date("2025-12-25T00:00:00Z").getTime();
 function countdown(){
-  const diff = XMAS_2025 - Date.now();
+  const diff = XMAS - Date.now();
   const d = Math.floor(diff/86400000);
   const h = Math.floor((diff%86400000)/3600000);
   const m = Math.floor((diff%3600000)/60000);
@@ -124,21 +120,30 @@ function countdown(){
 }
 setInterval(countdown,60000);countdown();
 
-// Referral system
-let code = localStorage.getItem("refcode")||"";
-if(code) showCode(code);
-function genCode(){
-  if(!code){code=Math.random().toString(36).substring(2,8).toUpperCase();localStorage.setItem("refcode",code);}
-  showCode(code);
+// Referral code + z-address binding
+let userData = JSON.parse(localStorage.getItem("bountyUser") || "{}");
+
+if(userData.code && userData.zaddr){
+  document.getElementById("userZaddr").value = userData.zaddr;
+  document.getElementById("codeBox").style.display = "block";
+  document.getElementById("code").textContent = userData.code;
+  document.getElementById("saved").style.display = "block";
 }
-function showCode(c){
-  document.getElementById("mycode").textContent="Your code: "+c;
-  document.getElementById("code").textContent=c;
-  document.getElementById("reflink").style.display="block";
-}
-function copyLink(){
-  navigator.clipboard.writeText(`https://unstoppableprivate.money/?ref=${code}`);
-  alert("Link copied – go farm");
+
+function generateCode(){
+  const zaddr = document.getElementById("userZaddr").value.trim();
+  if(!zaddr.startsWith("zs1")){
+    alert("Please enter a valid shielded z-address (starts with zs1)");
+    return;
+  }
+  const code = Math.random().toString(36).substring(2,8).toUpperCase();
+  userData = {zaddr, code};
+  localStorage.setItem("bountyUser", JSON.stringify(userData));
+
+  document.getElementById("codeBox").style.display = "block";
+  document.getElementById("code").textContent = code;
+  document.getElementById("saved").style.display = "block";
+  alert("Your code " + code + " is now permanently linked to " + zaddr);
 }
 </script>
 </body>
