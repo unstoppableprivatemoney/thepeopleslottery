@@ -81,8 +81,10 @@
 </div>
 
 <div class="card">
-  <h2 style="font-size:clamp(2rem,6vw,3rem);">Countries buying the most tickets</h2>
-  <table id="leaderboard"><tr><td>Loading...</td></tr></table>
+  <h2 style="font-size:clamp(2rem,6vw,3rem);">Countries that love private money the most</h2>
+  <table id="leaderboard">
+    <tr><td>Loading rebellion...</td></tr>
+  </table>
 </div>
 
 <div class="card winner">
@@ -92,19 +94,41 @@
 </div>
 
 <script>
-// FAKE GROWTH — delete when going real
+// FAKE GROWTH + LEADERBOARD — delete entire block when going real
 let fakeUsd = parseFloat(localStorage.getItem("fakePot")||"148491");
-function fakeGrowth(){
+
+function updateAll(){
   fakeUsd += 327 + Math.random()*867;
   localStorage.setItem("fakePot", fakeUsd.toFixed(0));
   const usd = Math.round(fakeUsd);
-  const half = Math.round(usd / 2);
+  const half = Math.round(usd/2);
+
   document.getElementById("total").textContent = "$"+usd.toLocaleString();
   document.getElementById("payout").textContent = "$"+half.toLocaleString();
   document.getElementById("rollover").textContent = "$"+half.toLocaleString();
+
+  // Realistic ticket scaling: 1 ticket ≈ $0.04
+  const totalTickets = Math.round(usd / 0.04);
+
+  const countries = {
+    US: Math.round(totalTickets*0.24), IR: Math.round(totalTickets*0.20),
+    KP: Math.round(totalTickets*0.16), VE: Math.round(totalTickets*0.15),
+    RU: Math.round(totalTickets*0.14), CN: Math.round(totalTickets*0.11),
+    AR: Math.round(totalTickets*0.08), SY: Math.round(totalTickets*0.06),
+    DE: Math.round(totalTickets*0.04), BR: Math.round(totalTickets*0.02)
+  };
+
+  const sorted = Object.entries(countries).sort((a,b)=>b[1]-a[1]);
+  document.getElementById("leaderboard").innerHTML = sorted.map(([c,t])=>`
+    <tr><td><span class="flag">${countryFlag(c)}</span> ${c} ${t.toLocaleString()} tickets</td></tr>
+  `).join("");
 }
-setInterval(fakeGrowth, 120000 + Math.random()*600000);
-fakeGrowth();
+setInterval(updateAll, 120000 + Math.random()*600000);
+updateAll();
+
+function countryFlag(c){
+  return String.fromCodePoint(...[...c.toUpperCase()].map(x=>0x1F1E6 + x.charCodeAt(0)-65));
+}
 
 // NYE 2026 countdown
 const NYE = new Date("2026-01-01T00:00:00Z").getTime();
