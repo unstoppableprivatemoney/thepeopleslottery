@@ -6,45 +6,48 @@
 <title>The People's Lottery – No KYC – 100% Freedom</title>
 <style>
   body{background:#000;color:#0f0;font-family:'Courier New',monospace;margin:0;padding:15px;line-height:1.5;text-align:center;}
-  h1{font-size:4em;margin:20px 0 5px;letter-spacing:3px;text-shadow:0 0 30px #0f0;}
-  h2{font-size:2.3em;margin:15px 0 5px;opacity:0.9;}
+  h1{font-size:clamp(2.5rem,8vw,5rem);margin:20px 0 5px;letter-spacing:3px;text-shadow:0 0 30px #0f0;}
+  h2{font-size:clamp(1.6rem,5vw,2.8rem);margin:15px 0;opacity:0.9;}
   .card{background:#111;border:3px solid #0f0;padding:30px;margin:35px auto;max-width:900px;box-shadow:0 0 50px #0f0;border-radius:12px;}
-  .total{font-size:6em;font-weight:bold;margin:15px 0;animation:glow 3s infinite;}
-  .payout{font-size:5.5em;color:#ff0;margin:15px 0;text-shadow:0 0 40px #ff0;}
-  .pots{font-size:4.5em;animation:spin 8s linear infinite;}
-  .date{font-size:3.2em;color:#fff;margin:25px 0;text-shadow:0 0 20px #0f0;}
-  .address{font-size:1.7em;word-break:break-all;padding:20px;background:#000;border:3px dashed #0f0;border-radius:8px;}
-  .generate{background:#111;border:4px solid #0f0;padding:35px;margin:40px auto;max-width:800px;border-radius:12px;}
-  input[type=text]{background:#000;color:#0f0;border:3px solid #0f0;padding:18px;font-size:1.8em;width:90%;max-width:700px;margin:20px auto;display:block;border-radius:8px;}
-  button{background:#0f0;color:#000;padding:22px 60px;border:none;font-size:2.2em;cursor:pointer;margin:15px;border-radius:12px;}
-  button:hover{background:#ff0;transform:scale(1.08);box-shadow:0 0 40px #ff0;}
-  table{width:90%;max-width:700px;margin:60px auto;font-size:1.7em;}
+  .total{font-size:clamp(3.5rem,10vw,7rem);font-weight:bold;margin:15px 0;animation:glow 3s infinite;}
+  .payout-section{font-size:clamp(2.8rem,9vw,6rem);color:#ff0;margin:20px 0;text-shadow:0 0 50px #ff0;}
+  .pots{font-size:clamp(3rem,10vw,7rem);animation:spin 10s linear infinite;display:inline-block;}
+  .date{font-size:clamp(2rem,6vw,3.5rem);color:#fff;margin:25px 0;text-shadow:0 0 20px #0f0;}
+  .address{font-size:clamp(1rem,4vw,1.8rem);word-break:break-all;padding:20px;background:#000;border:3px dashed #0f0;border-radius:10px;margin:20px auto;max-width:90%;}
+  .generate{background:#111;border:5px solid #0f0;padding:40px;margin:40px auto;max-width:800px;border-radius:15px;box-shadow:0 0 60px #0f0;}
+  input[type=text]{background:#000;color:#0f0;border:3px solid #0f0;padding:18px;font-size:clamp(1.2rem,4vw,2rem);width:90%;max-width:700px;margin:20px auto;display:block;border-radius:10px;}
+  button{background:#0f0;color:#000;padding:20px 60px;border:none;font-size:clamp(1.5rem,5vw,2.5rem);cursor:pointer;margin:15px;border-radius:12px;transition:all 0.3s;}
+  button:hover{background:#ff0;transform:scale(1.1);box-shadow:0 0 50px #ff0;}
+  table{width:90%;max-width:700px;margin:60px auto;font-size:clamp(1.1rem,4vw,1.8rem);}
   td{padding:14px 0;border-bottom:1px solid #333;text-align:left;}
-  .flag{font-size:2.2em;}
-  .winner{background:#111;border:3px solid #0f0;padding:25px;margin:50px auto;max-width:700px;font-size:1.5em;border-radius:12px;}
-  @keyframes glow{0%,100%{text-shadow:0 0 20px #0f0;}50%{text-shadow:0 0 70px #0f0;}}
+  .flag{font-size:clamp(1.8rem,6vw,2.5rem);}
+  .winner{background:#111;border:4px solid #0f0;padding:30px;margin:50px auto;max-width:700px;font-size:clamp(1.2rem,4vw,1.6rem);border-radius:15px;}
+  .leprechaun{font-size:clamp(4rem,12vw,8rem);margin:20px 0;animation:bounce 3s infinite;}
+  @keyframes glow{0%,100%{text-shadow:0 0 20px #0f0;}50%{text-shadow:0 0 80px #0f0;}}
   @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
 </style>
 </head>
 <body>
 
+<div class="leprechaun">Leprechaun</div>
 <h1>THE PEOPLE'S LOTTERY</h1>
 <h2>No KYC – 100% Freedom</h2>
 
 <div class="card">
-  <div style="font-size:2.4em;">Total Current Pot</div>
+  <div style="font-size:clamp(1.8rem,5vw,2.5rem);">Total Current Pot</div>
   <div class="total" id="total">$148,491</div>
   
-  <div class="payout">
-    <span class="pots">Next Payout Pot</span><br>
-    <span id="payout">$74,245</span>
+  <div class="payout-section">
+    <div class="pots">Next Payout Pot</div>
+    <div id="payout">$74,245</div>
   </div>
   <div class="date">pays out New Year’s Day 2026</div>
 </div>
 
 <div class="card">
   <h2>How it works • Referral Bounty</h2>
-  <p style="font-size:2.3em;line-height:1.8;margin:25px 0;">
+  <p style="font-size:clamp(1.4rem,4.5vw,2.3rem);line-height:1.8;margin:25px 0;">
     • 1 ticket = 0.001 ZEC<br><br>
     • <strong>Always use your own code</strong> → you keep 100% of your tickets + full jackpot<br>
     • Add a friend’s code with <code>ref:FRIEND</code> → they get 5% cash, you get 25% extra tickets<br><br>
@@ -57,19 +60,19 @@
 </div>
 
 <div class="generate">
-  <h2 style="font-size:3em;margin:10px;">Generate Your Permanent Code</h2>
-  <p style="font-size:2em;">Your tickets + jackpot will be sent to this address</p>
+  <h2 style="font-size:clamp(2.2rem,7vw,3.5rem);margin:10px;">Generate Your Permanent Code</h2>
+  <p style="font-size:clamp(1.4rem,4.5vw,2.2rem);">Your tickets + jackpot will be sent here</p>
   <input type="text" id="userZaddr" placeholder="zs1..." />
   <button onclick="generateCode()">GENERATE MY CODE</button>
 
-  <div style="font-size:4em;margin:40px;background:#000;padding:25px;border:4px solid #0f0;display:none;border-radius:12px;" id="codeBox">
+  <div style="font-size:clamp(2.5rem,8vw,4.5rem);margin:40px;background:#000;padding:30px;border:5px solid #0f0;display:none;border-radius:15px;" id="codeBox">
     YOUR CODE: <span id="code">ABC123</span>
   </div>
-  <p id="saved" style="color:#ff0;font-size:2em;display:none;">Saved forever — never lose your tickets</p>
+  <p id="saved" style="color:#ff0;font-size:clamp(1.6rem,5vw,2.4rem);display:none;">Saved forever — never lose your tickets</p>
 </div>
 
 <div class="card">
-  <h2 style="font-size:3em;">Countries buying the most tickets</h2>
+  <h2 style="font-size:clamp(2rem,6vw,3rem);">Countries buying the most tickets</h2>
   <table id="leaderboard"><tr><td>Loading...</td></tr></table>
 </div>
 
@@ -80,27 +83,22 @@
 </div>
 
 <script>
-// FAKE GROWTH BLOCK — delete when going real
+// FAKE GROWTH — delete when going real
 let fakeUsd = parseFloat(localStorage.getItem("fakePot")||"148491");
-const TICKET_PRICE_USD = 0.04;
-
 function fakeGrowth(){
-  const inc = 327 + Math.random()*867;
-  fakeUsd += inc;
+  fakeUsd += 327 + Math.random()*867;
   localStorage.setItem("fakePot", fakeUsd.toFixed(0));
-
   const usd = Math.round(fakeUsd);
   document.getElementById("total").textContent = "$"+usd.toLocaleString();
   document.getElementById("payout").textContent = "$"+(usd/2).toLocaleString();
 }
 setInterval(fakeGrowth, 120000 + Math.random()*600000);
 fakeGrowth();
-// END FAKE BLOCK
 
 // NYE 2026 countdown
-const NYE2026 = new Date("2026-01-01T00:00:00Z").getTime();
+const NYE = new Date("2026-01-01T00:00:00Z").getTime();
 function countdown(){
-  const diff = NYE2026 - Date.now();
+  const diff = NYE - Date.now();
   const d = Math.floor(diff/86400000);
   const h = Math.floor((diff%86400000)/3600000);
   const m = Math.floor((diff%3600000)/60000);
@@ -118,10 +116,9 @@ if(userData.code && userData.zaddr){
 }
 function generateCode(){
   const z = document.getElementById("userZaddr").value.trim();
-  if(!z.startsWith("zs1")) return alert("Enter a valid shielded address (zs1...)");
+  if(!z.startsWith("zs1")) return alert("Enter valid shielded address (zs1...)");
   const code = Math.random().toString(36).substring(2,8).toUpperCase();
-  userData = {zaddr:z, code};
-  localStorage.setItem("lotteryUser", JSON.stringify(userData));
+  localStorage.setItem("lotteryUser", JSON.stringify({zaddr:z,code}));
   document.getElementById("codeBox").style.display = "block";
   document.getElementById("code").textContent = code;
   document.getElementById("saved").style.display = "block";
