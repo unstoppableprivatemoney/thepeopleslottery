@@ -9,9 +9,8 @@
   h1{font-size:3.8em;margin:20px 0 5px;letter-spacing:2px;text-shadow:0 0 25px #0f0;}
   h2{font-size:2.2em;margin:15px 0 5px;opacity:0.9;}
   .card{background:#111;border:3px solid #0f0;padding:25px;margin:30px auto;max-width:850px;box-shadow:0 0 40px #0f0;border-radius:8px;}
-  .pot{font-size:7em;font-weight:bold;margin:10px 0;animation:glow 4s infinite;}
-  @keyframes glow{0%,100%{text-shadow:0 0 20px #0f0;}50%{text-shadow:0 0 60px #0f0;}}
-  .payout{font-size:4.5em;color:#ff0;margin:15px 0;}
+  .total{font-size:5.5em;font-weight:bold;margin:15px 0;animation:glow 4s infinite;}
+  .payout{font-size:4.8em;color:#ff0;margin:10px 0;}
   .date{font-size:3em;color:#fff;margin:20px 0;}
   .address{font-size:1.6em;word-break:break-all;padding:20px;background:#000;border:2px dashed #0f0;}
   .bounty h3{font-size:3.8em;margin:10px;}
@@ -22,6 +21,7 @@
   td{padding:12px 0;border-bottom:1px solid #333;text-align:left;}
   .flag{font-size:2em;}
   .winner{background:#111;border:2px solid #0f0;padding:20px;margin:40px auto;max-width:700px;font-size:1.4em;}
+  @keyframes glow{0%,100%{text-shadow:0 0 20px #0f0;}50%{text-shadow:0 0 60px #0f0;}}
 </style>
 </head>
 <body>
@@ -30,13 +30,16 @@
 <h2>No KYC – 100% Freedom</h2>
 
 <div class="card">
-  <div class="pot" id="pot">$148,491</div>
+  <div style="font-size:2em;">Total Current Pot</div>
+  <div class="total" id="total">$148,491</div>
+  <div style="font-size:2em;margin:10px 0;">Next Payout Pot</div>
   <div class="payout" id="payout">$74,245</div>
-  <div class="date">pays out on Christmas Day 2025</div>
+  <div class="date">pays out Christmas Day 2025</div>
 </div>
 
 <div class="card">
-  <p style="font-size:2em;">1 ticket = 0.001 ZEC<br>Every ticket from your country pushes you up the leaderboard<br>Prove your nation loves private money the most</p>
+  <h2>How it works</h2>
+  <p style="font-size:2.4em;margin:20px 0;">1 ticket costs 0.001 ZEC</p>
   <div class="address" id="address">zs1coming-soon-real-shielded-address-here</div>
 </div>
 
@@ -53,7 +56,7 @@
 </div>
 
 <div class="card">
-  <h2 style="font-size:2.8em;">Countries that love private money the most</h2>
+  <h2 style="font-size:2.8em;">Countries buying the most tickets</h2>
   <table id="leaderboard"><tr><td>Loading...</td></tr></table>
 </div>
 
@@ -64,33 +67,53 @@
 </div>
 
 <script>
-// FAKE GROWTH BLOCK — delete everything from here to the next comment when going real
+// FAKE GROWTH BLOCK — delete everything from here to END OF FAKE BLOCK when going real
 let fakeUsd = parseFloat(localStorage.getItem("fakePot")||"148491");
-let lastFakeDay = Math.floor(Date.now()/86400000);
+
+// Realistic ticket scaling: 1 ticket ≈ $0.04 (0.001 ZEC at ~$40)
+const TICKET_PRICE_USD = 0.04;
 
 function fakeGrowth(){
-  const today = Math.floor(Date.now()/86400000);
-  if(today>lastFakeDay){
-    const daily=1200+Math.random()*1800;
-    fakeUsd+=daily; lastFakeDay=today;
-    localStorage.setItem("fakePot",fakeUsd.toFixed(0));
-  }
-  const usd=Math.round(fakeUsd);
-  document.getElementById("pot").textContent="$"+usd.toLocaleString();
-  document.getElementById("payout").textContent="$"+(usd/2).toLocaleString();
+  const incrementUsd = 327 + Math.random() * 867;           // $327–$1,194
+  fakeUsd += incrementUsd;
+  localStorage.setItem("fakePot", fakeUsd.toFixed(0));
 
-  const fakeCountries={US:890000,IR:742000,KP:618000,VE:590000,RU:557000,CN:489000,AR:412000,SY:398000,DE:365000,BR:341000};
-  const sorted=Object.entries(fakeCountries).sort((a,b)=>b[1]-a[1]);
-  document.getElementById("leaderboard").innerHTML=sorted.map(([c,t])=>`
+  const usd = Math.round(fakeUsd);
+  const totalTickets = Math.round(usd / TICKET_PRICE_USD);
+
+  document.getElementById("total").textContent = "$" + usd.toLocaleString();
+  document.getElementById("payout").textContent = "$" + (usd/2).toLocaleString();
+
+  // Ticket distribution that perfectly matches total pot
+  const countries = {
+    US: Math.round(totalTickets * 0.24),
+    IR: Math.round(totalTickets * 0.20),
+    KP: Math.round(totalTickets * 0.16),
+    VE: Math.round(totalTickets * 0.15),
+    RU: Math.round(totalTickets * 0.14),
+    CN: Math.round(totalTickets * 0.11),
+    AR: Math.round(totalTickets * 0.08),
+    SY: Math.round(totalTickets * 0.06),
+    DE: Math.round(totalTickets * 0.04),
+    BR: Math.round(totalTickets * 0.02)
+  };
+
+  const sorted = Object.entries(countries).sort((a,b)=>b[1]-a[1]);
+  document.getElementById("leaderboard").innerHTML = sorted.map(([c,t])=>`
     <tr><td><span class="flag">${countryFlag(c)}</span> ${c} ${t.toLocaleString()} tickets</td></tr>
   `).join("");
 }
-setInterval(fakeGrowth,30000);fakeGrowth();
-// END OF FAKE BLOCK — delete up to here when real
 
-function countryFlag(c){return String.fromCodePoint(...[...c.toUpperCase()].map(x=>0x1F1E6+x.charCodeAt(0)-65));}
+// Intermittent realistic growth
+setInterval(fakeGrowth, 120000 + Math.random() * 600000);  // every 2–12 mins
+fakeGrowth();  // initial
+// END OF FAKE BLOCK
 
-// Fixed Christmas Day 2025 payout countdown
+function countryFlag(c){
+  return String.fromCodePoint(...[...c.toUpperCase()].map(x=>0x1F1E6 + x.charCodeAt(0)-65));
+}
+
+// Christmas Day 2025 countdown
 const XMAS_2025 = new Date("2025-12-25T00:00:00Z").getTime();
 function countdown(){
   const diff = XMAS_2025 - Date.now();
@@ -102,8 +125,8 @@ function countdown(){
 setInterval(countdown,60000);countdown();
 
 // Referral system
-let code=localStorage.getItem("refcode")||"";
-if(code)showCode(code);
+let code = localStorage.getItem("refcode")||"";
+if(code) showCode(code);
 function genCode(){
   if(!code){code=Math.random().toString(36).substring(2,8).toUpperCase();localStorage.setItem("refcode",code);}
   showCode(code);
