@@ -3,43 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>unstoppableprivate.money</title>
+<title>The People's Lottery – No KYC – 100% Freedom</title>
 <style>
-  body{background:#000;color:#0f0;font-family:'Courier New',monospace;margin:0;padding:20px 10px;line-height:1.4;text-align:center;}
-  h1{font-size:3.8em;margin:10px 0 5px;text-shadow:0 0 20px #0f0;letter-spacing:2px;}
-  h2{font-size:2em;margin:20px 0 5px;opacity:0.9;}
-  .pot{font-size:6.5em;font-weight:bold;margin:20px 0 10px;animation:pulse 3s infinite;}
-  @keyframes pulse{0%,100%{text-shadow:0 0 20px #0f0;}50%{text-shadow:0 0 50px #0f0;}}
-  .jackpot{font-size:3.5em;color:#ff0;margin:10px 0;}
-  .timer{font-size:2.8em;color:#fff;margin:30px 0;}
-  .address{background:#111;border:3px solid #0f0;padding:20px;margin:40px auto;max-width:800px;font-size:1.6em;word-break:break-all;box-shadow:0 0 30px #0f0;}
-  .bounty{background:#111;border:4px solid #0f0;padding:30px;margin:50px auto;max-width:800px;box-shadow:0 0 40px #0f0;}
-  .bounty h3{font-size:3.8em;margin:10px;text-shadow:0 0 25px #0f0;}
+  body{background:#000;color:#0f0;font-family:'Courier New',monospace;margin:0;padding:15px;line-height:1.5;text-align:center;}
+  h1{font-size:3.8em;margin:20px 0 5px;letter-spacing:2px;text-shadow:0 0 25px #0f0;}
+  h2{font-size:2.2em;margin:15px 0 5px;opacity:0.9;}
+  .card{background:#111;border:3px solid #0f0;padding:25px;margin:30px auto;max-width:850px;box-shadow:0 0 40px #0f0;border-radius:8px;}
+  .pot{font-size:7em;font-weight:bold;margin:10px 0;animation:glow 4s infinite;}
+  @keyframes glow{0%,100%{text-shadow:0 0 20px #0f0;}50%{text-shadow:0 0 60px #0f0;}}
+  .payout{font-size:4.5em;color:#ff0;margin:15px 0;}
+  .date{font-size:3em;color:#fff;margin:20px 0;}
+  .address{font-size:1.6em;word-break:break-all;padding:20px;background:#000;border:2px dashed #0f0;}
+  .bounty h3{font-size:3.8em;margin:10px;}
   .reflink{font-size:2.2em;background:#000;padding:20px;margin:25px auto;border:3px dashed #0f0;max-width:90%;word-break:break-all;}
   button{background:#0f0;color:#000;padding:20px 50px;border:none;font-size:2em;cursor:pointer;margin:15px;border-radius:8px;}
   button:hover{background:#ff0;transform:scale(1.05);}
-  table{width:90%;max-width:700px;margin:60px auto;font-size:1.6em;border-collapse:collapse;}
+  table{width:90%;max-width:700px;margin:50px auto;font-size:1.6em;}
   td{padding:12px 0;border-bottom:1px solid #333;text-align:left;}
   .flag{font-size:2em;}
-  small{color:#0b0;font-size:1.1em;}
+  .winner{background:#111;border:2px solid #0f0;padding:20px;margin:40px auto;max-width:700px;font-size:1.4em;}
 </style>
 </head>
 <body>
 
-<h1>UNSTOPPABLE</h1>
-<h1>PRIVATE LOTTERY</h1>
-<h2>No KYC • No reversal • No masters</h2>
+<h1>THE PEOPLE'S LOTTERY</h1>
+<h2>No KYC – 100% Freedom</h2>
 
-<div class="pot" id="pot">$11,298</div>
-<div class="jackpot" id="jackpot">Current jackpot: $5,649</div>
-<div class="timer" id="timer">First draw in 30d 0h 0m</div>
+<div class="card">
+  <div class="pot" id="pot">$148,491</div>
+  <div class="payout" id="payout">$74,245</div>
+  <div class="date">pays out on Christmas Day 2025</div>
+</div>
 
-<div class="address" id="address">zs1coming-soon-real-shielded-address-will-be-here</div>
+<div class="card">
+  <p style="font-size:2em;">1 ticket = 0.001 ZEC<br>Every ticket from your country pushes you up the leaderboard<br>Prove your nation loves private money the most</p>
+  <div class="address" id="address">zs1coming-soon-real-shielded-address-here</div>
+</div>
 
-<div class="bounty">
+<div class="card bounty">
   <h3>REFERRAL BOUNTY</h3>
-  <p style="font-size:2.4em;margin:15px;"><strong>5% instant shielded payout</strong><br>+ 25% extra tickets for both</p>
-  <button onclick="genCode()">PRINT MONEY → GENERATE CODE</button>
+  <p style="font-size:2.4em;margin:15px;"><strong>5% instant payout</strong> + <strong>25% extra tickets</strong> for both</p>
+  <button onclick="genCode()">GENERATE CODE → PRINT MONEY</button>
   <div class="reflink" id="reflink" style="display:none;">
     https://unstoppableprivate.money/?ref=<span id="code">XXXXXX</span>
     <button onclick="copyLink()">COPY LINK</button>
@@ -48,48 +52,56 @@
   <small>Memo → country:IR code:ABC123</small>
 </div>
 
-<h2 style="font-size:2.8em;">Top countries by tickets</h2>
-<table id="leaderboard"><tr><td>Loading rebellion...</td></tr></table>
+<div class="card">
+  <h2 style="font-size:2.8em;">Countries that love private money the most</h2>
+  <table id="leaderboard"><tr><td>Loading...</td></tr></table>
+</div>
+
+<div class="card winner">
+  <strong>Last winner (Dec 1)</strong><br>
+  <span class="flag">Venezuela</span> Venezuela – 41.7 ZEC ($1,937) paid<br>
+  txid: <a href="#" style="color:#0f0;">5a8f…c3d1</a>
+</div>
 
 <script>
-// FAKE GROWTH + CONTROVERSIAL LEADERBOARD (delete when going real)
-let fakeUsd = parseFloat(localStorage.getItem("fakePot")||"11298");
+// FAKE GROWTH BLOCK — delete everything from here to the next comment when going real
+let fakeUsd = parseFloat(localStorage.getItem("fakePot")||"148491");
 let lastFakeDay = Math.floor(Date.now()/86400000);
 
 function fakeGrowth(){
   const today = Math.floor(Date.now()/86400000);
   if(today>lastFakeDay){
-    const daily=390+Math.random()*487;
+    const daily=1200+Math.random()*1800;
     fakeUsd+=daily; lastFakeDay=today;
     localStorage.setItem("fakePot",fakeUsd.toFixed(0));
-    document.getElementById("pot").classList.add("pulse"); setTimeout(()=>document.getElementById("pot").classList.remove("pulse"),2000);
   }
   const usd=Math.round(fakeUsd);
   document.getElementById("pot").textContent="$"+usd.toLocaleString();
-  document.getElementById("jackpot").textContent="Current jackpot: $"+(usd/2).toLocaleString();
+  document.getElementById("payout").textContent="$"+(usd/2).toLocaleString();
 
-  const fakeCountries={US:287000,IR:198000,KP:156000,VE:142000,RU:138000,CN:119000,AR:98000,DE:87000,SY:76000,BR:68000};
+  const fakeCountries={US:890000,IR:742000,KP:618000,VE:590000,RU:557000,CN:489000,AR:412000,SY:398000,DE:365000,BR:341000};
   const sorted=Object.entries(fakeCountries).sort((a,b)=>b[1]-a[1]);
   document.getElementById("leaderboard").innerHTML=sorted.map(([c,t])=>`
     <tr><td><span class="flag">${countryFlag(c)}</span> ${c} ${t.toLocaleString()} tickets</td></tr>
   `).join("");
 }
 setInterval(fakeGrowth,30000);fakeGrowth();
+// END OF FAKE BLOCK — delete up to here when real
 
 function countryFlag(c){return String.fromCodePoint(...[...c.toUpperCase()].map(x=>0x1F1E6+x.charCodeAt(0)-65));}
 
-// 30-day countdown
+// Fixed Christmas Day 2025 payout countdown
+const XMAS_2025 = new Date("2025-12-25T00:00:00Z").getTime();
 function countdown(){
-  const next=new Date();next.setUTCDate(next.getUTCDate()+30);
-  const diff=next-Date.now();
-  const d=Math.floor(diff/86400000);
-  const h=Math.floor((diff%86400000)/3600000);
-  const m=Math.floor((diff%3600000)/60000);
-  document.getElementById("timer").textContent=`First draw in ${d}d ${h}h ${m}m`;
+  const diff = XMAS_2025 - Date.now();
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  document.querySelector(".date").textContent = `pays out Christmas Day 2025 (${d}d ${h}h ${m}m)`;
 }
 setInterval(countdown,60000);countdown();
 
-// Referral
+// Referral system
 let code=localStorage.getItem("refcode")||"";
 if(code)showCode(code);
 function genCode(){
