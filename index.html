@@ -10,8 +10,8 @@
   h1{font-size:clamp(2.5rem,9vw,6rem);margin:20px 0 5px;letter-spacing:4px;text-shadow:0 0 30px #00ff41;}
   h2{font-size:clamp(1.6rem,5vw,2.8rem);margin:15px 0;}
   .card{background:#001105;border:3px solid #00ff41;padding:35px;margin:40px auto;max-width:900px;box-shadow:0 0 60px #00ff41;border-radius:15px;}
-  .total{font-size:clamp(3.5rem,11vw,8rem);font-weight:bold;margin:15px 0;color:#00ff41;text-shadow:0 0 40px #00ff41;animation:pulse 2s infinite;}
-  .payout{font-size:clamp(3rem,10vw,7rem);color:#ffea00;margin:20px 0;text-shadow:0 0 60px #ff6600;}
+  .total{font-size:clamp(3.8rem,12vw,9rem);font-weight:bold;margin:15px 0;color:#00ff41;text-shadow:0 0 40px #00ff41;animation:pulse 2s infinite;}
+  .payout{font-size:clamp(3.2rem,10vw,7rem);color:#ffea00;margin:15px 0;text-shadow:0 0 60px #ff6600;}
   .date{font-size:clamp(1.6rem,5vw,2.6rem);color:#00ffff;margin:25px 0;text-shadow:0 0 30px #00ffff;}
   .address{font-size:clamp(1rem,4vw,1.9rem);word-break:break-all;padding:25px;background:#000;border:4px solid #00ff41;border-radius:12px;margin:30px auto;max-width:90%;box-shadow:0 0 50px #00ff41;}
   .generate{background:#001105;border:5px solid #ff0066;padding:45px;margin:45px auto;max-width:800px;border-radius:15px;box-shadow:0 0 80px #ff0066;}
@@ -22,7 +22,7 @@
   td{padding:14px 0;border-bottom:1px solid #00ff41;text-align:left;}
   .flag{font-size:clamp(1.8rem,6vw,2.5rem);}
   .winner{background:#001105;border:4px solid #00ffff;padding:30px;margin:50px auto;max-width:700px;font-size:clamp(1.2rem,4vw,1.6rem);border-radius:15px;box-shadow:0 0 60px #00ffff;}
-  code{background:#000;padding:4px 10px;border:1px solid #00ff41;border-radius:6px;font-size:0.9em;}
+  .explanation{font-size:clamp(1.4rem,4.5vw,2.1rem);line-height:1.8;max-width:90%;margin:20px auto;opacity:0.95;}
   @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.02);}}
 </style>
 </head>
@@ -31,23 +31,33 @@
 <h1>THE PEOPLE'S LOTTERY</h1>
 <h2>No KYC – 100% Freedom</h2>
 
-<!-- TOTAL POT -->
+<!-- PERFECTLY CLEAR POT EXPLANATION -->
 <div class="card">
-  <div style="font-size:clamp(1.8rem,5vw,2.5rem);margin-bottom:10px;">TOTAL GROWING POT</div>
+  <div style="font-size:clamp(2rem,6vw,3rem);margin-bottom:15px;">TOTAL GROWING POT</div>
   <div class="total" id="total">$148,491</div>
-  <div style="font-size:clamp(1.6rem,4.5vw,2.2rem);margin:25px 0 10px;opacity:0.9;">
-    Every ticket sale adds to this pot <strong>forever</strong>
+  
+  <div class="explanation">
+    This is the <strong>total value of every ticket ever sold</strong><br>
+    It grows forever — nothing is ever removed
   </div>
-  <div style="font-size:clamp(1.7rem,5vw,2.4rem);margin:15px 0;">
-    Next Payout (50%)<br><span class="payout" id="payout">$74,245</span>
+
+  <div style="font-size:clamp(1.8rem,5.5vw,2.8rem);margin:30px 0 10px;">
+    Next Payout = <strong>50% of Total Pot</strong><br>
+    <span class="payout" id="payout">$74,245</span>
   </div>
-  <div style="font-size:clamp(1.7rem,5vw,2.4rem);margin:15px 0;color:#00ffff;">
-    Rollover Pot (50%)<br><span class="payout" id="rollover">$74,245</span>
+
+  <div style="font-size:clamp(1.8rem,5.5vw,2.8rem);margin:20px 0 10px;color:#00ffff;">
+    Rollover = <strong>50% of Total Pot</strong><br>
+    <span class="payout" id="rollover">$74,245</span>
   </div>
-  <div class="date">pays out New Year’s Day 2026</div>
+
+  <div class="date">
+    One winner receives the Next Payout on New Year’s Day 2026<br>
+    The Rollover becomes the new Total Pot → the game gets bigger forever
+  </div>
 </div>
 
-<!-- HOW IT WORKS – PERFECTLY CLEAN -->
+<!-- HOW IT WORKS -->
 <div class="card">
   <h2>How it works</h2>
   <p style="font-size:clamp(1.5rem,4.8vw,2.4rem);line-height:1.9;margin:30px 0;max-width:90%;margin-left:auto;margin-right:auto;">
@@ -63,7 +73,7 @@
   </p>
 </div>
 
-<!-- GENERATE CODE – STANDALONE -->
+<!-- GENERATE CODE -->
 <div class="generate">
   <h2 style="font-size:clamp(2.2rem,7vw,3.5rem);margin:10px;">Generate Your Unique Code</h2>
   <p style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-bottom:30px;">
@@ -77,7 +87,7 @@
   <p id="saved" style="color:#ffea00;font-size:clamp(1.6rem,5vw,2.4rem);display:none;">Saved forever — never lose your tickets</p>
 </div>
 
-<!-- LOTTERY ADDRESS – STANDALONE -->
+<!-- LOTTERY ADDRESS -->
 <div class="card">
   <h2 style="font-size:clamp(2rem,6vw,3rem);">Lottery Ticket Purchase Address</h2>
   <div class="address" id="address">zs1coming-soon-real-shielded-address-here</div>
@@ -96,7 +106,7 @@
 </div>
 
 <script>
-// FAKE GROWTH + LEADERBOARD
+// FAKE GROWTH
 let fakeUsd = parseFloat(localStorage.getItem("fakePot")||"148491");
 function updateAll(){
   fakeUsd += 327 + Math.random()*867;
@@ -106,26 +116,9 @@ function updateAll(){
   document.getElementById("total").textContent = "$"+usd.toLocaleString();
   document.getElementById("payout").textContent = "$"+half.toLocaleString();
   document.getElementById("rollover").textContent = "$"+half.toLocaleString();
-
-  const totalTickets = Math.round(usd / 0.04);
-  const countries = {
-    US: Math.round(totalTickets*0.24), IR: Math.round(totalTickets*0.20),
-    KP: Math.round(totalTickets*0.16), VE: Math.round(totalTickets*0.15),
-    RU: Math.round(totalTickets*0.14), CN: Math.round(totalTickets*0.11),
-    AR: Math.round(totalTickets*0.08), SY: Math.round(totalTickets*0.06),
-    DE: Math.round(totalTickets*0.04), BR: Math.round(totalTickets*0.02)
-  };
-  const sorted = Object.entries(countries).sort((a,b)=>b[1]-a[1]);
-  document.getElementById("leaderboard").innerHTML = sorted.map(([c,t])=>`
-    <tr><td><span class="flag">${countryFlag(c)}</span> ${c} ${t.toLocaleString()} tickets</td></tr>
-  `).join("");
 }
 setInterval(updateAll, 120000 + Math.random()*600000);
 updateAll();
-
-function countryFlag(c){
-  return String.fromCodePoint(...[...c.toUpperCase()].map(x=>0x1F1E6 + x.charCodeAt(0)-65));
-}
 
 // NYE 2026 countdown
 const NYE = new Date("2026-01-01T00:00:00Z").getTime();
