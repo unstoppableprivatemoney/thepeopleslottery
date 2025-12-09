@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>unstoppableprivate.money</title>
+    <style>
+        body{background:#000;color:#0f0;font-family:'Courier New',monospace;margin:0;padding:20px;line-height:1.6;text-align:center;}
+        h1{font-size:3em;margin:10px;text-shadow:0 0 20px #0f0;}
+        .pot{font-size:4em;font-weight:bold;color:#0f0;text-shadow:0 0 15px #0f0;margin:20px;}
+        .jackpot{font-size:2.4em;color:#ff0;margin:10px;}
+        .timer{font-size:1.8em;color:#fff;margin:25px;}
+        .address{font-size:1.3em;word-break:break-all;background:#111;padding:18px;margin:30px auto;max-width:780px;border:2px solid #0f0;}
+        .cta{font-size:2em;margin:20px;color:#0f0;text-shadow:0 0 15px #0f0;}
+        .bounty{background:#111;padding:35px;margin:50px auto;max-width:780px;border:4px solid #0f0;box-shadow:0 0 30px #0f0;}
+        .bounty h2{font-size:3.5em;margin:5px;text-shadow:0 0 25px #0f0;}
+        .reflink{font-size:2em;background:#000;padding:20px;margin:25px;border:3px dashed #0f0;word-break:break-all;}
+        button{background:#0f0;color:#000;padding:18px 40px;border:none;font:inherit;font-size:1.6em;cursor:pointer;margin:15px;border-radius:6px;}
+        button:hover{background:#ff0;transform:scale(1.08);transition:0.2s;}
+        table{width:100%;max-width:650px;margin:60px auto;font-size:1.3em;}
+        td{padding:12px 0;border-bottom:1px solid #333;text-align:left;}
+        .new-tx{animation:flash 1.5s;}@keyframes flash{0%,100%{text-shadow:0 0 20px #0f0;}50%{text-shadow:0 0 60px #0f0;}}
+        .last-tx{color:#0f0;font-size:1.4em;margin:20px;opacity:0;transition:opacity 0.5s;}
+    </style>
+</head>
+<body>
+<h1>UNSTOPPABLE PRIVATE LOTTERY</h1>
+<p>No KYC. No reversal. No mercy.</p>
+
+<div class="pot" id="pot">$11,298</div>
+<div class="jackpot" id="jackpot">Current jackpot: $5,649</div>
+<div class="last-tx" id="lasttx"></div>
+<div class="timer" id="timer">First draw in 30d 0h 0m</div>
+
+<div class="cta">SEND ZEC → GET RICH</div>
+<p style="font-size:1.4em;">1 ZEC = 1,000 tickets • First draw in 30 days • 50% paid • 50% rolls over forever</p>
+
+<div class="address">zs1coming-soon-real-shielded-address-will-be-here</div>
+
+<div class="bounty">
+  <h2>REFERRAL BOUNTY</h2>
+  <p style="font-size:2em;"><strong>5% instant shielded payout</strong> + <strong>25% extra tickets</strong> for both</p>
+  <button onclick="genCode()">PRINT MONEY → GENERATE CODE</button>
+  <div class="reflink" id="reflink" style="display:none;">
+    https://unstoppableprivate.money/?ref=<span id="code">XXXXXX</span>
+    <button onclick="copyLink()">COPY LINK</button>
+  </div>
+  <p id="mycode" style="font-size:2em;margin:30px;"></p>
+  <small>Memo → country:IR code:ABC123</small>
+</div>
+
+<h2 style="font-size:2.2em;">Top countries by tickets</h2>
+<table id="leaderboard"><tr><td>Loading...</td></tr></table>
+
+<script>
+// FAKE GROWTH + CONTROVERSIAL LEADERBOARD (delete whole block when going real)
+let fakeUsd = parseFloat(localStorage.getItem("fakePot") || "11298");
+let lastFakeDay = Math.floor(Date.now() / 86400000);
+
+function fakeGrowth() {
+  const today = Math.floor(Date.now() / 86400000);
+  if (today > lastFakeDay) {
+    const daily = 390 + Math.random() * 487;
+    fakeUsd += daily;
+    lastFakeDay = today;
+    localStorage.setItem("fakePot", fakeUsd.toFixed(0));
+    document.getElementById("lasttx").textContent = `+$${Math.round(daily)} just dropped`;
+    document.getElementById("lasttx").style.opacity = 1;
+    setTimeout(()=>document.getElementById("lasttx").style.opacity = 0, 10000);
+    document.getElementById("pot").classList.add("new-tx");
+    setTimeout(()=>document.getElementById("pot").classList.remove("new-tx"),2000);
+  }
+
+  const usd = Math.round(fakeUsd);
+  document.getElementById("pot").textContent = "$" + usd.toLocaleString();
+  document.getElementById("jackpot").textContent = "Current jackpot: $" + (usd/2).toLocaleString();
+
+  const fakeCountries = {
+    US: 287000, IR: 198000, KP: 156000, VE: 142000, 
+    RU: 138000, CN: 119000, AR: 98000, DE: 87000, SY: 76000, BR: 68000
+  };
+  const sorted = Object.entries(fakeCountries).sort((a,b)=>b[1]-a[1]);
+  document.getElementById("leaderboard").innerHTML = sorted.map(([c,t])=>`
+    <tr><td><span style="font-size:1.8em">${countryFlag(c)}</span> ${c} ${t.toLocaleString()} tickets</td></tr>
+  `).join("");
+}
+setInterval(fakeGrowth, 30000); fakeGrowth();
+
+// 30-day countdown
+function countdown() {
+  const launch = new Date();
+  const next = new Date(launch);
+  next.setUTCDate(launch.getUTCDate() + 30);
+  const diff = next - Date.now();
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  document.getElementById("timer").textContent = `First draw in ${d}d ${h}h ${m}m`;
+}
+setInterval(countdown, 60000); countdown();
+
+function countryFlag(c) {return String.fromCodePoint(...[...c.toUpperCase()].map(x=>0x1F1E6 + x.charCodeAt(0)-65));}
+
+// Referral
+let code = localStorage.getItem("refcode") || "";
+if (code) showCode(code);
+function genCode() {
+  if (!code) {code = Math.random().toString(36).substring(2,8).toUpperCase(); localStorage.setItem("refcode",code);}
+  showCode(code);
+}
+function showCode(c) {
+  document.getElementById("mycode").textContent = "Your code: " + c;
+  document.getElementById("code").textContent = c;
+  document.getElementById("reflink").style.display = "block";
+}
+function copyLink() {
+  navigator.clipboard.writeText(`https://unstoppableprivate.money/?ref=${code}`);
+  alert("Referral link copied – go farm");
+}
+</script>
+</body>
+</html>
