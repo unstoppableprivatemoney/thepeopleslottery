@@ -6,22 +6,24 @@
 <title>The People's Lottery – No KYC – 100% Freedom</title>
 <style>
   body{background:#000;color:#0f0;font-family:'Courier New',monospace;margin:0;padding:15px;line-height:1.5;text-align:center;}
-  h1{font-size:3.8em;margin:20px 0 5px;letter-spacing:2px;text-shadow:0 0 25px #0f0;}
-  h2{font-size:2.2em;margin:15px 0 5px;opacity:0.9;}
-  .card{background:#111;border:3px solid #0f0;padding:30px;margin:30px auto;max-width:850px;box-shadow:0 0 40px #0f0;border-radius:8px;}
-  .total{font-size:5.5em;font-weight:bold;margin:15px 0;animation:glow 4s infinite;}
-  .payout{font-size:4.8em;color:#ff0;margin:10px 0;}
-  .date{font-size:3em;color:#fff;margin:20px 0;}
-  .address{font-size:1.6em;word-break:break-all;padding:20px;background:#000;border:2px dashed #0f0;}
-  .bounty h3{font-size:3.8em;margin:10px;}
-  button{background:#0f0;color:#000;padding:20px 50px;border:none;font-size:2em;cursor:pointer;margin:15px;border-radius:8px;}
-  button:hover{background:#ff0;transform:scale(1.05);}
-  input[type=text]{background:#000;color:#0f0;border:2px solid #0f0;padding:15px;font-size:1.6em;width:90%;max-width:700px;margin:15px auto;display:block;}
-  table{width:90%;max-width:700px;margin:50px auto;font-size:1.6em;}
-  td{padding:12px 0;border-bottom:1px solid #333;text-align:left;}
-  .flag{font-size:2em;}
-  .winner{background:#111;border:2px solid #0f0;padding:20px;margin:40px auto;max-width:700px;font-size:1.4em;}
-  @keyframes glow{0%,100%{text-shadow:0 0 20px #0f0;}50%{text-shadow:0 0 60px #0f0;}}
+  h1{font-size:4em;margin:20px 0 5px;letter-spacing:3px;text-shadow:0 0 30px #0f0;}
+  h2{font-size:2.3em;margin:15px 0 5px;opacity:0.9;}
+  .card{background:#111;border:3px solid #0f0;padding:30px;margin:35px auto;max-width:900px;box-shadow:0 0 50px #0f0;border-radius:12px;}
+  .total{font-size:6em;font-weight:bold;margin:15px 0;animation:glow 3s infinite;}
+  .payout{font-size:5.5em;color:#ff0;margin:15px 0;text-shadow:0 0 40px #ff0;}
+  .pots{font-size:4.5em;animation:spin 8s linear infinite;}
+  .date{font-size:3.2em;color:#fff;margin:25px 0;text-shadow:0 0 20px #0f0;}
+  .address{font-size:1.7em;word-break:break-all;padding:20px;background:#000;border:3px dashed #0f0;border-radius:8px;}
+  .generate{background:#111;border:4px solid #0f0;padding:35px;margin:40px auto;max-width:800px;border-radius:12px;}
+  input[type=text]{background:#000;color:#0f0;border:3px solid #0f0;padding:18px;font-size:1.8em;width:90%;max-width:700px;margin:20px auto;display:block;border-radius:8px;}
+  button{background:#0f0;color:#000;padding:22px 60px;border:none;font-size:2.2em;cursor:pointer;margin:15px;border-radius:12px;}
+  button:hover{background:#ff0;transform:scale(1.08);box-shadow:0 0 40px #ff0;}
+  table{width:90%;max-width:700px;margin:60px auto;font-size:1.7em;}
+  td{padding:14px 0;border-bottom:1px solid #333;text-align:left;}
+  .flag{font-size:2.2em;}
+  .winner{background:#111;border:3px solid #0f0;padding:25px;margin:50px auto;max-width:700px;font-size:1.5em;border-radius:12px;}
+  @keyframes glow{0%,100%{text-shadow:0 0 20px #0f0;}50%{text-shadow:0 0 70px #0f0;}}
+  @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 </style>
 </head>
 <body>
@@ -30,56 +32,44 @@
 <h2>No KYC – 100% Freedom</h2>
 
 <div class="card">
-  <div style="font-size:2em;">Total Current Pot</div>
+  <div style="font-size:2.4em;">Total Current Pot</div>
   <div class="total" id="total">$148,491</div>
-  <div style="font-size:2em;margin:10px 0;">Next Payout Pot</div>
-  <div class="payout" id="payout">$74,245</div>
-  <div class="date">pays out Christmas Day 2025</div>
+  
+  <div class="payout">
+    <span class="pots">Next Payout Pot</span><br>
+    <span id="payout">$74,245</span>
+  </div>
+  <div class="date">pays out New Year’s Day 2026</div>
 </div>
 
 <div class="card">
-  <h2>How it works</h2>
-  <p style="font-size:2.4em;margin:20px 0;">1 ticket = 0.001 ZEC</p>
-  <p style="font-size:1.8em;">
-    <strong>Always use your own code</strong> → 100% of your tickets + jackpot go to your address<br><br>
-    Add a friend’s code → they get 5% cash, you get 25% extra tickets
-  </p>
-  <p style="font-size:1.6em;background:#000;padding:15px;border:2px dashed #0f0;">
-    Memo format:<br>
-    <code>country:DE mycode:BOB123</code><br>
-    or<br>
-    <code>country:DE mycode:BOB123 ref:ALICE9</code>
+  <h2>How it works • Referral Bounty</h2>
+  <p style="font-size:2.3em;line-height:1.8;margin:25px 0;">
+    • 1 ticket = 0.001 ZEC<br><br>
+    • <strong>Always use your own code</strong> → you keep 100% of your tickets + full jackpot<br>
+    • Add a friend’s code with <code>ref:FRIEND</code> → they get 5% cash, you get 25% extra tickets<br><br>
+    • Send with memo:<br>
+      <code>country:IR mycode:YOURCODE</code><br>
+      or<br>
+      <code>country:IR mycode:YOURCODE ref:ALICE9</code>
   </p>
   <div class="address" id="address">zs1coming-soon-real-shielded-address-here</div>
 </div>
 
-<div class="card bounty">
-  <h3>REFERRAL BOUNTY</h3>
-  <p style="font-size:2.1em;line-height:1.8;">
-    • Generate your permanent code once<br>
-    • It is permanently linked to the shielded address you enter below<br><br>
+<div class="generate">
+  <h2 style="font-size:3em;margin:10px;">Generate Your Permanent Code</h2>
+  <p style="font-size:2em;">Your tickets + jackpot will be sent to this address</p>
+  <input type="text" id="userZaddr" placeholder="zs1..." />
+  <button onclick="generateCode()">GENERATE MY CODE</button>
 
-    • <strong>Always use your own code when buying</strong><br>
-      → You keep 100% of your tickets + full jackpot if you win<br><br>
-
-    • Add a friend’s code with <code>ref:THEIRCODE</code><br>
-      → They get 5% instant shielded payout<br>
-      → You get 25% extra tickets<br><br>
-
-    • <strong>You control your tickets. You can still help friends earn cash.</strong>
-  </p>
-
-  <input type="text" id="userZaddr" placeholder="Your shielded payout address (zs1...)" />
-  <button onclick="generateCode()">GENERATE MY PERMANENT CODE</button>
-
-  <div style="font-size:3em;margin:30px;background:#000;padding:20px;border:2px solid #0f0;display:none;" id="codeBox">
+  <div style="font-size:4em;margin:40px;background:#000;padding:25px;border:4px solid #0f0;display:none;border-radius:12px;" id="codeBox">
     YOUR CODE: <span id="code">ABC123</span>
   </div>
-  <p id="saved" style="color:#ff0;font-size:1.8em;display:none;">Saved forever – never lose your tickets</p>
+  <p id="saved" style="color:#ff0;font-size:2em;display:none;">Saved forever — never lose your tickets</p>
 </div>
 
 <div class="card">
-  <h2 style="font-size:2.8em;">Countries buying the most tickets</h2>
+  <h2 style="font-size:3em;">Countries buying the most tickets</h2>
   <table id="leaderboard"><tr><td>Loading...</td></tr></table>
 </div>
 
@@ -95,70 +85,46 @@ let fakeUsd = parseFloat(localStorage.getItem("fakePot")||"148491");
 const TICKET_PRICE_USD = 0.04;
 
 function fakeGrowth(){
-  const incrementUsd = 327 + Math.random() * 867;
-  fakeUsd += incrementUsd;
+  const inc = 327 + Math.random()*867;
+  fakeUsd += inc;
   localStorage.setItem("fakePot", fakeUsd.toFixed(0));
 
   const usd = Math.round(fakeUsd);
-  const totalTickets = Math.round(usd / TICKET_PRICE_USD);
-
-  document.getElementById("total").textContent = "$" + usd.toLocaleString();
-  document.getElementById("payout").textContent = "$" + (usd/2).toLocaleString();
-
-  const countries = {
-    US: Math.round(totalTickets*0.24), IR: Math.round(totalTickets*0.20),
-    KP: Math.round(totalTickets*0.16), VE: Math.round(totalTickets*0.15),
-    RU: Math.round(totalTickets*0.14), CN: Math.round(totalTickets*0.11),
-    AR: Math.round(totalTickets*0.08), SY: Math.round(totalTickets*0.06),
-    DE: Math.round(totalTickets*0.04), BR: Math.round(totalTickets*0.02)
-  };
-  const sorted = Object.entries(countries).sort((a,b)=>b[1]-a[1]);
-  document.getElementById("leaderboard").innerHTML = sorted.map(([c,t])=>`
-    <tr><td><span class="flag">${countryFlag(c)}</span> ${c} ${t.toLocaleString()} tickets</td></tr>
-  `).join("");
+  document.getElementById("total").textContent = "$"+usd.toLocaleString();
+  document.getElementById("payout").textContent = "$"+(usd/2).toLocaleString();
 }
 setInterval(fakeGrowth, 120000 + Math.random()*600000);
 fakeGrowth();
+// END FAKE BLOCK
 
-function countryFlag(c){
-  return String.fromCodePoint(...[...c.toUpperCase()].map(x=>0x1F1E6 + x.charCodeAt(0)-65));
-}
-
-// Christmas Day countdown
-const XMAS = new Date("2025-12-25T00:00:00Z").getTime();
+// NYE 2026 countdown
+const NYE2026 = new Date("2026-01-01T00:00:00Z").getTime();
 function countdown(){
-  const diff = XMAS - Date.now();
+  const diff = NYE2026 - Date.now();
   const d = Math.floor(diff/86400000);
   const h = Math.floor((diff%86400000)/3600000);
   const m = Math.floor((diff%3600000)/60000);
-  document.querySelector(".date").textContent = `pays out Christmas Day 2025 (${d}d ${h}h ${m}m)`;
+  document.querySelector(".date").textContent = `pays out New Year’s Day 2026 (${d}d ${h}h ${m}m)`;
 }
 setInterval(countdown,60000);countdown();
 
-// Referral code + permanent z-address binding
-let userData = JSON.parse(localStorage.getItem("lotteryUser") || "{}");
-
+// Code generation
+let userData = JSON.parse(localStorage.getItem("lotteryUser")||"{}");
 if(userData.code && userData.zaddr){
   document.getElementById("userZaddr").value = userData.zaddr;
   document.getElementById("codeBox").style.display = "block";
   document.getElementById("code").textContent = userData.code;
   document.getElementById("saved").style.display = "block";
 }
-
 function generateCode(){
-  const zaddr = document.getElementById("userZaddr").value.trim();
-  if(!zaddr.startsWith("zs1")){
-    alert("Enter a valid shielded z-address (starts with zs1)");
-    return;
-  }
+  const z = document.getElementById("userZaddr").value.trim();
+  if(!z.startsWith("zs1")) return alert("Enter a valid shielded address (zs1...)");
   const code = Math.random().toString(36).substring(2,8).toUpperCase();
-  userData = {zaddr, code};
+  userData = {zaddr:z, code};
   localStorage.setItem("lotteryUser", JSON.stringify(userData));
-
   document.getElementById("codeBox").style.display = "block";
   document.getElementById("code").textContent = code;
   document.getElementById("saved").style.display = "block";
-  alert("Your permanent code is " + code + "\nAlways use mycode:" + code + " when buying");
 }
 </script>
 </body>
