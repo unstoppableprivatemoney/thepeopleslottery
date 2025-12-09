@@ -39,28 +39,43 @@
 
 <div class="card">
   <h2>How it works</h2>
-  <p style="font-size:2.4em;margin:20px 0;">1 ticket costs 0.001 ZEC</p>
-  <p style="font-size:1.8em;">Send ZEC with memo → <code>country:IR code:ABC123</code></p>
+  <p style="font-size:2.4em;margin:20px 0;">1 ticket = 0.001 ZEC</p>
+  <p style="font-size:1.8em;">
+    <strong>Always use your own code</strong> → 100% of your tickets + jackpot go to your address<br><br>
+    Add a friend’s code → they get 5% cash, you get 25% extra tickets
+  </p>
+  <p style="font-size:1.6em;background:#000;padding:15px;border:2px dashed #0f0;">
+    Memo format:<br>
+    <code>country:DE mycode:BOB123</code><br>
+    or<br>
+    <code>country:DE mycode:BOB123 ref:ALICE9</code>
+  </p>
   <div class="address" id="address">zs1coming-soon-real-shielded-address-here</div>
 </div>
 
 <div class="card bounty">
   <h3>REFERRAL BOUNTY</h3>
-  <p style="font-size:2em;line-height:1.6;">
-    • Share your unique code with friends<br>
-    • They add your code to the ZEC memo when buying tickets<br>
-    • You get <strong>5% of their purchase sent direct to your shielded address</strong><br>
-    • They get <strong>1.25× more lottery tickets</strong><br>
-    • <strong>You win. They win. We all win.</strong>
+  <p style="font-size:2.1em;line-height:1.8;">
+    • Generate your permanent code once<br>
+    • It is permanently linked to the shielded address you enter below<br><br>
+
+    • <strong>Always use your own code when buying</strong><br>
+      → You keep 100% of your tickets + full jackpot if you win<br><br>
+
+    • Add a friend’s code with <code>ref:THEIRCODE</code><br>
+      → They get 5% instant shielded payout<br>
+      → You get 25% extra tickets<br><br>
+
+    • <strong>You control your tickets. You can still help friends earn cash.</strong>
   </p>
 
-  <input type="text" id="userZaddr" placeholder="Enter your shielded z-address first (zs1...)" />
-  <button onclick="generateCode()">GENERATE MY CODE → PRINT MONEY</button>
+  <input type="text" id="userZaddr" placeholder="Your shielded payout address (zs1...)" />
+  <button onclick="generateCode()">GENERATE MY PERMANENT CODE</button>
 
   <div style="font-size:3em;margin:30px;background:#000;padding:20px;border:2px solid #0f0;display:none;" id="codeBox">
-    Your code: <span id="code">XXXXXX</span>
+    YOUR CODE: <span id="code">ABC123</span>
   </div>
-  <p id="saved" style="color:#ff0;font-size:1.6em;display:none;">Saved! Your code is permanently linked to your address.</p>
+  <p id="saved" style="color:#ff0;font-size:1.8em;display:none;">Saved forever – never lose your tickets</p>
 </div>
 
 <div class="card">
@@ -120,8 +135,8 @@ function countdown(){
 }
 setInterval(countdown,60000);countdown();
 
-// Referral code + z-address binding
-let userData = JSON.parse(localStorage.getItem("bountyUser") || "{}");
+// Referral code + permanent z-address binding
+let userData = JSON.parse(localStorage.getItem("lotteryUser") || "{}");
 
 if(userData.code && userData.zaddr){
   document.getElementById("userZaddr").value = userData.zaddr;
@@ -133,17 +148,17 @@ if(userData.code && userData.zaddr){
 function generateCode(){
   const zaddr = document.getElementById("userZaddr").value.trim();
   if(!zaddr.startsWith("zs1")){
-    alert("Please enter a valid shielded z-address (starts with zs1)");
+    alert("Enter a valid shielded z-address (starts with zs1)");
     return;
   }
   const code = Math.random().toString(36).substring(2,8).toUpperCase();
   userData = {zaddr, code};
-  localStorage.setItem("bountyUser", JSON.stringify(userData));
+  localStorage.setItem("lotteryUser", JSON.stringify(userData));
 
   document.getElementById("codeBox").style.display = "block";
   document.getElementById("code").textContent = code;
   document.getElementById("saved").style.display = "block";
-  alert("Your code " + code + " is now permanently linked to " + zaddr);
+  alert("Your permanent code is " + code + "\nAlways use mycode:" + code + " when buying");
 }
 </script>
 </body>
