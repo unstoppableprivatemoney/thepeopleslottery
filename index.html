@@ -11,8 +11,8 @@
   h2{font-size:clamp(1.6rem,5vw,2.8rem);margin:15px 0;opacity:0.9;}
   .card{background:#111;border:3px solid #0f0;padding:30px;margin:35px auto;max-width:900px;box-shadow:0 0 50px #0f0;border-radius:12px;}
   .total{font-size:clamp(3.5rem,10vw,7rem);font-weight:bold;margin:15px 0;animation:glow 3s infinite;}
-  .payout{font-size:clamp(3.2rem,9vw,6.5rem);color:#ffd700;margin:20px 0;text-shadow:0 0 60px #b8860b;}
-  .date{font-size:clamp(1.4rem,4vw,2.2rem);color:#0f0;margin:10px 0;opacity:0.8;}
+  .payout{font-size:clamp(3rem,9vw,6rem);color:#ffd700;margin:15px 0;text-shadow:0 0 60px #b8860b;}
+  .date{font-size:clamp(1.5rem,4.5vw,2.3rem);color:#0f0;margin:25px 0;opacity:0.9;}
   .address{font-size:clamp(1rem,4vw,1.8rem);word-break:break-all;padding:20px;background:#000;border:3px dashed #0f0;border-radius:10px;margin:20px auto;max-width:90%;}
   .generate{background:#111;border:5px solid #0f0;padding:40px;margin:40px auto;max-width:800px;border-radius:15px;box-shadow:0 0 60px #0f0;}
   input[type=text]{background:#000;color:#0f0;border:3px solid #0f0;padding:18px;font-size:clamp(1.2rem,4vw,2rem);width:90%;max-width:700px;margin:20px auto;display:block;border-radius:10px;}
@@ -31,12 +31,28 @@
 <h2>No KYC – 100% Freedom</h2>
 
 <div class="card">
-  <div style="font-size:clamp(1.8rem,5vw,2.5rem);">Total Current Pot</div>
+  <div style="font-size:clamp(1.8rem,5vw,2.5rem);margin-bottom:10px;">TOTAL GROWING POT</div>
   <div class="total" id="total">$148,491</div>
- 
-  <div style="font-size:clamp(1.8rem,5vw,2.5rem);margin:20px 0;">Next Payout Pot</div>
-  <div class="payout" id="payout">$74,245</div>
-  <div class="date">pays out New Year’s Day 2026</div>
+
+  <div style="font-size:clamp(1.6rem,4.5vw,2.2rem);margin:25px 0 10px;opacity:0.9;">
+    Every ticket sale adds to this pot <strong>forever</strong>
+  </div>
+
+  <div style="font-size:clamp(1.7rem,5vw,2.4rem);margin:15px 0;">
+    Next Payout (50%)<br>
+    <span class="payout" id="payout">$74,245</span>
+  </div>
+
+  <div style="font-size:clamp(1.7rem,5vw,2.4rem);margin:15px 0;color:#0f9;">
+    Rollover Pot (50%)<br>
+    <span class="payout" id="rollover">$74,245</span>
+  </div>
+
+  <div class="date">
+    pays out New Year’s Day 2026<br>
+    then the Rollover Pot becomes the new Total Pot<br>
+    and the game gets bigger forever
+  </div>
 </div>
 
 <div class="card">
@@ -82,8 +98,10 @@ function fakeGrowth(){
   fakeUsd += 327 + Math.random()*867;
   localStorage.setItem("fakePot", fakeUsd.toFixed(0));
   const usd = Math.round(fakeUsd);
+  const half = Math.round(usd / 2);
   document.getElementById("total").textContent = "$"+usd.toLocaleString();
-  document.getElementById("payout").textContent = "$"+(usd/2).toLocaleString();
+  document.getElementById("payout").textContent = "$"+half.toLocaleString();
+  document.getElementById("rollover").textContent = "$"+half.toLocaleString();
 }
 setInterval(fakeGrowth, 120000 + Math.random()*600000);
 fakeGrowth();
@@ -94,8 +112,8 @@ function countdown(){
   const diff = NYE - Date.now();
   const d = Math.floor(diff/86400000);
   const h = Math.floor((diff%86400000)/3600000);
-  const m = Math.floor((diff%36000000)/60000);
-  document.querySelector(".date").textContent = `pays out New Year’s Day 2026 (${d}d ${h}h ${m}m)`;
+  const m = Math.floor((diff%3600000)/60000);
+  document.querySelector(".date").innerHTML = `pays out New Year’s Day 2026<br>(${d}d ${h}h ${m}m)`;
 }
 setInterval(countdown,60000);countdown();
 
