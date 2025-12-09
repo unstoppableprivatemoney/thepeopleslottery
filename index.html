@@ -3,57 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The People's Lottery – No KYC – 100% Private Payouts </title>
+<title>The People's Lottery – No KYC – 100% Freedom</title>
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <style>
-  body{
-    background:#000;color:#00ff41;font-family:'VT323',monospace;margin:0;padding:15px;line-height:1.5;text-align:center;
-    background:linear-gradient(transparent 49%, rgba(0,255,65,0.02) 50%, transparent 51%);
-    background-size:100% 4px;
-  }
+  body{background:#000;color:#00ff41;font-family:'VT323',monospace;margin:0;padding:15px;line-height:1.5;text-align:center;}
   h1{font-size:clamp(2.5rem,9vw,6rem);margin:20px 0 5px;letter-spacing:4px;text-shadow:0 0 30px #00ff41;}
   h2{font-size:clamp(1.6rem,5vw,2.8rem);margin:15px 0;}
-  .card{
-    background:#001105;border:3px solid #00ff41;padding:35px;margin:40px auto;max-width:900px;
-    box-shadow:0 0 60px #00ff41;border-radius:15px;
-  }
+  .card{background:#001105;border:3px solid #00ff41;padding:35px;margin:40px auto;max-width:900px;box-shadow:0 0 60px #00ff41;border-radius:15px;}
   .total{font-size:clamp(3.5rem,11vw,8rem);font-weight:bold;margin:15px 0;color:#00ff41;text-shadow:0 0 40px #00ff41;animation:pulse 2s infinite;}
   .payout{font-size:clamp(3rem,10vw,7rem);color:#ffea00;margin:20px 0;text-shadow:0 0 60px #ff6600;}
   .date{font-size:clamp(1.6rem,5vw,2.6rem);color:#00ffff;margin:25px 0;text-shadow:0 0 30px #00ffff;}
-  .address{font-size:clamp(1rem,4vw,1.8rem);word-break:break-all;padding:20px;background:#000;border:3px dashed #00ff41;border-radius:10px;margin:20px auto;max-width:90%;box-shadow:0 0 30px #00ff41;}
+  .address{font-size:clamp(1rem,4vw,1.9rem);word-break:break-all;padding:25px;background:#000;border:4px solid #00ff41;border-radius:12px;margin:30px auto;max-width:90%;box-shadow:0 0 50px #00ff41;}
   .generate{background:#001105;border:5px solid #ff0066;padding:45px;margin:45px auto;max-width:800px;border-radius:15px;box-shadow:0 0 80px #ff0066;}
-  input[type=text]{
-    background:#000;color:#00ff41;border:3px solid #00ff41;padding:18px;
-    font-size:clamp(1.2rem,4vw,2rem);width:90%;max-width:700px;margin:20px auto;display:block;border-radius:10px;box-shadow:0 0 30px #00ff41;
-  }
-  button{
-    background:#ff0066;color:#000;padding:20px 60px;border:none;
-    font-size:clamp(1.6rem,5.5vw,2.8rem);cursor:pointer;margin:15px;border-radius:12px;
-    transition:all 0.3s;box-shadow:0 0 40px #ff0066;
-  }
+  input[type=text]{background:#000;color:#00ff41;border:3px solid #00ff41;padding:18px;font-size:clamp(1.2rem,4vw,2rem);width:90%;max-width:700px;margin:20px auto;display:block;border-radius:10px;box-shadow:0 0 30px #00ff41;}
+  button{background:#ff0066;color:#000;padding:20px 60px;border:none;font-size:clamp(1.6rem,5.5vw,2.8rem);cursor:pointer;margin:15px;border-radius:12px;transition:all 0.3s;box-shadow:0 0 40px #ff0066;}
   button:hover{background:#ffea00;transform:scale(1.15);box-shadow:0 0 80px #ffea00;}
-  table{width:90%;max-width:700px;margin:60px auto;font-size:clamp(1.1rem,4vw,1.8rem);table-layout:fixed;}
+  table{width:90%;max-width:700px;margin:60px auto;font-size:clamp(1.1rem,4vw,1.8rem);}
   td{padding:14px 0;border-bottom:1px solid #00ff41;text-align:left;}
   .flag{font-size:clamp(1.8rem,6vw,2.5rem);}
   .winner{background:#001105;border:4px solid #00ffff;padding:30px;margin:50px auto;max-width:700px;font-size:clamp(1.2rem,4vw,1.6rem);border-radius:15px;box-shadow:0 0 60px #00ffff;}
+  code{background:#000;padding:4px 10px;border:1px solid #00ff41;border-radius:6px;font-size:0.9em;}
   @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.02);}}
-
-  /* PERFECTLY FITTED "HOW IT WORKS" SECTION */
-  .howitworks p{
-    font-size:clamp(1.35rem,4.2vw,2.1rem);
-    line-height:1.7;
-    margin:28px 0;
-    max-width:90%;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .howitworks code{
-    background:#000;
-    padding:4px 10px;
-    border:1px solid #00ff41;
-    border-radius:6px;
-    font-size:0.95em;
-  }
 </style>
 </head>
 <body>
@@ -61,7 +31,7 @@
 <h1>THE PEOPLE'S LOTTERY</h1>
 <h2>No KYC – 100% Freedom</h2>
 
-<!-- POT SECTION (unchanged) -->
+<!-- TOTAL POT -->
 <div class="card">
   <div style="font-size:clamp(1.8rem,5vw,2.5rem);margin-bottom:10px;">TOTAL GROWING POT</div>
   <div class="total" id="total">$148,491</div>
@@ -69,42 +39,36 @@
     Every ticket sale adds to this pot <strong>forever</strong>
   </div>
   <div style="font-size:clamp(1.7rem,5vw,2.4rem);margin:15px 0;">
-    Next Payout (50%)<br>
-    <span class="payout" id="payout">$74,245</span>
+    Next Payout (50%)<br><span class="payout" id="payout">$74,245</span>
   </div>
-  
-   <div class="date">
-    pays out New Year’s Day 2026<br>
-    then the Rollover Pot becomes the new Total Pot<br>
-    and the game gets bigger forever
-  </div>
-  
   <div style="font-size:clamp(1.7rem,5vw,2.4rem);margin:15px 0;color:#00ffff;">
-    Rollover Pot (50%)<br>
-    <span class="payout" id="rollover">$74,245</span>
+    Rollover Pot (50%)<br><span class="payout" id="rollover">$74,245</span>
   </div>
-
+  <div class="date">pays out New Year’s Day 2026</div>
 </div>
 
-<!-- CLEAN, ORGANIZED HOW IT WORKS SECTION -->
-<div class="card howitworks">
-  <h2>How it works • Referral Bounty</h2>
-  <p>
-    • 1 ticket = 0.001 ZEC<br><br>
-    • <strong>Always use your own code</strong> → you keep 100% of your tickets + full jackpot<br>
-    • Add a friend’s code with <code>ref:theircode</code> → they get 5% cashback, you get 25% extra tickets<br><br>
-    • Send with memo:<br>
-      <code>country:IR mycode:YOURCODE</code><br>
-      or<br>
-      <code>country:IR mycode:YOURCODE ref:ALICE9</code>
+<!-- HOW IT WORKS – PERFECTLY CLEAN -->
+<div class="card">
+  <h2>How it works</h2>
+  <p style="font-size:clamp(1.5rem,4.8vw,2.4rem);line-height:1.9;margin:30px 0;max-width:90%;margin-left:auto;margin-right:auto;">
+    1 People's Lottery Ticket costs <strong>0.001 ZEC</strong><br><br>
+    Generate your unique code below which will be linked to your Z-Address for payouts.<br><br>
+    Send as much ZEC as you want to buy as many entries as you need — improving your odds.<br><br>
+    Share your unique code with friends to get <strong>5% of their ticket purchase value back in ZEC</strong>.<br><br>
+    Use a friend’s unique code together with your own and get <strong>25% extra entry tickets</strong>.
   </p>
-  <div class="address" id="address">zs1coming-soon-real-shielded-address-here</div>
+  <p style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin:30px 0;">
+    <strong>ZEC Memo Example:</strong><br>
+    <code>Country: UAE mycode: AU8811 refcode: B99200</code>
+  </p>
 </div>
 
-<!-- Rest of sections unchanged -->
+<!-- GENERATE CODE – STANDALONE -->
 <div class="generate">
   <h2 style="font-size:clamp(2.2rem,7vw,3.5rem);margin:10px;">Generate Your Unique Code</h2>
-  <p style="font-size:clamp(1.4rem,4.5vw,2.2rem);">Your tickets are linked to your Z-Address and your jackpot winnings will be sent here</p>
+  <p style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-bottom:30px;">
+    Your tickets + jackpot will be sent to this address
+  </p>
   <input type="text" id="userZaddr" placeholder="zs1..." />
   <button onclick="generateCode()">GENERATE MY CODE</button>
   <div style="font-size:clamp(2.5rem,8vw,4.5rem);margin:40px;background:#000;padding:30px;border:5px solid #0f0;display:none;border-radius:15px;" id="codeBox">
@@ -113,6 +77,13 @@
   <p id="saved" style="color:#ffea00;font-size:clamp(1.6rem,5vw,2.4rem);display:none;">Saved forever — never lose your tickets</p>
 </div>
 
+<!-- LOTTERY ADDRESS – STANDALONE -->
+<div class="card">
+  <h2 style="font-size:clamp(2rem,6vw,3rem);">Lottery Ticket Purchase Address</h2>
+  <div class="address" id="address">zs1coming-soon-real-shielded-address-here</div>
+</div>
+
+<!-- COUNTRIES + WINNER -->
 <div class="card">
   <h2 style="font-size:clamp(2rem,6vw,3rem);">Countries that love private money the most</h2>
   <table id="leaderboard"><tr><td>Loading rebellion...</td></tr></table>
@@ -167,7 +138,7 @@ function countdown(){
 }
 setInterval(countdown,60000);countdown();
 
-// Code generation (unchanged)
+// Code generation
 let userData = JSON.parse(localStorage.getItem("lotteryUser")||"{}");
 if(userData.code && userData.zaddr){
   document.getElementById("userZaddr").value = userData.zaddr;
