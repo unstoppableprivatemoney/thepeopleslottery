@@ -3,152 +3,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The People's Lottery – No KYC – 100% Freedom</title>
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<title>The People's Lottery – A Referendum on Surveillance</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=VT323&display=swap" rel="stylesheet">
 <style>
-  :root{--glow-green:#00ff41;--glow-yellow:#ffea00;--glow-orange:#ff6600;--glow-cyan:#00ffff;}
-  body{background:#000;color:var(--glow-green);font-family:'VT323',monospace;margin:0;padding:0;line-height:1.6;text-align:center;overflow-x:hidden;}
-  h1{font-size:clamp(2.6rem,10vw,7.5rem);margin:40px 0 15px;letter-spacing:10px;color:var(--glow-green);text-shadow:0 0 40px var(--glow-green);}
-  h2{font-size:clamp(1.3rem,4.5vw,2.2rem);margin:10px 0 40px;opacity:0.9;letter-spacing:3px;}
-  .container{max-width:960px;margin:0 auto;padding:0 20px;}
-  .card{background:#000;border:5px double var(--glow-green);padding:40px;margin:50px auto;max-width:900px;box-shadow:0 0 80px var(--glow-green);border-radius:20px;position:relative;overflow:hidden;}
-  .card::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 4px,rgba(0,255,65,0.03) 4px,rgba(0,255,65,0.03) 8px);pointer-events:none;animation:scan 12s linear infinite;}
-  .pot-display{
-    font-size:clamp(6rem,18vw,14rem);
-    font-weight:bold;
-    color:#000;
-    background:var(--glow-yellow);
-    padding:30px 80px;
+  :root{
+    --green:#00ff41;--yellow:#ffea00;--orange:#ff6600;--cyan:#00ffff;--red:#ff0066;
+  }
+  body{
+    background:#000;
+    color:var(--green);
+    font-family:'VT323',monospace;
+    margin:0;
+    line-height:1.7;
+    text-align:center;
+    overflow-x:hidden;
+  }
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+    background:radial-gradient(circle at 50% 30%,rgba(0,255,65,0.15),transparent 70%);
+  }
+  h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(3rem,12vw,9rem);
+    font-weight:900;
+    letter-spacing:12px;
+    margin:0 0 20px;
+    background:linear-gradient(90deg,var(--green),var(--cyan),var(--green));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 0 60px var(--green);
+  }
+  .manifesto{
+    font-size:clamp(1.4rem,5vw,2.8rem);
+    max-width:1000px;
+    margin:40px auto;
+    padding:40px;
+    background:rgba(0,255,65,0.05);
+    border:4px double var(--green);
+    border-radius:20px;
+    box-shadow:0 0 80px var(--green);
+    text-shadow:0 0 20px var(--green);
+    line-height:1.9;
+  }
+  .pot-container{
+    margin:80px auto;
+    padding:60px 30px;
+    max-width:900px;
+    background:#000;
+    border:6px double var(--yellow);
     border-radius:25px;
+    box-shadow:0 0 120px var(--yellow);
+  }
+  .pot{
+    font-size:clamp(7rem,20vw,16rem);
+    font-weight:900;
+    color:#000;
+    background:var(--yellow);
+    padding:40px 80px;
+    border-radius:30px;
     display:inline-block;
     text-shadow:0 0 40px #fff;
-    box-shadow:0 0 80px var(--glow-yellow),inset 0 0 40px rgba(0,0,0,0.6),0 20px 40px rgba(0,0,0,0.9);
-    margin:40px 0;
-    position:relative;
+    box-shadow:0 0 100px var(--yellow),inset 0 0 50px rgba(0,0,0,0.6);
+    animation:pulse 3s infinite;
   }
-  .pot-display::before,.pot-display::after{
-    content:'';position:absolute;border-radius:50%;box-shadow:0 0 80px 30px var(--glow-yellow);animation:pulseGlow 4s infinite;
+  .stats{
+    font-size:clamp(1.6rem,5.5vw,3rem);
+    margin:50px 0;
+    color:var(--cyan);
+    text-shadow:0 0 40px var(--cyan);
   }
-  .pot-display::before{inset:-30px;}
-  .pot-display::after{inset:-50px;animation-direction:reverse;}
-  .explanation{font-size:clamp(1.4rem,5vw,2.4rem);line-height:1.8;max-width:88%;margin:40px auto;padding:30px;background:rgba(0,255,65,0.06);border:2px dashed var(--glow-green);border-radius:15px;}
-  .odds-title{font-size:clamp(1.9rem,6.5vw,3.4rem);color:var(--glow-cyan);margin:60px 0 30px;text-shadow:0 0 50px var(--glow-cyan);}
-  .odds-line{font-size:clamp(1.8rem,6.5vw,3.6rem);color:var(--glow-yellow);margin:20px 0;}
-  .generate{background:#000;border:6px solid #ff0066;padding:50px;margin:60px auto;max-width:840px;border-radius:22px;box-shadow:0 0 100px #ff0066;}
-  input[type=text]{background:#000;color:var(--glow-green);border:4px solid var(--glow-green;padding:18px;font-size:clamp(1.2rem,4.2vw,2rem);width:88%;max-width:700px;margin:25px auto;display:block;border-radius:14px;box-shadow:0 0 40px var(--glow-green);}
-  button{background:#ff0066;color:#000;padding:22px 80px;border:none;font-size:clamp(1.6rem,6vw,3rem);cursor:pointer;margin:20px;border-radius:16px;box-shadow:0 0 60px #ff0066;transition:0.4s;}
-  button:hover{background:var(--glow-yellow);transform:scale(1.1);box-shadow:0 0 100px var(--glow-yellow);}
-  .address{font-size:clamp(1rem,4vw,1.9rem);word-break:break-all;padding:25px;background:#000;border:4px solid var(--glow-green);border-radius:14px;margin:30px auto;max-width:88%;box-shadow:0 0 60px var(--glow-green);cursor:pointer;transition:0.3s;}
-  .address:hover{box-shadow:0 0 90px var(--glow-green);}
-  .note-example{color:var(--glow-yellow);font-size:clamp(1.2rem,4.2vw,1.9rem);margin:35px auto;padding:22px;background:#000;border:3px dashed var(--glow-yellow);border-radius:14px;max-width:88%;}
-  table{width:90%;max-width:700px;margin:70px auto;font-size:clamp(1.1rem,4.2vw,1.9rem);}
-  td{padding:14px 0;border-bottom:1px solid #004d1a;text-align:left;}
-  .flag{font-size:clamp(2rem,7vw,3rem);margin-right:15px;vertical-align:middle;}
-  @keyframes scan{0%{transform:translateY(-100%);}100%{transform:translateY(100%);}}
-  @keyframes pulseGlow{0%,100%{opacity:0.7;}50%{opacity:1;}}
+  .card{
+    background:#000;
+    border:4px solid var(--green);
+    padding:50px 30px;
+    margin:80px auto;
+    max-width:900px;
+    border-radius:20px;
+    box-shadow:0 0 80px var(--green);
+  }
+  .generate{
+    background:#000;
+    border:6px solid var(--red);
+    padding:60px;
+    margin:80px auto;
+    max-width:840px;
+    border-radius:25px;
+    box-shadow:0 0 120px var(--red);
+  }
+  input[type=text]{
+    background:#000;
+    color:var(--green);
+    border:4px solid var(--green);
+    padding:20px;
+    font-size:clamp(1.3rem,4.5vw,2.2rem);
+    width:88%;
+    max-width:700px;
+    margin:30px auto;
+    border-radius:15px;
+    box-shadow:0 0 50px var(--green);
+  }
+  button{
+    background:var(--red);
+    color:#000;
+    padding:25px 90px;
+    font-size:clamp(1.8rem,6.5vw,3.5rem);
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    box-shadow:0 0 80px var(--red);
+    transition:0.4s;
+  }
+  button:hover{
+    background:var(--yellow);
+    box-shadow:0 0 120px var(--yellow);
+    transform:scale(1.1);
+  }
+  .address{
+    font-size:clamp(1.1rem,4vw,1.9rem);
+    background:#000;
+    border:4px solid var(--green);
+    padding:30px;
+    margin:40px auto;
+    max-width:88%;
+    border-radius:15px;
+    box-shadow:0 0 60px var(--green);
+    cursor:pointer;
+  }
+  .note-example{
+    color:var(--yellow);
+    font-size:clamp(1.3rem,4.5vw,2rem);
+    background:#000;
+    border:3px dashed var(--yellow);
+    padding:25px;
+    margin:40px auto;
+    max-width:88%;
+    border-radius:15px;
+  }
+  table{
+    width:90%;
+    max-width:700px;
+    margin:80px auto;
+    font-size:clamp(1.2rem,4.5vw,2rem);
+  }
+  td{
+    padding:18px 0;
+    border-bottom:2px solid rgba(0,255,65,0.3);
+  }
+  .flag{font-size:clamp(2.2rem,7vw,3.2rem);margin-right:15px;vertical-align:middle;}
   @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.03);}}
 </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- HEADER -->
+<div class="hero">
   <h1>THE PEOPLE'S LOTTERY</h1>
-  <h2>No KYC – 100% Freedom</h2>
 
-  <!-- POT CONTAINER -->
-  <div class="card">
-    <div class="pot-display">
-      <span id="zecPot">44.8</span> ZEC
-    </div>
+  <div class="manifesto">
+    This is not a lottery.<br>
+    This is a referendum on surveillance.<br><br>
+    Every ticket is a vote.<br>
+    Every rollover makes the next vote louder.<br>
+    Every donation funds the tools that protect your privacy.<br><br>
+    Vote early. Vote often. Vote privately.
+  </div>
+</div>
 
-    <div class="explanation">
-      This is a growing pot of unstoppable private money that anyone can win.<br><br>
-      Ticket sales build the pot. First draw when we hit 150 ZEC<br><br>
-      Every draw:<br>
-      → 50% paid to ONE winning shielded address<br>
-      → 40% rolls over → next pot gets even bigger<br>
-      → 10% donated to The Tor Project
-    </div>
-
-    <div class="odds-title">Current odds with:</div>
-    <div class="odds-line">1 ticket → <strong>1 in <span id="odds1">44,800</span></strong></div>
-    <div class="odds-line">100 tickets → <strong>1 in <span id="odds100">448</span></strong></div>
-    <div class="odds-line">1,000 tickets → <strong>1 in <span id="odds1000">45</span></strong></div>
-
-    <div style="font-size:clamp(1.5rem,5vw,2.6rem);color:var(--glow-green);margin:60px 0;">
-      Total tickets sold: <strong><span id="totalTickets">44,800</span></strong>
-    </div>
+<!-- CURRENT POT -->
+<div class="pot-container">
+  <div class="pot">
+    <span id="zecPot">44.8</span> ZEC
   </div>
 
-  <!-- HOW IT WORKS -->
-  <div class="card">
-    <h2>How it works</h2>
-    <p style="font-size:clamp(1.4rem,4.8vw,2.3rem);line-height:1.7;margin:35px 0;">
-      • 1 ticket = <strong style="color:#ffea00">0.001 ZEC</strong><br><br>
-      • Generate your unique code below — permanently linked to your shielded address<br><br>
-      • Send any amount of ZEC to buy tickets<br><br>
-      • Use a friend’s code → they earn 5% cashback, you get 25% extra tickets
-    </p>
+  <div style="font-size:clamp(1.6rem,5.5vw,3rem);color:var(--cyan);margin:50px 0;text-shadow:0 0 40px var(--cyan);">
+    Current odds with:
+  </div>
+  <div style="font-size:clamp(1.8rem,6.5vw,3.8rem);color:var(--yellow);margin:20px 0;">
+    1 ticket → <strong>1 in <span id="odds1">44,800</span></strong>
+  </div>
+  <div style="font-size:clamp(1.8rem,6.5vw,3.8rem);color:var(--yellow);margin:20px 0;">
+    100 tickets → <strong>1 in <span id="odds100">448</span></strong>
+  </div>
+  <div style="font-size:clamp(1.8rem,6.5vw,3.8rem);color:var(--yellow);margin:20px 0;">
+    1,000 tickets → <strong>1 in <span id="odds1000">45</span></strong>
   </div>
 
-  <!-- REFERRAL BOUNTY -->
-  <div class="card" style="border-color:#ff0066;box-shadow:0 0 90px #ff0066;">
-    <h2 style="color:#ff0066;text-shadow:0 0 50px #ff0066;">
-      Referral Bounty
-    </h2>
-    <p style="font-size:clamp(1.5rem,5.2vw,2.7rem);line-height:1.8;">
-      Share your code → anyone who uses it gets <strong>25% extra tickets</strong><br><br>
-      You get <strong>5% of their purchase sent instantly</strong> to your address<br><br>
-      They keep all their tickets. You earn cash. Everyone wins.
-    </p>
+  <div style="font-size:clamp(1.5rem,5vw,2.6rem);color:var(--green);margin:60px 0;">
+    Total votes cast: <strong><span id="totalTickets">44,800</span></strong>
   </div>
+</div>
 
-  <!-- GENERATE CODE -->
-  <div class="generate">
-    <h2>Generate Your Unique Code</h2>
-    <p>Your tickets + jackpot will be sent to this address</p>
-    <input type="text" id="userZaddr" placeholder="u1... or zs1..." />
-    <button onclick="generateCode()">GENERATE MY CODE</button>
-    <div id="codeBox" style="display:none;margin:50px auto;padding:35px;background:#000;border:6px solid var(--glow-green);border-radius:18px;font-size:clamp(2.5rem,9vw,5rem);">
-      YOUR CODE: <strong><span id="code">ABC123</span></strong>
-    </div>
-    <p id="saved" style="display:none;color:#ffea00;font-size:clamp(1.6rem,5.5vw,2.5rem);margin-top:30px;">
-      Saved forever — this code belongs only to your address
-    </p>
-  </div>
+<!-- HOW IT WORKS -->
+<div class="card">
+  <h2 style="font-size:clamp(2.2rem,8vw,4rem);color:var(--green);text-shadow:0 0 50px var(--green);">
+    How to Vote
+  </h2>
+  <p style="font-size:clamp(1.5rem,5.2vw,2.8rem);line-height:1.9;margin:40px 0;">
+    • 1 ticket = 0.001 ZEC<br><br>
+    • Generate your permanent voter code below<br><br>
+    • Send any amount — every 0.001 ZEC = 1 vote<br><br>
+    • Use a friend’s code → they get 5% cashback, you get 25% extra votes
+  </p>
+</div>
 
-  <!-- LOTTERY ADDRESS -->
-  <div class="card">
-    <h2>Lottery Ticket Purchase Address</h2>
-    <div class="address" id="lotteryAddress" onclick="copyAddress()" style="cursor:pointer;">
-      u18le7fyjvvst6m8r2wh79nncv6ksr3kz0e9htv4ywznm3z4t6yy594uvnzjy4tavtazwl0cvsmu3h6kxxeh00vs9tjx76wpw3pv6kf5v9
-    </div>
-    <p id="copyFeedback" style="color:#ffea00;margin:15px 0;opacity:0;transition:opacity 0.4s;">
-      Address copied!
-    </p>
-    <div class="note-example">
-      <strong>ZEC Note Example:</strong><br>
-      Country: UAE My Code: AU6771 Ref Code: BA3382
-    </div>
-  </div>
+<!-- REFERRAL BOUNTY -->
+<div class="card" style="border-color:var(--red);box-shadow:0 0 100px var(--red);">
+  <h2 style="color:var(--red);text-shadow:0 0 60px var(--red);">
+    Spread the Vote
+  </h2>
+  <p style="font-size:clamp(1.6rem,5.5vw,3rem);line-height:1.9;">
+    Share your code → anyone who votes with it gets 25% extra votes<br><br>
+    You get 5% of their ZEC sent instantly to your address<br><br>
+    They keep all votes. You earn cash. Privacy wins.
+  </p>
+</div>
 
-  <!-- COUNTRIES -->
-  <div class="card">
-    <h2>Countries that love private money the most</h2>
-    <table>
-      <tr><td>US US 10,752 tickets</td></tr>
-      <tr><td>IR IR 8,960 tickets</td></tr>
-      <tr><td>KP KP 7,168 tickets</td></tr>
-      <tr><td>VE VE 6,720 tickets</td></tr>
-      <tr><td>RU RU 6,272 tickets</td></tr>
-      <tr><td>CN CN 5,376 tickets</td></tr>
-      <tr><td>AR AR 4,032 tickets</td></tr>
-      <tr><td>SY SY 3,584 tickets</td></tr>
-      <tr><td>DE DE 2,688 tickets</td></tr>
-      <tr><td>BR BR 2,240 tickets</td></tr>
-    </table>
+<!-- GENERATE CODE -->
+<div class="generate">
+  <h2>Generate Your Voter Code</h2>
+  <p>Paste your shielded Zcash address (u1… or zs1…)</p>
+  <input type="text" id="userZaddr" placeholder="u1... or zs1..." />
+  <button onclick="generateCode()">GENERATE CODE</button>
+  <div id="codeBox" style="display:none;margin:60px auto;padding:40px;background:#000;border:6px solid var(--green);border-radius:20px;font-size:clamp(3rem,10vw,6rem);">
+    YOUR CODE: <strong><span id="code">ABC123</span></strong>
   </div>
+  <p id="saved" style="display:none;color:var(--yellow);font-size:clamp(1.6rem,5.5vw,2.8rem);margin-top:30px;">
+    Locked forever to your address
+  </p>
+</div>
+
+<!-- LOTTERY ADDRESS -->
+<div class="card">
+  <h2>Lottery Ticket Purchase Address</h2>
+  <div class="address" id="lotteryAddress" onclick="copyAddress()" style="cursor:pointer;">
+    u18le7fyjvvst6m8r2wh79nncv6ksr3kz0e9htv4ywznm3z4t6yy594uvnzjy4tavtazwl0cvsmu3h6kxxeh00vs9tjx76wpw3pv6kf5v9
+  </div>
+  <p id="copyFeedback" style="color:var(--yellow);opacity:0;margin:20px 0;transition:opacity 0.4s;">
+    Address copied!
+  </p>
+  <div class="note-example">
+    <strong>ZEC Note Example:</strong><br>
+    Country: UAE My Code: AU6771 Ref Code: BA3382
+  </div>
+</div>
+
+<!-- COUNTRIES -->
+<div class="card">
+  <h2>Countries voting loudest for private money</h2>
+  <table>
+    <tr><td>US US 10,752 votes</td></tr>
+    <tr><td>IR IR 8,960 votes</td></tr>
+    <tr><td>KP KP 7,168 votes</td></tr>
+    <tr><td>VE VE 6,720 votes</td></tr>
+    <tr><td>RU RU 6,272 votes</td></tr>
+    <tr><td>CN CN 5,376 votes</td></tr>
+    <tr><td>AR AR 4,032 votes</td></tr>
+    <tr><td>SY SY 3,584 votes</td></tr>
+    <tr><td>DE DE 2,688 votes</td></tr>
+    <tr><td>BR BR 2,240 votes</td></tr>
+  </table>
 </div>
 
 <script>
