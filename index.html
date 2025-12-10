@@ -162,21 +162,11 @@
       text-align: center;
       margin-bottom: 0.5rem;
     }
-    #current-pot .odds-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-    }
-    #current-pot .odd-card {
-      background: rgba(0,0,0,0.7);
-      padding: 1rem;
-      border: 1px solid var(--tertiary);
-      box-shadow: 0 0 15px var(--tertiary);
-      border-radius: 5px;
+    #current-pot .odds-list {
       text-align: center;
+      color: #FFFFFF; /* Plain white text */
       font-size: 1.2rem;
-      font-weight: bold;
-      color: var(--text);
+      line-height: 1.6;
     }
     #current-pot .draw-info {
       text-align: center;
@@ -358,11 +348,11 @@
     </div>
     <p class="votes-cast">Total votes cast: 44,800</p>
     <p class="odds-title">Current odds with:</p>
-    <div class="odds-grid">
-      <div class="odd-card">1 ticket → 1 in 44,800</div>
-      <div class="odd-card">100 tickets → 1 in 448</div>
-      <div class="odd-card">1,000 tickets → 1 in 45</div>
-    </div>
+    <p class="odds-list" style="color: #FFFFFF; text-align: center; font-size: 1.2rem; line-height: 1.6;">
+      1 ticket → 1 in 44,800<br>
+      100 tickets → 1 in 448<br>
+      1,000 tickets → 1 in 45
+    </p>
     <p class="draw-info">Next draw when we hit 200 ZEC<br>Every draw after that fires when the pot doubles</p>
   </section>
 
