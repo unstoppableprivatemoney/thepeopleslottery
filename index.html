@@ -75,7 +75,7 @@
   </div>
 </div>
 
-<!-- TOTAL POT — RETRO FLIP-CLOCK CYBERPUNK TERMINAL -->
+<!-- TOTAL POT — ZCASH LOGO + RETRO FLIP-CLOCK -->
 <div class="card" style="background:#000;border:8px double #00ff41;box-shadow:0 0 100px #00ff41, inset 0 0 60px rgba(0,255,65,0.2);position:relative;overflow:hidden;border-radius:20px;">
   <!-- CRT scanlines -->
   <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,65,0.04) 2px,rgba(0,255,65,0.04) 4px);pointer-events:none;animation:scan 10s linear infinite;"></div>
@@ -85,14 +85,14 @@
     ░▒▓█ CURRENT POT █▒░
   </div>
 
-  <!-- FLIP CLOCK STYLE ZEC COUNTER -->
-  <div style="margin:40px 0;font-family:'VT323',monospace;">
-    <div class="pot" id="zecPot" style="
+  <!-- FLIP CLOCK + ZCASH LOGO -->
+  <div style="margin:40px 0;font-family:'VT323',monospace;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;">
+    <!-- Number -->
+    <div style="
       font-size:clamp(5rem,16vw,12rem);
       font-weight:bold;
       color:#000;
       background:#ff0;
-      display:inline-block;
       padding:20px 40px;
       border-radius:15px;
       text-shadow:0 0 30px #ff0, 0 0 60px #ff0;
@@ -103,8 +103,11 @@
       animation:flip 0.6s ease-in-out;
       letter-spacing:8px;
     ">
-      44.8 ZEC
+      <span id="zecPot">44.8</span>
     </div>
+
+    <!-- Zcash Logo -->
+    <img src="https://i.imgur.com/8pX9K8g.png" alt="Zcash" style="width:clamp(120px,25vw,200px);height:auto;filter:drop-shadow(0 0 40px #ffea00);">
   </div>
 
   <!-- Explanation -->
@@ -136,17 +139,6 @@
   </div>
 </div>
 
-<style>
-@keyframes scan{0%{transform:translateY(-100%);}100%{transform:translateY(100%);}}
-@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.02);}}
-@keyframes flip{
-  0%{transform:perspective(400px) rotateX(90deg);}
-  40%{transform:perspective(400px) rotateX(-10deg);}
-  70%{transform:perspective(400px) rotateX(10deg);}
-  100%{transform:perspective(400px) rotateX(0deg);}
-}
-</style>
-
 <script>
 // === CONFIG — CHANGE THIS ONE NUMBER TO UPDATE EVERYTHING ===
 const CURRENT_ZEC_POT = 44.8;          // ← Update this manually
@@ -155,12 +147,13 @@ const TICKETS_PER_ZEC = 1000;          // 1 ticket = 0.001 ZEC
 // Auto-calculate everything
 const totalTickets = Math.round(CURRENT_ZEC_POT * TICKETS_PER_ZEC);
 
-document.getElementById("zecPot").textContent = CURRENT_ZEC_POT.toFixed(1) + " ZEC";
+document.getElementById("zecPot").textContent = CURRENT_ZEC_POT.toFixed(1);
 document.getElementById("totalTickets").textContent = totalTickets.toLocaleString();
 document.getElementById("odds1").textContent = totalTickets.toLocaleString();
 document.getElementById("odds100").textContent = Math.round(totalTickets / 100).toLocaleString();
 document.getElementById("odds1000").textContent = Math.round(totalTickets / 1000).toLocaleString();
 </script>
+  
 <!-- HOW IT WORKS — RETRO SPACESHIP TERMINAL -->
 <div class="card" style="background:#000;border:6px double #00ff41;box-shadow:0 0 80px #00ff41, inset 0 0 40px rgba(0,255,65,0.1);position:relative;overflow:hidden;">
   <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,65,0.03) 2px,rgba(0,255,65,0.03) 4px);pointer-events:none;animation:scan 8s linear infinite;"></div>
