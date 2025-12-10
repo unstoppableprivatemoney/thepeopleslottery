@@ -75,7 +75,7 @@
   </div>
 </div>
 
-<!-- TOTAL POT — ZCASH LOGO (WORKS 100%) -->
+<!-- TOTAL POT — REACTOR CORE STYLE (NO LOGO, PURE GLOW) -->
 <div class="card" style="background:#000;border:8px double #00ff41;box-shadow:0 0 100px #00ff41, inset 0 0 60px rgba(0,255,65,0.2);position:relative;overflow:hidden;border-radius:20px;">
   <!-- CRT scanlines -->
   <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,65,0.04) 2px,rgba(0,255,65,0.04) 4px);pointer-events:none;animation:scan 10s linear infinite;"></div>
@@ -85,31 +85,33 @@
     CURRENT POT
   </div>
 
-  <!-- FLIP CLOCK + ZCASH LOGO -->
-  <div style="margin:40px 0;display:flex;align-items:center;justify-content:center;gap:30px;flex-wrap:wrap;">
-    <!-- Number -->
+  <!-- REACTOR CORE ZEC COUNTER WITH GLOWING LIGHTS -->
+  <div style="margin:50px 0;position:relative;display:inline-block;">
+    <!-- Glowing ring lights -->
+    <div style="position:absolute;inset:-20px;border-radius:50%;box-shadow:0 0 60px 20px #ffea00;animation:pulseGlow 3s infinite;"></div>
+    <div style="position:absolute;inset:-35px;border-radius:50%;box-shadow:0 0 80px 30px #ff6600;animation:pulseGlow 4s infinite reverse;"></div>
+
     <div style="
-      font-size:clamp(5rem,16vw,12rem);
+      font-size:clamp(6rem,18vw,14rem);
       font-weight:bold;
       color:#000;
       background:#ffea00;
-      padding:20px 50px;
-      border-radius:18px;
-      text-shadow:0 0 30px #ffea00;
-      box-shadow:0 0 60px #ffea00, inset 0 0 30px rgba(0,0,0,0.5), 0 15px 30px rgba(0,0,0,0.8);
-      animation:flip 0.6s ease-in-out;
+      padding:30px 70px;
+      border-radius:25px;
+      text-shadow:0 0 40px #fff;
+      box-shadow:
+        0 0 60px #ffea00,
+        inset 0 0 40px rgba(0,0,0,0.6),
+        0 20px 40px rgba(0,0,0,0.9);
+      position:relative;
+      z-index:10;
     ">
-      <span id="zecPot">44.8</span>
+      <span id="zecPot">44.8</span> ZEC
     </div>
-
-    <!-- OFFICIAL ZCASH LOGO (HOTLINKED FROM Z.CASH — ALWAYS WORKS) -->
-    <img src="https://z.cash/wp-content/uploads/2023/10/zcash-logo-fullcolor-1024.png" 
-         alt="Zcash" 
-         style="width:clamp(140px,30vw,240px);height:auto;filter:drop-shadow(0 0 50px #ffea00);">
   </div>
 
-  <!-- Rest of your explanation + odds (unchanged) -->
-  <div style="font-size:clamp(1.4rem,4.8vw,2.4rem);line-height:1.8;max-width:88%;margin:40px auto;padding:25px;background:rgba(0,255,65,0.05);border:2px dashed #00ff41;border-radius:12px;">
+  <!-- Explanation -->
+  <div style="font-size:clamp(1.4rem,4.8vw,2.4rem);line-height:1.8;max-width:88%;margin:50px auto;padding:30px;background:rgba(0,255,65,0.05);border:2px dashed #00ff41;border-radius:15px;">
     This is a growing pot of unstoppable private money that anyone can win.<br><br>
     Ticket sales build the pot. First draw when we hit 150 ZEC<br><br>
     Every draw:<br>
@@ -118,47 +120,42 @@
     → 10% donated to The Tor Project
   </div>
 
-  <div style="font-size:clamp(1.8rem,6vw,3.2rem);color:#00ffff;margin:50px 0 20px;text-shadow:0 0 40px #00ffff;">
+  <!-- Odds -->
+  <div style="font-size:clamp(1.8rem,6vw,3.2rem);color:#00ffff;margin:60px 0 25px;text-shadow:0 0 40px #00ffff;">
     Current odds with:
   </div>
   <div style="font-size:clamp(1.8rem,6.5vw,3.6rem);color:#ffea00;margin:15px 0;">
-    1 ticket → <strong>1 in <span id="odds1
-  
-<!-- HOW IT WORKS — RETRO SPACESHIP TERMINAL -->
-<div class="card" style="background:#000;border:6px double #00ff41;box-shadow:0 0 80px #00ff41, inset 0 0 40px rgba(0,255,65,0.1);position:relative;overflow:hidden;">
-  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,65,0.03) 2px,rgba(0,255,65,0.03) 4px);pointer-events:none;animation:scan 8s linear infinite;"></div>
-  
-  <h2 style="font-size:clamp(2.2rem,8vw,4rem);color:#00ff41;text-shadow:0 0 40px #00ff41, 0 0 80px #00ff41;margin:15px 0;letter-spacing:8px;">
-    ░▒▓█  The Basics  █▓▒░
-  </h2>
-
-  <div style="background:#000;padding:25px;border:2px solid #00ff41;border-radius:12px;margin:20px auto;max-width:88%;box-shadow:inset 0 0 40px rgba(0,255,65,0.2);">
-    <p style="font-size:clamp(1.4rem,4.8vw,2.3rem);line-height:1.9;margin:25px 0;color:#00ff41;text-shadow:0 0 15px #00ff41;animation:flicker 4s infinite;">
-      • 1 ticket = <strong style="color:#ffea00 !important;text-shadow:0 0 40px #ff6600;">0.001 ZEC</strong><br><br>
-      • Generate your unique code below which will link to your shielded address for payouts<br><br>
-      • Send more ZEC, get more entries, 1 ZEC = 1000 entries<br><br>
-      • <strong>Referral bonus:</strong><br>
-        If you include a friends code when you buy entries → <strong>you get 1.25× more entries</strong>
-    </p>
+    1 ticket → <strong>1 in <span id="odds1">44,800</span></strong>
+  </div>
+  <div style="font-size:clamp(1.8rem,6.5vw,3.6rem);color:#ffea00;margin:15px 0;">
+    100 tickets → <strong>1 in <span id="odds100">448</span></strong>
+  </div>
+  <div style="font-size:clamp(1.8rem,6.5vw,3.6rem);color:#ffea00;margin:15px 0;">
+    1,000 tickets → <strong>1 in <span id="odds1000">45</span></strong>
   </div>
 
-  <div class="note-example">
-    <strong>ZEC Note Example:</strong><br>
-    Country: optional My Code: AU6771 Friends Code: BA3382
+  <div style="font-size:clamp(1.5rem,5vw,2.6rem);color:#0f0;margin:60px 0;">
+    Total tickets sold: <strong><span id="totalTickets">44,800</span></strong>
   </div>
 </div>
 
-<!-- REFERRAL BOUNTY — INDEPENDENT, CLEAR, VIRAL -->
-<div class="bounty-card">
-  <h2 style="font-size:clamp(2.2rem,7.5vw,3.5rem);margin:10px;color:#ff0066;text-shadow:0 0 40px #ff0066;">
-    Referral Bounty
-  </h2>
-  <p style="font-size:clamp(1.5rem,5vw,2.6rem);line-height:1.8;margin:30px auto;max-width:90%;">
-    Share your code → anyone who uses it gets <strong>1.25x more entries</strong><br><br>
-    You get <strong>5% of their ticket value spend sent</strong> to your shielded address<br><br>
-    They get more entries and improve their odds. You earn cash. Everyone wins.
-  </p>
-</div>
+<style>
+@keyframes scan{0%{transform:translateY(-100%);}100%{transform:translateY(100%);}}
+@keyframes pulseGlow{0%,100%{opacity:0.6;}50%{opacity:1;}}
+</style>
+
+<script>
+// CONFIG — change this number to update everything
+const CURRENT_ZEC_POT = 44.8;
+const TICKETS_PER_ZEC = 1000;
+const totalTickets = Math.round(CURRENT_ZEC_POT * TICKETS_PER_ZEC);
+
+document.getElementById("zecPot").textContent = CURRENT_ZEC_POT.toFixed(1);
+document.getElementById("totalTickets").textContent = totalTickets.toLocaleString();
+document.getElementById("odds1").textContent = totalTickets.toLocaleString();
+document.getElementById("odds100").textContent = Math.round(totalTickets / 100).toLocaleString();
+document.getElementById("odds1000").textContent = Math.round(totalTickets / 1000).toLocaleString();
+</script>
 
 <!-- GENERATE CODE — SUPPORTS UNIFIED + Z-ADDRESSES -->
 <div class="generate">
