@@ -14,6 +14,8 @@
       --tertiary: #32CD32;
       --accent: #9932CC;
       --text: #E0E0E0;
+      --dark-text: #0A0A0A;
+      --dark-glow: #000000;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -42,48 +44,58 @@
     header {
       text-align: center;
       padding: 8vh 5%;
-      border-bottom: 3px solid var(--primary);
-      box-shadow: 0 0 25px var(--primary);
-      background: rgba(10,10,10,0.8);
+      background: #FFFFFF; /* White background for top section */
+      color: var(--dark-text);
+      border-bottom: 3px solid var(--dark-glow);
+      box-shadow: 0 0 25px var(--dark-glow);
     }
-    h1 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(4rem, 12vw, 8rem);
-      text-transform: uppercase;
+    header h1 {
       color: var(--primary);
-      text-shadow: 0 0 25px var(--primary), 0 0 50px var(--primary);
-      letter-spacing: 0.2em;
-      line-height: 1.1;
+      text-shadow: 0 0 25px var(--dark-glow), 0 0 50px var(--dark-glow); /* Dark glow for white bg */
     }
-    .subtext {
-      max-width: 800px;
-      margin: 1.5rem auto 0;
-      font-size: clamp(1.2rem, 3vw, 1.6rem);
-      color: var(--tertiary);
-      text-shadow: 0 0 10px var(--tertiary);
-      padding: 1rem;
-      border: 1px dashed var(--tertiary);
-      background: rgba(50,205,50,0.05);
+    header .subtext {
+      color: var(--dark-text);
+      text-shadow: 0 0 10px var(--dark-glow);
+      border: 1px dashed var(--dark-text);
+      background: rgba(0,0,0,0.05); /* Light overlay */
     }
     main { max-width: 1200px; margin: 0 auto; padding: 5vh 5%; }
     section {
       margin: 6vh 0;
       padding: 2.5rem;
-      background: rgba(10,10,10,0.6);
       border: 2px solid var(--secondary);
       box-shadow: 0 0 20px var(--secondary);
       border-radius: 10px;
       position: relative;
       overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
     section::before {
       content: '';
       position: absolute;
       inset: 0;
+      background: rgba(0,0,0,0.7); /* Dark overlay for readability on images */
+      z-index: 1;
+    }
+    section > * { position: relative; z-index: 2; } /* Content above overlay */
+    section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
       background: linear-gradient(45deg, transparent 40%, rgba(255,20,147,0.08) 60%, transparent 80%);
       animation: shimmer 8s infinite linear;
+      z-index: 0;
     }
     @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    #current-pot { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-hacker-silhouette-k-neon-glitch-effect-matrix-code-rain-tech-futuristic-projects-k-cyberpunk-hacker-neon-glitch-385841343.jpg'); }
+    #liberty-codes { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-style-glitch-background-symbol-hacker-attacks-digital-technology-modern-design-error-textures-effects-371513913.jpg'); filter: hue-rotate(30deg); /* Slight tint variation */ }
+    #how-to-vote { background-image: url('https://www.shutterstock.com/shutterstock/videos/3815663203/thumb/1.jpg?ip=x480'); }
+    #referral-bounty { background-image: url('https://thumbs.dreamstime.com/b/immerse-yourself-vibrant-world-cyberpunk-hacker-s-workstation-neon-lights-illuminate-room-filled-multiple-398631156.jpg'); filter: hue-rotate(60deg); }
+    #generator { background-image: url('https://c8.alamy.com/comp/2N46W9R/matrix-background-ideal-to-use-to-create-digital-composite-about-cyberpunk-cyberspace-hacking-and-other-computer-related-topics-2N46W9R.jpg'); }
+    #send-zec { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-hacker-workstation-multiple-neon-screens-displaying-data-dystopian-scene-showing-s-dark-cluttered-filled-various-407066545.jpg'); filter: hue-rotate(90deg); }
+    #countries { background-image: url('https://i.pinimg.com/originals/5b/7e/34/5b7e344c4a09f04598a959bf51ceeca4.gif'); /* Animated GIF for extra punk */ }
     h2 {
       font-family: 'Rajdhani', sans-serif;
       font-size: clamp(2.5rem, 6vw, 3.5rem);
@@ -193,12 +205,24 @@
       color: var(--text);
       opacity: 0.8;
       text-shadow: 0 0 5px var(--accent);
+      background-image: url('https://thumbs.dreamstime.com/b/glitch-interlaced-textured-futuristic-background-abstract-blue-mint-pink-digital-distortion-effect-cyberpunk-design-retro-215301807.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
     }
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 1;
+    }
+    footer > * { position: relative; z-index: 2; }
     .matrix-rain {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
-      opacity: 0.04;
+      opacity: 0.06; /* Increased slightly for full cypherpunk */
       z-index: -1;
     }
     @media (max-width: 600px) {
@@ -319,7 +343,7 @@
 </footer>
 
 <script>
-  // Matrix rain
+  // Matrix rain (enhanced for cypherpunk)
   const canvas = document.getElementById('matrix');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
@@ -327,9 +351,9 @@
   const columns = Math.floor(canvas.width / 15);
   const drops = Array(columns).fill(1);
   function draw() {
-    ctx.fillStyle = 'rgba(10,10,10,0.04)';
+    ctx.fillStyle = 'rgba(10,10,10,0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'rgba(0,191,255,0.5)';
+    ctx.fillStyle = 'rgba(0,191,255,0.6)';
     ctx.font = '14px VT323';
     for (let i = 0; i < drops.length; i++) {
       const text = String.fromCharCode(0x30A0 + Math.random() * 96);
@@ -338,7 +362,7 @@
       drops[i]++;
     }
   }
-  setInterval(draw, 60);
+  setInterval(draw, 50); // Faster for more intensity
   window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
