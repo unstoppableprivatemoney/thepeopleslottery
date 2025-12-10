@@ -6,164 +6,35 @@
 <title>The People's Lottery – A Referendum on Surveillance</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=VT323&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --green:#00ff41;--yellow:#ffea00;--orange:#ff6600;--cyan:#00ffff;--red:#ff0066;
-  }
-  body{
-    background:#000;
-    color:var(--green);
-    font-family:'VT323',monospace;
-    margin:0;
-    line-height:1.7;
-    text-align:center;
-    overflow-x:hidden;
-  }
-  .hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    padding:40px 20px;
-    background:radial-gradient(circle at 50% 30%,rgba(0,255,65,0.15),transparent 70%);
-  }
-  h1{
-    font-family:'Orbitron',sans-serif;
-    font-size:clamp(3rem,12vw,9rem);
-    font-weight:900;
-    letter-spacing:12px;
-    margin:0 0 20px;
-    background:linear-gradient(90deg,var(--green),var(--cyan),var(--green));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    text-shadow:0 0 60px var(--green);
-  }
-  .manifesto{
-    font-size:clamp(1.4rem,5vw,2.8rem);
-    max-width:1000px;
-    margin:40px auto;
-    padding:40px;
-    background:rgba(0,255,65,0.05);
-    border:4px double var(--green);
-    border-radius:20px;
-    box-shadow:0 0 80px var(--green);
-    text-shadow:0 0 20px var(--green);
-    line-height:1.9;
-  }
-  .pot-container{
-    margin:80px auto;
-    padding:60px 30px;
-    max-width:900px;
-    background:#000;
-    border:6px double var(--yellow);
-    border-radius:25px;
-    box-shadow:0 0 120px var(--yellow);
-  }
-  .pot{
-    font-size:clamp(7rem,20vw,16rem);
-    font-weight:900;
-    color:#000;
-    background:var(--yellow);
-    padding:40px 80px;
-    border-radius:30px;
-    display:inline-block;
-    text-shadow:0 0 40px #fff;
-    box-shadow:0 0 100px var(--yellow),inset 0 0 50px rgba(0,0,0,0.6);
-    animation:pulse 3s infinite;
-  }
-  .stats{
-    font-size:clamp(1.6rem,5.5vw,3rem);
-    margin:50px 0;
-    color:var(--cyan);
-    text-shadow:0 0 40px var(--cyan);
-  }
-  .card{
-    background:#000;
-    border:4px solid var(--green);
-    padding:50px 30px;
-    margin:80px auto;
-    max-width:900px;
-    border-radius:20px;
-    box-shadow:0 0 80px var(--green);
-  }
-  .generate{
-    background:#000;
-    border:6px solid var(--red);
-    padding:60px;
-    margin:80px auto;
-    max-width:840px;
-    border-radius:25px;
-    box-shadow:0 0 120px var(--red);
-  }
-  input[type=text]{
-    background:#000;
-    color:var(--green);
-    border:4px solid var(--green);
-    padding:20px;
-    font-size:clamp(1.3rem,4.5vw,2.2rem);
-    width:88%;
-    max-width:700px;
-    margin:30px auto;
-    border-radius:15px;
-    box-shadow:0 0 50px var(--green);
-  }
-  button{
-    background:var(--red);
-    color:#000;
-    padding:25px 90px;
-    font-size:clamp(1.8rem,6.5vw,3.5rem);
-    border:none;
-    border-radius:20px;
-    cursor:pointer;
-    box-shadow:0 0 80px var(--red);
-    transition:0.4s;
-  }
-  button:hover{
-    background:var(--yellow);
-    box-shadow:0 0 120px var(--yellow);
-    transform:scale(1.1);
-  }
-  .address{
-    font-size:clamp(1.1rem,4vw,1.9rem);
-    background:#000;
-    border:4px solid var(--green);
-    padding:30px;
-    margin:40px auto;
-    max-width:88%;
-    border-radius:15px;
-    box-shadow:0 0 60px var(--green);
-    cursor:pointer;
-  }
-  .note-example{
-    color:var(--yellow);
-    font-size:clamp(1.3rem,4.5vw,2rem);
-    background:#000;
-    border:3px dashed var(--yellow);
-    padding:25px;
-    margin:40px auto;
-    max-width:88%;
-    border-radius:15px;
-  }
-  table{
-    width:90%;
-    max-width:700px;
-    margin:80px auto;
-    font-size:clamp(1.2rem,4.5vw,2rem);
-  }
-  td{
-    padding:18px 0;
-    border-bottom:2px solid rgba(0,255,65,0.3);
-  }
+  :root{--g:#00ff41;--y:#ffea00;--o:#ff6600;--c:#00ffff;--r:#ff0066;--dark:#000;}
+  body{background:var(--dark);color:var(--g);font-family:'VT323',monospace;margin:0;overflow-x:hidden;}
+  h1{font-family:'Orbitron',sans-serif;font-size:clamp(3rem,12vw,9rem);letter-spacing:12px;text-shadow:0 0 60px var(--g);margin:40px 0 10px;}
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 20px;background:radial-gradient(circle at 50% 30%,rgba(0,255,65,0.15),transparent 70%);}
+  .manifesto{font-size:clamp(1.5rem,5.5vw,3rem);max-width:1100px;line-height:1.8;text-shadow:0 0 20px var(--g);background:rgba(0,255,65,0.08);padding:50px;border:4px double var(--g);border-radius:20px;box-shadow:0 0 100px var(--g);}
+  .pot-card{background:var(--dark);border:8px double var(--y);padding:60px;margin:80px auto;max-width:900px;border-radius:25px;box-shadow:0 0 120px var(--y);}
+  .pot{font-size:clamp(7rem,20vw,16rem);color:#000;background:var(--y);padding:40px 80px;border-radius:30px;display:inline-block;text-shadow:0 0 40px #fff;box-shadow:0 0 100px var(--y),inset 0 0 50px rgba(0,0,0,0.6);position:relative;z-index:2;}
+  .pot::before,.pot::after{content:'';position:absolute;inset:-40px;border-radius:50%;box-shadow:0 0 80px 30px var(--y);animation:pulseGlow 4s infinite;}
+  .pot::after{inset:-60px;animation-direction:reverse;}
+  .stats{font-size:clamp(1.8rem,6vw,3.5rem);color:var(--c);margin:50px 0;text-shadow:0 0 40px var(--c);}
+  .odds-line{font-size:clamp(1.9rem,6.5vw,3.8rem);color:var(--y);margin:20px 0;}
+  .card{background:var(--dark);border:5px solid var(--g);padding:50px 30px;margin:80px auto;max-width:900px;border-radius:20px;box-shadow:0 0 80px var(--g);}
+  .liberty{background:var(--dark);border:6px solid var(--r);padding:60px;box-shadow:0 0 120px var(--r);border-radius:25px;}
+  .generate{background:var(--dark);border:6px solid var(--r);padding:60px;margin:80px auto;max-width:840px;border-radius:25px;box-shadow:0 0 120px var(--r);}
+  input[type=text]{background:var(--dark);color:var(--g);border:4px solid var(--g);padding:20px;font-size:clamp(1.3rem,4.5vw,2.2rem);width:88%;max-width:700px;margin:30px auto;border-radius:15px;box-shadow:0 0 50px var(--g);}
+  button{background:var(--r);color:#000;padding:25px 90px;font-size:clamp(1.8rem,6.5vw,3.5rem);border:none;border-radius:20px;cursor:pointer;box-shadow:0 0 80px var(--r);transition:0.4s;}
+  button:hover{background:var(--y);box-shadow:0 0 120px var(--y);transform:scale(1.1);}
+  .address{background:var(--dark);border:4px solid var(--g);padding:30px;margin:40px auto;max-width:88%;border-radius:15px;box-shadow:0 0 60px var(--g);cursor:pointer;font-size:clamp(1.1rem,4vw,1.9rem);}
+  .note-example{color:var(--y);background:var(--dark);border:3px dashed var(--y);padding:25px;margin:40px auto;max-width:88%;border-radius:15px;font-size:clamp(1.3rem,4.5vw,2rem);}
+  table{width:90%;max-width:700px;margin:80px auto;font-size:clamp(1.2rem,4.5vw,2rem);}
+  td{padding:18px 0;border-bottom:2px solid rgba(0,255,65,0.3);text-align:left;}
   .flag{font-size:clamp(2.2rem,7vw,3.2rem);margin-right:15px;vertical-align:middle;}
-  @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.03);}}
+  @keyframes pulseGlow{0%,100%{opacity:0.7;}50%{opacity:1;}}
 </style>
 </head>
 <body>
 
 <div class="hero">
   <h1>THE PEOPLE'S LOTTERY</h1>
-
   <div class="manifesto">
     This is not a lottery.<br>
     This is a referendum on surveillance.<br><br>
@@ -175,47 +46,52 @@
 </div>
 
 <!-- CURRENT POT -->
-<div class="pot-container">
-  <div class="pot">
-    <span id="zecPot">44.8</span> ZEC
+<div class="pot-card">
+  <div class="pot"><span id="zecPot">44.8</span> ZEC</div>
+  <div class="stats">
+    Current odds with:<br>
+    <div class="odds-line">1 ticket → <strong>1 in <span id="odds1">44,800</span></strong></div>
+    <div class="odds-line">100 tickets → <strong>1 in <span id="odds100">448</span></strong></div>
+    <div class="odds-line">1,000 tickets → <strong>1 in <span id="odds1000">45</span></strong></div>
   </div>
-
-  <div style="font-size:clamp(1.6rem,5.5vw,3rem);color:var(--cyan);margin:50px 0;text-shadow:0 0 40px var(--cyan);">
-    Current odds with:
-  </div>
-  <div style="font-size:clamp(1.8rem,6.5vw,3.8rem);color:var(--yellow);margin:20px 0;">
-    1 ticket → <strong>1 in <span id="odds1">44,800</span></strong>
-  </div>
-  <div style="font-size:clamp(1.8rem,6.5vw,3.8rem);color:var(--yellow);margin:20px 0;">
-    100 tickets → <strong>1 in <span id="odds100">448</span></strong>
-  </div>
-  <div style="font-size:clamp(1.8rem,6.5vw,3.8rem);color:var(--yellow);margin:20px 0;">
-    1,000 tickets → <strong>1 in <span id="odds1000">45</span></strong>
-  </div>
-
-  <div style="font-size:clamp(1.5rem,5vw,2.6rem);color:var(--green);margin:60px 0;">
+  <div style="font-size:clamp(1.5rem,5vw,2.6rem);color:var(--g);">
     Total votes cast: <strong><span id="totalTickets">44,800</span></strong>
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
-<div class="card">
-  <h2 style="font-size:clamp(2.2rem,8vw,4rem);color:var(--green);text-shadow:0 0 50px var(--green);">
-    How to Vote
+<!-- LIBERTY CODES -->
+<div class="card liberty">
+  <h2 style="color:var(--r);text-shadow:0 0 60px var(--r);font-size:clamp(2.4rem,8vw,4.5rem);">
+    LIBERTY CODES — Only 500 will ever exist
   </h2>
-  <p style="font-size:clamp(1.5rem,5.2vw,2.8rem);line-height:1.9;margin:40px 0;">
+  <p style="font-size:clamp(1.6rem,5.5vw,3rem);line-height:1.8;">
+    Be one of the 500 earliest warriors for private money.<br><br>
+    Cost: 1 ZEC (one-time)<br>
+    Lifetime perks:<br>
+    • 1.5× tickets on every purchase forever<br>
+    • 10% cashback every time someone uses your code<br>
+    • Anyone who uses your code also gets 1.5× tickets<br>
+    • 10 free entries in every future draw<br>
+    • Permanent Liberty Voter badge + on-chain immortality<br><br>
+    Send 1+ ZEC with memo: <strong>liberty YOURCODE</strong><br><br>
+    <strong style="font-size:2rem;color:var(--y);">Spots remaining: <span id="libertySpots">500</span>/500</strong>
+  </p>
+</div>
+
+<!-- HOW TO VOTE -->
+<div class="card">
+  <h2>How to Vote</h2>
+  <p style="font-size:clamp(1.5rem,5.2vw,2.8rem);line-height:1.9;">
     • 1 ticket = 0.001 ZEC<br><br>
     • Generate your permanent voter code below<br><br>
-    • Send any amount — every 0.001 ZEC = 1 vote<br><br>
-    • Use a friend’s code → they get 5% cashback, you get 25% extra votes
+    • Send any amount of ZEC to the address at the bottom<br><br>
+    • Use a friend’s code → they earn cash, you get 25% extra votes
   </p>
 </div>
 
 <!-- REFERRAL BOUNTY -->
-<div class="card" style="border-color:var(--red);box-shadow:0 0 100px var(--red);">
-  <h2 style="color:var(--red);text-shadow:0 0 60px var(--red);">
-    Spread the Vote
-  </h2>
+<div class="card" style="border-color:var(--r);box-shadow:0 0 100px var(--r);">
+  <h2 style="color:var(--r);text-shadow:0 0 60px var(--r);">SPREAD THE VOTE</h2>
   <p style="font-size:clamp(1.6rem,5.5vw,3rem);line-height:1.9;">
     Share your code → anyone who votes with it gets 25% extra votes<br><br>
     You get 5% of their ZEC sent instantly to your address<br><br>
@@ -229,23 +105,21 @@
   <p>Paste your shielded Zcash address (u1… or zs1…)</p>
   <input type="text" id="userZaddr" placeholder="u1... or zs1..." />
   <button onclick="generateCode()">GENERATE CODE</button>
-  <div id="codeBox" style="display:none;margin:60px auto;padding:40px;background:#000;border:6px solid var(--green);border-radius:20px;font-size:clamp(3rem,10vw,6rem);">
+  <div id="codeBox" style="display:none;margin:60px auto;padding:40px;background:#000;border:6px solid var(--g);border-radius:20px;font-size:clamp(3rem,10vw,6rem);">
     YOUR CODE: <strong><span id="code">ABC123</span></strong>
   </div>
-  <p id="saved" style="display:none;color:var(--yellow);font-size:clamp(1.6rem,5.5vw,2.8rem);margin-top:30px;">
+  <p id="saved" style="display:none;color:var(--y);font-size:clamp(1.6rem,5.5vw,2.8rem);margin-top:30px;">
     Locked forever to your address
   </p>
 </div>
 
-<!-- LOTTERY ADDRESS -->
+<!-- SEND ZEC HERE -->
 <div class="card">
   <h2>Lottery Ticket Purchase Address</h2>
   <div class="address" id="lotteryAddress" onclick="copyAddress()" style="cursor:pointer;">
     u18le7fyjvvst6m8r2wh79nncv6ksr3kz0e9htv4ywznm3z4t6yy594uvnzjy4tavtazwl0cvsmu3h6kxxeh00vs9tjx76wpw3pv6kf5v9
   </div>
-  <p id="copyFeedback" style="color:var(--yellow);opacity:0;margin:20px 0;transition:opacity 0.4s;">
-    Address copied!
-  </p>
+  <p id="copyFeedback" style="color:var(--y);opacity:0;margin:20px 0;transition:opacity .4s;">Copied!</p>
   <div class="note-example">
     <strong>ZEC Note Example:</strong><br>
     Country: UAE My Code: AU6771 Ref Code: BA3382
@@ -281,30 +155,19 @@ document.getElementById("odds100").textContent = Math.round(totalTickets / 100).
 document.getElementById("odds1000").textContent = Math.round(totalTickets / 1000).toLocaleString();
 
 // Address copy
-function copyAddress() {
-  const addr = document.getElementById("lotteryAddress").textContent.trim();
-  navigator.clipboard.writeText(addr);
-  const fb = document.getElementById("copyFeedback");
-  fb.style.opacity = "1";
-  setTimeout(() => fb.style.opacity = "0", 2000);
-}
+function copyAddress(){navigator.clipboard.writeText(document.getElementById("lotteryAddress").textContent.trim());document.getElementById("copyFeedback").style.opacity=1;setTimeout(()=>document.getElementById("copyFeedback").style.opacity=0,2000);}
 
 // Code generation
-let userData = JSON.parse(localStorage.getItem("lotteryUser")||"{}");
-if(userData.code && userData.zaddr){
-  document.getElementById("userZaddr").value = userData.zaddr;
-  document.getElementById("code").textContent = userData.code;
-  document.getElementById("codeBox").style.display = "block";
-  document.getElementById("saved").style.display = "block";
-}
+let userData=JSON.parse(localStorage.getItem("lotteryUser")||"{}");
+if(userData.code&&userData.zaddr){document.getElementById("userZaddr").value=userData.zaddr;document.getElementById("code").textContent=userData.code;document.getElementById("codeBox").style.display="block";document.getElementById("saved").style.display="block";}
 function generateCode(){
-  const z = document.getElementById("userZaddr").value.trim();
-  if(!z.startsWith("u1") && !z.startsWith("zs1")) return alert("Enter valid shielded address (u1... or zs1...)");
-  const code = Math.random().toString(36).substring(2,8).toUpperCase();
-  localStorage.setItem("lotteryUser", JSON.stringify({zaddr:z,code}));
-  document.getElementById("code").textContent = code;
-  document.getElementById("codeBox").style.display = "block";
-  document.getElementById("saved").style.display = "block";
+  const z=document.getElementById("userZaddr").value.trim();
+  if(!z.startsWith("u1")&&!z.startsWith("zs1"))return alert("Enter valid shielded address (u1... or zs1...)");
+  const code=Math.random().toString(36).substring(2,8).toUpperCase();
+  localStorage.setItem("lotteryUser",JSON.stringify({zaddr:z,code}));
+  document.getElementById("code").textContent=code;
+  document.getElementById("codeBox").style.display="block";
+  document.getElementById("saved").style.display="block";
 }
 </script>
 </body>
