@@ -75,11 +75,40 @@
   </div>
 </div>
 
-<!-- TOTAL POT + TICKETS + ODDS -->
-<div class="card">
-  <div class="pot" id="zecPot">44.8 ZEC</div>
+<!-- TOTAL POT — RETRO FLIP-CLOCK CYBERPUNK TERMINAL -->
+<div class="card" style="background:#000;border:8px double #00ff41;box-shadow:0 0 100px #00ff41, inset 0 0 60px rgba(0,255,65,0.2);position:relative;overflow:hidden;border-radius:20px;">
+  <!-- CRT scanlines -->
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,65,0.04) 2px,rgba(0,255,65,0.04) 4px);pointer-events:none;animation:scan 10s linear infinite;"></div>
 
-  <div style="font-size:clamp(1.5rem,5vw,2.6rem);margin:30px auto;max-width:90%;line-height:1.8;">
+  <!-- Title -->
+  <div style="font-size:clamp(2rem,7vw,4rem);color:#00ff41;text-shadow:0 0 40px #00ff41;letter-spacing:8px;margin:20px 0;">
+    ░▒▓█ CURRENT POT █▒░
+  </div>
+
+  <!-- FLIP CLOCK STYLE ZEC COUNTER -->
+  <div style="margin:40px 0;font-family:'VT323',monospace;">
+    <div class="pot" id="zecPot" style="
+      font-size:clamp(5rem,16vw,12rem);
+      font-weight:bold;
+      color:#000;
+      background:#ff0;
+      display:inline-block;
+      padding:20px 40px;
+      border-radius:15px;
+      text-shadow:0 0 30px #ff0, 0 0 60px #ff0;
+      box-shadow:
+        0 0 40px #ff0,
+        inset 0 0 30px rgba(0,0,0,0.4),
+        0 10px 20px rgba(0,0,0,0.8);
+      animation:flip 0.6s ease-in-out;
+      letter-spacing:8px;
+    ">
+      44.8 ZEC
+    </div>
+  </div>
+
+  <!-- Explanation -->
+  <div style="font-size:clamp(1.4rem,4.8vw,2.4rem);line-height:1.8;max-width:88%;margin:40px auto;padding:25px;background:rgba(0,255,65,0.05);border:2px dashed #00ff41;border-radius:12px;">
     This is a growing pot of unstoppable private money that anyone can win.<br><br>
     Ticket sales build the pot. First draw when we hit 150 ZEC<br><br>
     Every draw:<br>
@@ -88,29 +117,39 @@
     → 10% donated to The Tor Project
   </div>
 
-  <div style="font-size:clamp(1.6rem,5.5vw,3rem);color:#0f0;margin:40px 0 20px;text-shadow:0 0 30px #0f0;">
+  <!-- Odds -->
+  <div style="font-size:clamp(1.8rem,6vw,3.2rem);color:#00ffff;margin:50px 0 20px;text-shadow:0 0 40px #00ffff;">
     Current odds with:
   </div>
-
-  <div style="font-size:clamp(1.7rem,6vw,3.5rem);color:#ffea00;margin:15px 0;">
+  <div style="font-size:clamp(1.8rem,6.5vw,3.6rem);color:#ffea00;margin:15px 0;">
     1 ticket → <strong>1 in <span id="odds1">44,800</span></strong>
   </div>
-  <div style="font-size:clamp(1.7rem,6vw,3.5rem);color:#ffea00;margin:15px 0;">
+  <div style="font-size:clamp(1.8rem,6.5vw,3.6rem);color:#ffea00;margin:15px 0;">
     100 tickets → <strong>1 in <span id="odds100">448</span></strong>
   </div>
-  <div style="font-size:clamp(1.7rem,6vw,3.5rem);color:#ffea00;margin:15px 0;">
+  <div style="font-size:clamp(1.8rem,6.5vw,3.6rem);color:#ffea00;margin:15px 0;">
     1,000 tickets → <strong>1 in <span id="odds1000">45</span></strong>
   </div>
 
-  <div style="font-size:clamp(1.4rem,4.5vw,2.2rem);color:#0f0;margin:40px 0;">
+  <div style="font-size:clamp(1.5rem,5vw,2.6rem);color:#0f0;margin:50px 0;">
     Total tickets sold: <strong><span id="totalTickets">44,800</span></strong>
   </div>
 </div>
 
+<style>
+@keyframes scan{0%{transform:translateY(-100%);}100%{transform:translateY(100%);}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.02);}}
+@keyframes flip{
+  0%{transform:perspective(400px) rotateX(90deg);}
+  40%{transform:perspective(400px) rotateX(-10deg);}
+  70%{transform:perspective(400px) rotateX(10deg);}
+  100%{transform:perspective(400px) rotateX(0deg);}
+}
+</style>
+
 <script>
 // === CONFIG — CHANGE THIS ONE NUMBER TO UPDATE EVERYTHING ===
 const CURRENT_ZEC_POT = 44.8;          // ← Update this manually
-const ZEC_PRICE_USD = 420;             // ← Current price (change when needed)
 const TICKETS_PER_ZEC = 1000;          // 1 ticket = 0.001 ZEC
 
 // Auto-calculate everything
@@ -118,12 +157,10 @@ const totalTickets = Math.round(CURRENT_ZEC_POT * TICKETS_PER_ZEC);
 
 document.getElementById("zecPot").textContent = CURRENT_ZEC_POT.toFixed(1) + " ZEC";
 document.getElementById("totalTickets").textContent = totalTickets.toLocaleString();
-
 document.getElementById("odds1").textContent = totalTickets.toLocaleString();
 document.getElementById("odds100").textContent = Math.round(totalTickets / 100).toLocaleString();
 document.getElementById("odds1000").textContent = Math.round(totalTickets / 1000).toLocaleString();
 </script>
-
 <!-- HOW IT WORKS — RETRO SPACESHIP TERMINAL -->
 <div class="card" style="background:#000;border:6px double #00ff41;box-shadow:0 0 80px #00ff41, inset 0 0 40px rgba(0,255,65,0.1);position:relative;overflow:hidden;">
   <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,65,0.03) 2px,rgba(0,255,65,0.03) 4px);pointer-events:none;animation:scan 8s linear infinite;"></div>
