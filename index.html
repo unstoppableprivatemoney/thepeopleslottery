@@ -8,12 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0A0A0A;
-      --primary: #FF69B4; /* Hot pink lumo */
-      --secondary: #7CFC00; /* Lawn green lumo */
-      --tertiary: #00BFFF; /* Deep sky blue lumo */
-      --accent: #FF8C00; /* Dark orange lumo */
-      --text: #E0FFFF; /* Light cyan text */
+      --bg: #000000;
+      --primary: #FF4500; /* Fiery orange lumo */
+      --secondary: #00FA9A; /* Medium spring green lumo */
+      --tertiary: #FF00FF; /* Magenta lumo */
+      --accent: #FFD700; /* Gold lumo */
+      --text: #F0F8FF; /* Alice blue text */
       --dark-text: #0A0A0A;
       --dark-glow: #000000;
       --white: #FFFFFF;
@@ -27,8 +27,8 @@
       font-size: 1.2rem;
       overflow-x: hidden;
       background-image: 
-        linear-gradient(rgba(124,252,0,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124,252,0,0.02) 1px, transparent 1px);
+        linear-gradient(rgba(255,69,0,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,69,0,0.02) 1px, transparent 1px);
       background-size: 30px 30px;
       animation: scanlines 10s linear infinite;
     }
@@ -329,14 +329,14 @@
   <h1><span class="top">THE PEOPLE'S</span><br>LOTTERY</h1>
   <div class="subtext">
     No KYC – 100% Freedom<br><br>
-    This is not just a lottery.<br>
-    It's an ad for private money.<br>
-    Private money is freedom.<br>
-    Spread the message, grow the pot.<br><br>
-    We all have fun, some of us get rich and we all help fund the tools of privacy.
+    This is not a lottery.<br>
+    This is a referendum on surveillance.<br>
+    Every ticket is a vote.<br>
+    Every rollover makes the next vote louder.<br>
+    Every donation funds the tools that protect your privacy.<br><br>
+    Vote early. Vote often. Vote privately.
   </div>
 </header>
-    
 
 <main>
 
@@ -444,7 +444,7 @@
   function draw() {
     ctx.fillStyle = 'rgba(10,10,10,0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'rgba(124,252,0,0.8)'; // Updated lumo green
+    ctx.fillStyle = 'rgba(57,255,20,0.8)'; /* Kept green for matrix as per previous */
     ctx.font = '14px VT323';
     for (let i = 0; i < drops.length; i++) {
       const text = String.fromCharCode(0x30A0 + Math.random() * 96);
