@@ -28,22 +28,67 @@
 </style>
 </head>
 <body>
-<h1> THE PEOPLE'S LOTTERY </h1>
-<h2>🛡️ No KYC – 100% Shielded 🛡️</h2>
+<!-- HEADER — LUMO GLOW TITLE -->
+<h1 style="font-size:clamp(2.8rem,10vw,7rem);margin:30px 0 10px;letter-spacing:8px;
+           background:linear-gradient(90deg,#0f0,#ff0,#0ff,#f0f,#0f0);
+           -webkit-background-clip:text;background-clip:text;
+           color:transparent;
+           text-shadow:0 0 40px #0f0, 0 0 80px #0f0;
+           animation:glowShift 6s ease-in-out infinite;">
+  THE PEOPLE'S LOTTERY
+</h1>
+<h2 style="font-size:clamp(1.2rem,4vw,2rem);margin:10px 0 50px;color:#0f0;text-shadow:0 0 30px #0f0;">
+  🛡️ No KYC – 100% Shielded 🛡️
+</h2>
 
-<!-- TOTAL POT -->
+<!-- TOTAL POT + TICKETS + ODDS -->
 <div class="card">
-  <div class="pot">44.8 ZEC</div>
-  <div class="explanation">
+  <div class="pot" id="zecPot">44.8 ZEC</div>
+
+  <div style="font-size:clamp(1.5rem,5vw,2.6rem);margin:30px auto;max-width:90%;line-height:1.8;">
     This is a growing pot of unstoppable private money that anyone can win.<br><br>
     Ticket sales build the pot. First draw when we hit 150 ZEC<br><br>
     Every draw:<br>
-    → 50% of the total pot is paid to ONE winning shielded address<br>
+    → 50% paid to ONE winning shielded address<br>
     → 40% rolls over → next pot gets even bigger<br>
-    → 10% donated to The Tor Project<br>
-    &nbsp;&nbsp;&nbsp;
+    → 10% donated to The Tor Project
+  </div>
+
+  <div style="font-size:clamp(1.6rem,5.5vw,3rem);color:#0f0;margin:40px 0 20px;text-shadow:0 0 30px #0f0;">
+    Current odds with:
+  </div>
+
+  <div style="font-size:clamp(1.7rem,6vw,3.5rem);color:#ffea00;margin:15px 0;">
+    1 ticket → <strong>1 in <span id="odds1">44,800</span></strong>
+  </div>
+  <div style="font-size:clamp(1.7rem,6vw,3.5rem);color:#ffea00;margin:15px 0;">
+    100 tickets → <strong>1 in <span id="odds100">448</span></strong>
+  </div>
+  <div style="font-size:clamp(1.7rem,6vw,3.5rem);color:#ffea00;margin:15px 0;">
+    1,000 tickets → <strong>1 in <span id="odds1000">45</span></strong>
+  </div>
+
+  <div style="font-size:clamp(1.4rem,4.5vw,2.2rem);color:#0f0;margin:40px 0;">
+    Total tickets sold: <strong><span id="totalTickets">44,800</span></strong>
   </div>
 </div>
+
+<script>
+// === CONFIG — CHANGE THIS ONE NUMBER TO UPDATE EVERYTHING ===
+const CURRENT_ZEC_POT = 44.8;          // ← Update this manually
+const ZEC_PRICE_USD = 420;             // ← Current price (change when needed)
+const TICKETS_PER_ZEC = 1000;          // 1 ticket = 0.001 ZEC
+
+// Auto-calculate everything
+const totalTickets = Math.round(CURRENT_ZEC_POT * TICKETS_PER_ZEC);
+
+document.getElementById("zecPot").textContent = CURRENT_ZEC_POT.toFixed(1) + " ZEC";
+document.getElementById("totalTickets").textContent = totalTickets.toLocaleString();
+
+document.getElementById("odds1").textContent = totalTickets.toLocaleString();
+document.getElementById("odds100").textContent = Math.round(totalTickets / 100).toLocaleString();
+document.getElementById("odds1000").textContent = Math.round(totalTickets / 1000).toLocaleString();
+</script>
 
 <!-- HOW IT WORKS — RETRO SPACESHIP TERMINAL -->
 <div class="card" style="background:#000;border:6px double #00ff41;box-shadow:0 0 80px #00ff41, inset 0 0 40px rgba(0,255,65,0.1);position:relative;overflow:hidden;">
