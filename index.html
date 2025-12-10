@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The People's Lottery — Unstoppable Private Money</title>
   <meta name="description" content="No KYC. 100% Freedom. A referendum on surveillance using Zcash.">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=VT323&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0A0A0A;
@@ -53,17 +53,21 @@
       position: relative;
     }
     header h1 {
-      font-family: 'Orbitron', sans-serif; /* Cyberpunk retro font */
-      font-size: clamp(3rem, 8vw, 6rem); /* Downsized */
+      font-family: 'Audiowide', sans-serif; /* More cyberpunkish font */
+      font-size: clamp(3rem, 8vw, 6rem);
       text-transform: uppercase;
       color: var(--secondary); /* Lumo pink (magenta) */
-      text-shadow: 0 0 40px var(--secondary), 0 0 80px var(--primary), 0 0 120px var(--tertiary); /* Intense multi-lumo glow, adjusted for pink */
+      text-shadow: 0 0 40px var(--secondary), 0 0 80px var(--primary), 0 0 120px var(--tertiary); /* Intense multi-lumo glow */
       letter-spacing: 0.3em;
       line-height: 1.1;
     }
+    header h1 .top {
+      font-size: 0.8em; /* Slightly smaller for "The People's" */
+      letter-spacing: 0.35em; /* Adjust spacing to align widths */
+    }
     header .subtext {
-      color: var(--tertiary); /* Bright lumo green */
-      text-shadow: 0 0 20px var(--tertiary), 0 0 40px var(--accent);
+      color: #FFFFFF; /* White for referendum text */
+      text-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary); /* Lumo glows */
       border: 2px dashed var(--secondary);
       background: rgba(0,0,0,0.2); /* Subtle dark bg for contrast */
       animation: flicker 1.5s infinite alternate;
@@ -120,7 +124,7 @@
     #send-zec { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-hacker-workstation-multiple-neon-screens-displaying-data-dystopian-scene-showing-s-dark-cluttered-filled-various-407066545.jpg'); filter: hue-rotate(120deg); }
     #countries { background-image: url('https://i.pinimg.com/originals/5b/7e/34/5b7e344c4a09f04598a959bf51ceeca4.gif'); }
     h2 {
-      font-family: 'Orbitron', sans-serif; /* Cyberpunk font for headings */
+      font-family: 'Audiowide', sans-serif;
       font-size: clamp(2.5rem, 6vw, 3.5rem);
       color: var(--secondary);
       margin-bottom: 1.5rem;
@@ -175,7 +179,7 @@
       border: 2px solid var(--primary);
       color: var(--primary);
       padding: 0.8rem 2.5rem;
-      font-family: 'Orbitron', sans-serif; /* Cyberpunk font for buttons */
+      font-family: 'Audiowide', sans-serif;
       font-size: 1.4rem;
       cursor: pointer;
       text-transform: uppercase;
@@ -251,7 +255,7 @@
 <canvas class="matrix-rain" id="matrix"></canvas>
 
 <header class="glitch">
-  <h1>THE PEOPLE'S<br>LOTTERY</h1>
+  <h1><span class="top">THE PEOPLE'S</span><br>LOTTERY</h1>
   <div class="subtext">
     No KYC – 100% Freedom<br><br>
     This is not a lottery.<br>
