@@ -9,13 +9,14 @@
   <style>
     :root {
       --bg: #0A0A0A;
-      --primary: #00FFFF; /* Bright lumo cyan */
-      --secondary: #FF00FF; /* Bright lumo magenta */
-      --tertiary: #00FF00; /* Bright lumo green */
-      --accent: #FFFF00; /* Bright lumo yellow */
-      --text: #E0E0E0;
+      --primary: #FF69B4; /* Hot pink lumo */
+      --secondary: #7CFC00; /* Lawn green lumo */
+      --tertiary: #00BFFF; /* Deep sky blue lumo */
+      --accent: #FF8C00; /* Dark orange lumo */
+      --text: #E0FFFF; /* Light cyan text */
       --dark-text: #0A0A0A;
       --dark-glow: #000000;
+      --white: #FFFFFF;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -26,8 +27,8 @@
       font-size: 1.2rem;
       overflow-x: hidden;
       background-image: 
-        linear-gradient(rgba(0,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,255,0.02) 1px, transparent 1px);
+        linear-gradient(rgba(124,252,0,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,252,0,0.02) 1px, transparent 1px);
       background-size: 30px 30px;
       animation: scanlines 10s linear infinite;
     }
@@ -45,54 +46,76 @@
     }
     header {
       text-align: center;
-      padding: 10vh 5%;
-      background: var(--bg); /* Solid black bg, no image */
+      padding: 5vh 5%; /* Reduced padding for mobile */
+      background: var(--bg);
       color: var(--dark-text);
       border-bottom: 4px solid var(--primary);
       box-shadow: 0 0 45px var(--primary);
       position: relative;
     }
+    .logo {
+      width: 80px;
+      height: auto;
+      margin-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (min-width: 600px) {
+      .logo {
+        width: 100px;
+      }
+    }
     header h1 {
       font-family: 'Audiowide', sans-serif; /* More cyberpunkish font */
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-size: clamp(2.5rem, 6vw, 4rem); /* Adjusted size for better mobile fit */
       text-transform: uppercase;
-      color: var(--secondary); /* Lumo pink (magenta) */
-      text-shadow: 0 0 40px var(--secondary), 0 0 80px var(--primary), 0 0 120px var(--tertiary); /* Intense multi-lumo glow */
-      letter-spacing: 0.3em;
+      color: var(--accent); /* Bright yellow letters */
+      text-shadow: 0 0 10px var(--white); /* Bright white glow, reduced blur */
+      letter-spacing: 0.2em; /* Adjusted spacing */
       line-height: 1.1;
+      margin: 0;
     }
     header h1 .top {
-      font-size: 0.8em; /* Slightly smaller for "The People's" */
-      letter-spacing: 0.35em; /* Adjust spacing to align widths */
+      font-size: 0.85em; /* Fine-tuned for alignment */
+      letter-spacing: 0.28em;
     }
     header .subtext {
-      color: #FFFFFF; /* White for referendum text */
-      text-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary); /* Lumo glows */
-      border: 2px dashed var(--secondary);
-      background: rgba(0,0,0,0.2); /* Subtle dark bg for contrast */
+      color: #FFFFFF;
+      text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+      border: 2px dashed var(--accent); /* Changed to yellow */
+      background: rgba(0,0,0,0.2);
       animation: flicker 1.5s infinite alternate;
-      max-width: 800px;
-      margin: 2rem auto 0;
-      padding: 1.5rem;
-      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      max-width: 90%; /* Better mobile fit */
+      margin: 1rem auto 0;
+      padding: 1rem;
+      font-size: clamp(1rem, 3vw, 1.4rem); /* Adjusted for mobile */
     }
     @keyframes flicker {
-      0% { opacity: 1; border-color: var(--secondary); box-shadow: 0 0 20px var(--secondary); }
+      0% { opacity: 1; border-color: var(--accent); box-shadow: 0 0 15px var(--accent); }
       50% { opacity: 0.8; border-color: transparent; box-shadow: none; }
-      100% { opacity: 1; border-color: var(--secondary); box-shadow: 0 0 20px var(--secondary); }
+      100% { opacity: 1; border-color: var(--accent); box-shadow: 0 0 15px var(--accent); }
     }
-    main { max-width: 1200px; margin: 0 auto; padding: 5vh 5%; }
+    main { max-width: 1200px; margin: 0 auto; padding: 3vh 3%; /* Optimized padding */ }
     section {
-      margin: 6vh 0;
-      padding: 2.5rem;
+      margin: 4vh 0; /* Reduced margin for tighter scroll */
+      padding: 1.5rem;
       border: 2px solid var(--secondary);
-      box-shadow: 0 0 30px var(--secondary);
-      border-radius: 10px;
+      box-shadow: 0 0 20px var(--secondary); /* Reduced shadow for performance */
+      border-radius: 8px;
       position: relative;
       overflow: hidden;
-      background-size: cover;
+      background-size: contain; /* Changed to contain to avoid blur on mobile */
       background-position: center;
-      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-attachment: scroll; /* Changed to scroll for mobile performance */
+    }
+    @media (min-width: 600px) {
+      section {
+        padding: 2.5rem;
+        background-size: cover;
+        background-attachment: fixed;
+      }
     }
     section::before {
       content: '';
@@ -110,13 +133,55 @@
       width: 100%;
       color: var(--primary);
       opacity: 0.2;
-      font-size: 1rem;
+      font-size: 0.8rem; /* Smaller on mobile */
       text-align: center;
       z-index: 0;
       animation: scroll-binary 20s linear infinite;
     }
     @keyframes scroll-binary { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     #current-pot { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-hacker-silhouette-k-neon-glitch-effect-matrix-code-rain-tech-futuristic-projects-k-cyberpunk-hacker-neon-glitch-385841343.jpg'); }
+    #current-pot .pot-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--accent); /* Yellow for pot amount */
+      text-shadow: 0 0 15px var(--accent);
+      margin-bottom: 1rem;
+    }
+    #current-pot .pot-display img {
+      width: 40px;
+      height: auto;
+      margin-right: 0.5rem;
+    }
+    #current-pot .votes-cast {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    #current-pot .odds-title {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    #current-pot .odds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+    #current-pot .odd-card {
+      background: rgba(0,0,0,0.7);
+      padding: 1rem;
+      border: 1px solid var(--tertiary);
+      box-shadow: 0 0 15px var(--tertiary);
+      border-radius: 5px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--text);
+    }
+    #current-pot .draw-info {
+      text-align: center;
+      margin-top: 1rem;
+    }
     #liberty-codes { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-style-glitch-background-symbol-hacker-attacks-digital-technology-modern-design-error-textures-effects-371513913.jpg'); filter: hue-rotate(40deg); }
     #how-to-vote { background-image: url('https://www.shutterstock.com/shutterstock/videos/3815663203/thumb/1.jpg?ip=x480'); }
     #referral-bounty { background-image: url('https://thumbs.dreamstime.com/b/immerse-yourself-vibrant-world-cyberpunk-hacker-s-workstation-neon-lights-illuminate-room-filled-multiple-398631156.jpg'); filter: hue-rotate(80deg); }
@@ -125,109 +190,118 @@
     #countries { background-image: url('https://i.pinimg.com/originals/5b/7e/34/5b7e344c4a09f04598a959bf51ceeca4.gif'); }
     h2 {
       font-family: 'Audiowide', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-size: clamp(2rem, 5vw, 3rem); /* Adjusted for mobile */
       color: var(--secondary);
-      margin-bottom: 1.5rem;
-      text-shadow: 0 0 20px var(--secondary), 0 0 40px var(--accent);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px var(--secondary), 0 0 30px var(--accent);
       border-bottom: 2px dashed var(--primary);
-      padding-bottom: 0.8rem;
+      padding-bottom: 0.5rem;
+      text-align: center; /* Centered for neatness */
     }
-    ul, ol { padding-left: 1.5rem; margin: 1rem 0; }
+    ul, ol { padding-left: 1rem; margin: 0.5rem 0; list-style: none; /* Remove bullets */ }
     li { margin: 0.5rem 0; }
     .grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 1rem;
     }
-    @media (min-width: 600px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 600px) { .grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
     @media (min-width: 900px) { .grid { grid-template-columns: repeat(3, 1fr); } }
     .card {
       background: rgba(0,0,0,0.7);
-      padding: 1.5rem;
+      padding: 1rem;
       border: 1px solid var(--primary);
-      box-shadow: 0 0 20px var(--primary);
+      box-shadow: 0 0 15px var(--primary); /* Reduced for mobile */
       transition: transform 0.3s, box-shadow 0.3s;
       border-radius: 5px;
+      text-align: center; /* Neat alignment */
     }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0,255,255,0.4); }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(124,252,0,0.4); }
     #generator { text-align: center; }
     #voterCode {
-      font-size: 2rem;
-      letter-spacing: 0.25em;
+      font-size: 1.5rem; /* Adjusted for mobile */
+      letter-spacing: 0.2em;
       color: var(--tertiary);
       background: rgba(0,0,0,0.8);
-      padding: 1rem;
+      padding: 0.8rem;
       border: 2px dashed var(--tertiary);
-      margin: 1.5rem 0;
-      text-shadow: 0 0 15px var(--tertiary);
+      margin: 1rem 0;
+      text-shadow: 0 0 10px var(--tertiary);
       word-break: break-all;
     }
     input[type="text"] {
       width: 100%;
-      max-width: 700px;
-      padding: 1rem;
-      margin: 1rem 0;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
       background: rgba(0,0,0,0.5);
       border: 2px solid var(--primary);
       color: var(--text);
       font-family: 'VT323', monospace;
-      font-size: 1.2rem;
+      font-size: 1rem;
       border-radius: 5px;
     }
     button {
       background: transparent;
       border: 2px solid var(--primary);
       color: var(--primary);
-      padding: 0.8rem 2.5rem;
+      padding: 0.6rem 2rem;
       font-family: 'Audiowide', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      box-shadow: 0 0 20px var(--primary);
+      box-shadow: 0 0 15px var(--primary);
       transition: all 0.3s;
       margin: 0.5rem;
       border-radius: 5px;
+      width: 100%; /* Full width on mobile */
+    }
+    @media (min-width: 600px) {
+      button { width: auto; }
     }
     button:hover, button:active {
       background: var(--primary);
       color: var(--bg);
-      box-shadow: 0 0 40px var(--primary);
+      box-shadow: 0 0 30px var(--primary);
       transform: scale(1.05);
     }
     .zaddr {
       background: rgba(0,0,0,0.5);
-      padding: 1.2rem;
+      padding: 1rem;
       word-break: break-all;
       border: 2px dashed var(--secondary);
       color: var(--secondary);
       font-family: 'VT323', monospace;
-      margin: 1.5rem 0;
+      margin: 1rem 0;
       border-radius: 5px;
       text-shadow: 0 0 10px var(--secondary);
+      font-size: 1rem; /* Adjusted for mobile */
     }
     .countries { 
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
+      grid-template-columns: 1fr; /* Single column on mobile */
+      gap: 0.5rem;
       list-style: none;
       padding: 0;
+    }
+    @media (min-width: 600px) {
+      .countries { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
     }
     .countries li {
       display: flex;
       align-items: center;
       background: rgba(0,0,0,0.4);
-      padding: 0.8rem;
+      padding: 0.6rem;
       border: 1px solid var(--tertiary);
       border-radius: 5px;
-      box-shadow: 0 0 15px var(--tertiary);
+      box-shadow: 0 0 10px var(--tertiary); /* Reduced */
     }
-    .countries li span.flag { font-size: 1.8rem; margin-right: 1rem; }
+    .countries li span.flag { font-size: 1.5rem; margin-right: 0.5rem; }
     footer {
       text-align: center;
-      padding: 3rem 5%;
+      padding: 2rem 3%; /* Optimized */
       border-top: 2px solid var(--primary);
-      margin-top: 8vh;
+      margin-top: 4vh;
       font-size: 1rem;
       color: var(--text);
       opacity: 0.8;
@@ -261,6 +335,7 @@
 <canvas class="matrix-rain" id="matrix"></canvas>
 
 <header class="glitch">
+  <img src="https://cryptologos.cc/logos/zcash-zec-logo.svg" alt="Zcash Logo" class="logo">
   <h1><span class="top">THE PEOPLE'S</span><br>LOTTERY</h1>
   <div class="subtext">
     No KYC – 100% Freedom<br><br>
@@ -277,15 +352,18 @@
 
   <section id="current-pot">
     <h2>Current Pot</h2>
-    <p style="font-size: 3.5rem; color: var(--tertiary); text-shadow: 0 0 20px var(--tertiary);">44.8 ZEC</p>
-    <p>Total votes cast: 44,800</p>
-    <p>Current odds with:</p>
-    <ul class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-      <li class="card">1 ticket → 1 in 44,800</li>
-      <li class="card">100 tickets → 1 in 448</li>
-      <li class="card">1,000 tickets → 1 in 45</li>
-    </ul>
-    <p>Next draw when we hit 200 ZEC<br>Every draw after that fires when the pot doubles</p>
+    <div class="pot-display">
+      <img src="https://cryptologos.cc/logos/zcash-zec-logo.svg" alt="Zcash Icon" style="width: 40px; height: auto; margin-right: 0.5rem;">
+      <span style="font-size: 3rem; color: var(--accent); text-shadow: 0 0 15px var(--accent);">44.8</span>
+    </div>
+    <p class="votes-cast">Total votes cast: 44,800</p>
+    <p class="odds-title">Current odds with:</p>
+    <div class="odds-grid">
+      <div class="odd-card">1 ticket → 1 in 44,800</div>
+      <div class="odd-card">100 tickets → 1 in 448</div>
+      <div class="odd-card">1,000 tickets → 1 in 45</div>
+    </div>
+    <p class="draw-info">Next draw when we hit 200 ZEC<br>Every draw after that fires when the pot doubles</p>
   </section>
 
   <section id="liberty-codes">
@@ -294,11 +372,11 @@
     <p>Cost: 1 ZEC (one-time)</p>
     <p>Lifetime perks:</p>
     <ul>
-      <li>→ 1.5× tickets on every purchase forever</li>
-      <li>→ 10% cashback every time someone uses your code</li>
-      <li>→ Anyone who uses your code also gets 1.5× tickets</li>
-      <li>→ 10 free entries in every future draw</li>
-      <li>→ Permanent Liberty Voter badge + on-chain immortality</li>
+      <li>1.5× tickets on every purchase forever</li>
+      <li>10% cashback every time someone uses your code</li>
+      <li>Anyone who uses your code also gets 1.5× tickets</li>
+      <li>10 free entries in every future draw</li>
+      <li>Permanent Liberty Voter badge + on-chain immortality</li>
     </ul>
     <p>Send 1+ ZEC with memo: liberty YOURCODE</p>
     <p>Spots remaining: 500 / 500 (live countdown)</p>
@@ -319,8 +397,8 @@
     <p>Share your code with the world.</p>
     <p>Anyone who votes using your code:</p>
     <ul>
-      <li>→ Gets 25% extra votes</li>
-      <li>→ You get 5% of their ZEC sent instantly to your address</li>
+      <li>Gets 25% extra votes</li>
+      <li>You get 5% of their ZEC sent instantly to your address</li>
     </ul>
     <p>They keep all votes. You earn cash. Privacy wins.</p>
   </section>
@@ -339,7 +417,7 @@
     <p>Lottery Ticket Purchase Address</p>
     <div class="zaddr" id="purchaseAddress">u18le7fyjvvst6m8r2wh79nncv6ksr3kz0e9htv4ywznm3z4t6yy594uvnzjy4tavtazwl0cvsmu3h6kxxeh00vs9tjx76wpw3pv6kf5v9</div>
     <button onclick="copyAddress()">Copy Address</button>
-    <p style="margin-top:1.5rem;">ZEC Note Example:<br>Country: UAE My Code: AU6771 Ref Code: BA3382</p>
+    <p style="margin-top:1rem;">ZEC Note Example:<br>Country: UAE My Code: AU6771 Ref Code: BA3382</p>
   </section>
 
   <section id="countries">
@@ -376,7 +454,7 @@
   function draw() {
     ctx.fillStyle = 'rgba(10,10,10,0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'rgba(0,255,255,0.8)'; // Lumo cyan
+    ctx.fillStyle = 'rgba(124,252,0,0.8)'; // Updated lumo green
     ctx.font = '14px VT323';
     for (let i = 0; i < drops.length; i++) {
       const text = String.fromCharCode(0x30A0 + Math.random() * 96);
