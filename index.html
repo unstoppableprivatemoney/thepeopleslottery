@@ -81,7 +81,6 @@
     header .subtext {
       color: #FFFFFF;
       text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
-      border: 2px dashed var(--accent); /* Changed to yellow */
       background: rgba(0,0,0,0.2);
       animation: flicker 1.5s infinite alternate;
       max-width: 90%; /* Better mobile fit */
@@ -90,9 +89,9 @@
       font-size: clamp(1rem, 3vw, 1.4rem); /* Adjusted for mobile */
     }
     @keyframes flicker {
-      0% { opacity: 1; border-color: var(--accent); box-shadow: 0 0 15px var(--accent); }
-      50% { opacity: 0.8; border-color: transparent; box-shadow: none; }
-      100% { opacity: 1; border-color: var(--accent); box-shadow: 0 0 15px var(--accent); }
+      0% { opacity: 1; box-shadow: 0 0 15px var(--accent); }
+      50% { opacity: 0.8; box-shadow: none; }
+      100% { opacity: 1; box-shadow: 0 0 15px var(--accent); }
     }
     main { max-width: 1200px; margin: 0 auto; padding: 3vh 3%; /* Optimized padding */ }
     section {
@@ -141,7 +140,7 @@
     #current-pot .pot-display {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: left;
       font-size: 3rem;
       color: var(--accent); /* Yellow for pot amount */
       text-shadow: 0 0 15px var(--accent);
@@ -153,21 +152,21 @@
       margin-right: 0.5rem;
     }
     #current-pot .votes-cast {
-      text-align: center;
+      text-align: left;
       margin-bottom: 1rem;
     }
     #current-pot .odds-title {
-      text-align: center;
+      text-align: left;
       margin-bottom: 0.5rem;
     }
     #current-pot .odds-list {
-      text-align: center;
+      text-align: left;
       color: #FFFFFF; /* Plain white text */
       font-size: 1.2rem;
       line-height: 1.6;
     }
     #current-pot .draw-info {
-      text-align: center;
+      text-align: left;
       margin-top: 1rem;
     }
     #liberty-codes { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-style-glitch-background-symbol-hacker-attacks-digital-technology-modern-design-error-textures-effects-371513913.jpg'); filter: hue-rotate(40deg); }
@@ -184,7 +183,7 @@
       text-shadow: 0 0 15px var(--secondary), 0 0 30px var(--accent);
       border-bottom: 2px dashed var(--primary);
       padding-bottom: 0.5rem;
-      text-align: center; /* Centered for neatness */
+      text-align: left; /* Left align headers */
     }
     ul, ol { padding-left: 1rem; margin: 0.5rem 0; list-style: none; /* Remove bullets */ }
     li { margin: 0.5rem 0; }
@@ -205,7 +204,7 @@
       text-align: center; /* Neat alignment */
     }
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(124,252,0,0.4); }
-    #generator { text-align: center; }
+    #generator { text-align: left; }
     #voterCode {
       font-size: 1.5rem; /* Adjusted for mobile */
       letter-spacing: 0.2em;
@@ -236,7 +235,7 @@
       letter-spacing: 0.1em;
       box-shadow: 0 0 15px var(--primary);
       transition: all 0.3s;
-      margin: 0.5rem;
+      margin: 0.5rem 0;
       border-radius: 5px;
       width: 100%; /* Full width on mobile */
     }
