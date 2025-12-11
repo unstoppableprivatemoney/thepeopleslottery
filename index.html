@@ -8,12 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #000000;
-      --primary: #FF4500; /* Fiery orange lumo */
-      --secondary: #00FA9A; /* Medium spring green lumo */
-      --tertiary: #FF00FF; /* Magenta lumo */
-      --accent: #FFD700; /* Gold lumo */
-      --text: #F0F8FF; /* Alice blue text */
+      --bg: #0A0A0A;
+      --primary: #FF3131; /* Neon red lumo */
+      --secondary: #39FF14; /* Neon green lumo */
+      --tertiary: #18A2FF; /* Neon blue lumo */
+      --accent: #FFE81F; /* Neon yellow lumo */
+      --text: #E0E0E0; /* Light gray text for contrast */
       --dark-text: #0A0A0A;
       --dark-glow: #000000;
       --white: #FFFFFF;
@@ -27,8 +27,8 @@
       font-size: 1.2rem;
       overflow-x: hidden;
       background-image: 
-        linear-gradient(rgba(255,69,0,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,69,0,0.02) 1px, transparent 1px);
+        linear-gradient(rgba(57,255,20,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57,255,20,0.02) 1px, transparent 1px);
       background-size: 30px 30px;
       animation: scanlines 10s linear infinite;
     }
@@ -68,17 +68,16 @@
     }
     header h1 {
       font-family: 'Oxanium', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4rem); /* Adjusted size for better mobile fit */
+      font-size: clamp(2rem, 4vw, 3.5rem); /* Smaller clamp to fit on one line */
       text-transform: uppercase;
-      color: var(--accent); /* Bright yellow letters */
-      text-shadow: 0 0 10px var(--white); /* Bright white glow, reduced blur */
-      letter-spacing: 0.2em; /* Adjusted spacing */
+      color: var(--accent); /* Bright yellow letters as is */
+      text-shadow: 0 0 10px #FFFFFF; /* Bright white glow as is */
+      letter-spacing: 0.1em; /* Reduced spacing to help fit */
       line-height: 1.1;
       margin: 0;
-    }
-    header h1 .top {
-      font-size: 0.85em; /* Fine-tuned for alignment */
-      letter-spacing: 0.28em;
+      white-space: nowrap; /* Prevent wrapping */
+      overflow: hidden; /* Hide overflow if needed */
+      text-overflow: ellipsis; /* Ellipsis if too long, but with clamp it should fit */
     }
     header .subtext {
       color: #FFFFFF;
@@ -326,7 +325,7 @@
 
 <header class="glitch">
   <img src="https://cryptologos.cc/logos/zcash-zec-logo.svg" alt="Zcash Logo" class="logo">
-  <h1><span class="top">✊🏽 THE PEOPLE'S LOTTERY 🛡️</h1>
+  <h1><span class="top">✊🏽 THE PEOPLE'S LOTTERY 🛡️</span></h1>
   <div class="subtext">
     No KYC – 100% Freedom<br><br>
     This is not just a lottery.<br>
@@ -352,50 +351,48 @@
       100 tickets → 1 in 448<br>
       1,000 tickets → 1 in 45
     </p>
-    <p class="draw-info">Next draw when we hit 200 ZEC<br>After that, a draw happens every time the pot doubles</p>
+    <p class="draw-info">Next draw when we hit 200 ZEC<br>Every draw after that fires when the pot doubles</p>
   </section>
 
-  <section id="how-to-vote">
-    <h2>How to Enter</h2>
-    <ol>
-      <li>Generate your unique code below (tied forever to your shielded address)</li>
-      <li>Send any amount of ZEC to the Lottery Entry Address (1 ZEC = 1,000 votes)</li>
-      <li>Optional: include a friend’s code → they earn 5% cashback → you get 25% extra votes</li>
-    </ol>
-  </section>
-  
-<section id="liberty-codes">
-    <h2>Cypherpunk Codes — Only 300 will ever exist</h2>
-    <p>Private money needs loud voices.</p>
-    <p>Help turn ✊🏽 The People's Lottery 🛡️ into one big advert</p>
+  <section id="liberty-codes">
+    <h2>Liberty Codes — Only 500 will ever exist</h2>
+    <p>Be one of the 500 earliest warriors for private money.</p>
     <p>Cost: 1 ZEC (one-time)</p>
     <p>Lifetime perks:</p>
     <ul>
       <li>1.5× tickets on every purchase forever</li>
       <li>10% cashback every time someone uses your code</li>
       <li>Anyone who uses your code also gets 1.5× tickets</li>
-      <li>20 free entries in every future draw</li>
-      <li>Fist bumps for helping the cause</li>
-      <li>Other perks we think early supporters deserve once we get some scale</li>
+      <li>10 free entries in every future draw</li>
+      <li>Permanent Liberty Voter badge + on-chain immortality</li>
     </ul>
     <p>Send 1+ ZEC with memo: liberty YOURCODE</p>
-    <p>Spots remaining: 273 / 300 (live countdown)</p>
-    <p>Once the 300 are claimed — the age of normal codes begins.</p>
+    <p>Spots remaining: 500 / 500 (live countdown)</p>
+    <p>Once the 500 are claimed — the age of normal codes begins.</p>
   </section>
-  
+
+  <section id="how-to-vote">
+    <h2>How to Vote</h2>
+    <ol>
+      <li>Generate your permanent voter code below (tied forever to your shielded address)</li>
+      <li>Send any amount of ZEC to the address at the bottom (1 ZEC = 1,000 votes)</li>
+      <li>Optional: use a friend’s code → they earn 5% cashback → you get 25% extra votes</li>
+    </ol>
+  </section>
+
   <section id="referral-bounty">
-    <h2>Referral Codes</h2>
+    <h2>Referral Bounty — SPREAD THE VOTE</h2>
     <p>Share your code with the world.</p>
-    <p>Anyone who enters and includes your code:</p>
+    <p>Anyone who votes using your code:</p>
     <ul>
       <li>Gets 25% extra votes</li>
-      <li>You get 5% of their ZEC sent to your shielded address</li>
+      <li>You get 5% of their ZEC sent instantly to your address</li>
     </ul>
-    <p>They get extra entries and better odds. You earn cash. Privacy wins.</p>
+    <p>They keep all votes. You earn cash. Privacy wins.</p>
   </section>
 
   <section id="generator">
-    <h2>Generate Your Code</h2>
+    <h2>Generate Your Voter Code</h2>
     <p>Paste your shielded Zcash address (u1… or zs1…)</p>
     <input type="text" id="shieldedAddress" placeholder="Enter your shielded address" aria-label="Shielded Zcash Address">
     <button onclick="generateVoterCode()">Generate Code</button>
@@ -404,7 +401,7 @@
   </section>
 
   <section id="send-zec">
-    <h2>Enter by sending ZEC Here</h2>
+    <h2>Send ZEC Here</h2>
     <p>Lottery Ticket Purchase Address</p>
     <div class="zaddr" id="purchaseAddress">u18le7fyjvvst6m8r2wh79nncv6ksr3kz0e9htv4ywznm3z4t6yy594uvnzjy4tavtazwl0cvsmu3h6kxxeh00vs9tjx76wpw3pv6kf5v9</div>
     <button onclick="copyAddress()">Copy Address</button>
@@ -431,7 +428,7 @@
 </main>
 
 <footer>
-  This is the sound of private money waking up.<br><br>Built by privacy degens. Funded by privacy degens. For everyone.
+  This is not gambling.<br>This is the sound of private money waking up.<br><br>Built by privacy degens. Funded by privacy degens. For everyone.
 </footer>
 
 <script>
