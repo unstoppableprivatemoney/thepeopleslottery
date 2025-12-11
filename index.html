@@ -235,7 +235,7 @@
       letter-spacing: 0.1em;
       box-shadow: 0 0 15px var(--primary);
       transition: all 0.3s;
-      margin: 0.5rem 0;
+      margin: 0.5rem;
       border-radius: 5px;
       width: 100%; /* Full width on mobile */
     }
@@ -417,6 +417,65 @@
       <li><span class="flag">🇩🇪</span> DE 2,688 votes</li>
       <li><span class="flag">🇧🇷</span> BR 2,240 votes</li>
     </ul>
+  </section>
+
+  <section id="rules">
+    <h2>Rules</h2>
+    <p>These rules govern how The People's Lottery operates. It's designed as a privacy-focused "referendum on surveillance," where every entry is a "vote" for private money. 90% of the pot goes to the winner, and 10% funds privacy tools (e.g., Zcash development or similar projects). All transactions are on Zcash shielded pools for anonymity—no KYC, no logs. We use open-source scripts for draws, verifiable by anyone via Zcash block hashes.</p>
+
+    <h3>1. Overview</h3>
+    <p>This is not gambling—it's a donation-driven lottery funding privacy tech.</p>
+    <p>Users "vote" by sending ZEC to the purchase address.</p>
+    <p>1 ZEC = 1,000 votes (entries). More ZEC = more votes = better odds.</p>
+    <p>Pots start at 200 ZEC for the first draw, then double each time (400, 800, etc.).</p>
+    <p>If no winner (or unclaimed), the pot rolls over to the next draw.</p>
+    <p>Draws are automatic when the pot threshold is met.</p>
+    <p>Winner selected randomly based on votes, using Zcash block hash for fairness.</p>
+
+    <h3>2. Entries and Odds</h3>
+    <p>Send any amount of ZEC (min 0.01 ZEC for 10 votes) to the purchase address.</p>
+    <p>Use memo format: "Country: [CODE] My Code: [YOURCODE] Ref Code: [REFCODE]" to link to your voter code and referral.</p>
+    <p>Your voter code (generated from shielded address) ties entries to you—lose it, lose your claim.</p>
+    <p>Odds = (your votes / total votes). E.g., if pot is 200 ZEC (200,000 votes), 1 ZEC gives 0.5% odds.</p>
+    <p>Extra votes from referrals: +25% if using a ref code; Liberty Code holders get +50% (1.5x).</p>
+
+    <h3>3. Caps per Voter Code</h3>
+    <p>Max 10 ZEC per voter code per draw to keep it fair and prevent domination.</p>
+    <p>Excess ZEC is refunded or ignored (per our script—check GitHub for details).</p>
+    <p>One code per shielded address; no multiple codes to bypass cap.</p>
+
+    <h3>4. Draws and Payouts</h3>
+    <p>First draw at 200 ZEC pot; next at 400 ZEC, then 800, etc.</p>
+    <p>Draw triggers automatically when pot reaches threshold (monitored via Zcash node).</p>
+    <p>Winner chosen by hashing the next Zcash block hash with total votes—provably fair, no trust needed (open-source script on GitHub).</p>
+    <p>Payout: 90% of pot to winner's shielded address (linked to their code). Claim by proving code ownership (e.g., sign message).</p>
+    <p>10% to privacy tech (e.g., Zcash Foundation or similar—voted on by Liberty Code holders annually).</p>
+    <p>If unclaimed (30 days), rolls over to next draw.</p>
+    <p>Rollover: Unclaimed pots add to the next threshold (e.g., if 200 ZEC unclaimed, next draw at 400 ZEC becomes 600 ZEC total).</p>
+
+    <h3>5. Referrals</h3>
+    <p>Share your code: Ref gets 5% cashback (instant to their address) on sent ZEC.</p>
+    <p>Sender gets +25% extra votes (or +50% if ref has Liberty Code).</p>
+    <p>No cap on referrals—unlimited free entries via sharing.</p>
+
+    <h3>6. Liberty Codes</h3>
+    <p>500 limited codes at 1 ZEC each (one-time buy via memo "liberty YOURCODE").</p>
+    <p>Perks: 1.5x votes on buys, 10% cashback on your referrals, +10 free entries per draw, badge.</p>
+    <p>Funds go to operator for setup/privacy tools.</p>
+    <p>Once sold out, normal codes (no perks).</p>
+
+    <h3>7. Fairness and Verification</h3>
+    <p>All draws use Zcash block hash—verifiable by anyone (run our GitHub script).</p>
+    <p>No operator entries; we don't play.</p>
+    <p>Anonymity: Shielded sends mean we can't track who sends what.</p>
+    <p>Audits: Initial audit by [Trail of Bits or similar]; ongoing open-source.</p>
+    <p>Changes: Rules fixed unless Liberty holders vote (gold badge governance).</p>
+
+    <h3>8. Risks and Disclaimers</h3>
+    <p>ZEC volatility: Pot value fluctuates.</p>
+    <p>No guarantees: Tech issues or low participation could delay draws.</p>
+    <p>Legal: Not gambling—donations for privacy. Consult local laws.</p>
+    <p>Support: Questions to [contact email/X handle].</p>
   </section>
 
 </main>
