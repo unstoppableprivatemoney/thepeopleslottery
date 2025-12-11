@@ -341,4 +341,155 @@
   <section id="current-pot">
     <h2>Current Pot</h2>
     <div class="pot-display">
-      <img
+      <img src="https://cryptologos.cc/logos/zcash-zec-logo.svg" alt="Zcash Icon" style="width: 40px; height: auto; margin-right: 0.5rem;">
+      <span style="font-size: 3rem; color: var(--accent); text-shadow: 0 0 15px var(--accent);">44.8</span>
+    </div>
+    <p class="votes-cast">Total votes cast: 44,800</p>
+    <p class="odds-title">Current odds with:</p>
+    <p class="odds-list" style="color: #FFFFFF; text-align: center; font-size: 1.2rem; line-height: 1.6;">
+      1 ticket → 1 in 44,800<br>
+      100 tickets → 1 in 448<br>
+      1,000 tickets → 1 in 45
+    </p>
+    <p class="draw-info">Next draw when we hit 200 ZEC<br>Every draw after that fires when the pot doubles</p>
+  </section>
+
+  <section id="liberty-codes">
+    <h2>Liberty Codes — Only 500 will ever exist</h2>
+    <p>Be one of the 500 earliest warriors for private money.</p>
+    <p>Cost: 1 ZEC (one-time)</p>
+    <p>Lifetime perks:</p>
+    <ul>
+      <li>1.5× tickets on every purchase forever</li>
+      <li>10% cashback every time someone uses your code</li>
+      <li>Anyone who uses your code also gets 1.5× tickets</li>
+      <li>10 free entries in every future draw</li>
+      <li>Permanent Liberty Voter badge + on-chain immortality</li>
+    </ul>
+    <p>Send 1+ ZEC with memo: liberty YOURCODE</p>
+    <p>Spots remaining: 500 / 500 (live countdown)</p>
+    <p>Once the 500 are claimed — the age of normal codes begins.</p>
+  </section>
+
+  <section id="how-to-vote">
+    <h2>How to Vote</h2>
+    <ol>
+      <li>Generate your permanent voter code below (tied forever to your shielded address)</li>
+      <li>Send any amount of ZEC to the address at the bottom (1 ZEC = 1,000 votes)</li>
+      <li>Optional: use a friend’s code → they earn 5% cashback → you get 25% extra votes</li>
+    </ol>
+  </section>
+
+  <section id="referral-bounty">
+    <h2>Referral Bounty — SPREAD THE VOTE</h2>
+    <p>Share your code with the world.</p>
+    <p>Anyone who votes using your code:</p>
+    <ul>
+      <li>Gets 25% extra votes</li>
+      <li>You get 5% of their ZEC sent instantly to your address</li>
+    </ul>
+    <p>They keep all votes. You earn cash. Privacy wins.</p>
+  </section>
+
+  <section id="generator">
+    <h2>Generate Your Voter Code</h2>
+    <p>Paste your shielded Zcash address (u1… or zs1…)</p>
+    <input type="text" id="shieldedAddress" placeholder="Enter your shielded address" aria-label="Shielded Zcash Address">
+    <button onclick="generateVoterCode()">Generate Code</button>
+    <div id="voterCode">YOUR CODE WILL APPEAR HERE</div>
+    <button id="copyCode" style="display:none;" onclick="copyVoterCode()">Copy Code</button>
+  </section>
+
+  <section id="send-zec">
+    <h2>Send ZEC Here</h2>
+    <p>Lottery Ticket Purchase Address</p>
+    <div class="zaddr" id="purchaseAddress">u18le7fyjvvst6m8r2wh79nncv6ksr3kz0e9htv4ywznm3z4t6yy594uvnzjy4tavtazwl0cvsmu3h6kxxeh00vs9tjx76wpw3pv6kf5v9</div>
+    <button onclick="copyAddress()">Copy Address</button>
+    <p style="margin-top:1rem;">ZEC Note Example:<br>Country: UAE My Code: AU6771 Ref Code: BA3382</p>
+  </section>
+
+  <section id="countries">
+    <h2>Countries Voting Loudest</h2>
+    <p>Countries voting loudest for private money</p>
+    <ul class="countries">
+      <li><span class="flag">🇺🇸</span> US 10,752 votes</li>
+      <li><span class="flag">🇮🇷</span> IR 8,960 votes</li>
+      <li><span class="flag">🇰🇵</span> KP 7,168 votes</li>
+      <li><span class="flag">🇻🇪</span> VE 6,720 votes</li>
+      <li><span class="flag">🇷🇺</span> RU 6,272 votes</li>
+      <li><span class="flag">🇨🇳</span> CN 5,376 votes</li>
+      <li><span class="flag">🇦🇷</span> AR 4,032 votes</li>
+      <li><span class="flag">🇸🇾</span> SY 3,584 votes</li>
+      <li><span class="flag">🇩🇪</span> DE 2,688 votes</li>
+      <li><span class="flag">🇧🇷</span> BR 2,240 votes</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  This is not gambling.<br>This is the sound of private money waking up.<br><br>Built by privacy degens. Funded by privacy degens. For everyone.
+</footer>
+
+<script>
+  // Matrix rain
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const columns = Math.floor(canvas.width / 15);
+  const drops = Array(columns).fill(1);
+  function draw() {
+    ctx.fillStyle = 'rgba(10,10,10,0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(57,255,20,0.8)'; /* Kept green for matrix as per previous */
+    ctx.font = '14px VT323';
+    for (let i = 0; i < drops.length; i++) {
+      const text = String.fromCharCode(0x30A0 + Math.random() * 96);
+      ctx.fillText(text, i * 15, drops[i] * 15);
+      if (drops[i] * 15 > canvas.height && Math.random() > 0.97) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+  setInterval(draw, 35);
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  // Voter code generator
+  function generateVoterCode() {
+    const address = document.getElementById('shieldedAddress').value.trim();
+    if (!address.startsWith('u1') && !address.startsWith('zs1')) {
+      alert('Enter a valid shielded Zcash address (u1… or zs1…)');
+      return;
+    }
+    let hash = 0;
+    for (let i = 0; i < address.length; i++) {
+      hash = ((hash << 5) - hash) + address.charCodeAt(i);
+      hash |= 0;
+    }
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let code = '';
+    for (let i = 0; i < 6; i++) {
+      code += chars[Math.abs(hash % chars.length)];
+      hash = Math.floor(hash / chars.length);
+    }
+    document.getElementById('voterCode').innerText = code;
+    document.getElementById('copyCode').style.display = 'inline-block';
+  }
+
+  function copyVoterCode() {
+    navigator.clipboard.writeText(document.getElementById('voterCode').innerText)
+      .then(() => alert('Code copied!'))
+      .catch(() => alert('Failed to copy'));
+  }
+
+  function copyAddress() {
+    navigator.clipboard.writeText(document.getElementById('purchaseAddress').innerText)
+      .then(() => alert('Address copied!'))
+      .catch(() => alert('Failed to copy'));
+  }
+</script>
+</body>
+</html>
