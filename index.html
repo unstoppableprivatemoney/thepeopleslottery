@@ -102,16 +102,15 @@
       border-radius: 8px;
       position: relative;
       overflow: hidden;
-      background-size: contain; /* Changed to contain to avoid blur on mobile */
-      background-position: center;
+      background-size: cover; /* Updated to cover for full fill on mobile; high-res images prevent blur */
+      background-position: center center; /* Ensure even cropping from center */
       background-repeat: no-repeat;
-      background-attachment: scroll; /* Changed to scroll for mobile performance */
+      background-attachment: scroll; /* Scroll for mobile performance */
     }
     @media (min-width: 600px) {
       section {
         padding: 2.5rem;
-        background-size: cover;
-        background-attachment: fixed;
+        background-attachment: fixed; /* Fixed only on desktop for parallax effect */
       }
     }
     section::before {
