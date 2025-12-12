@@ -386,14 +386,43 @@
     <p>They get more entries. You earn cash because you helped grow the pot. Privacy wins.</p>
   </section>
 
-  <section id="generator">
+ <section id="generator">
     <h2>Generate Your Entry Code</h2>
     <p>Paste your shielded Zcash address (u1… or zs1…)</p>
     <input type="text" id="shieldedAddress" placeholder="Enter your shielded address" aria-label="Shielded Zcash Address">
-    <button onclick="generateVoterCode()">Generate Code</button>
-    <div id="EntryCode"></div>
-    <button id="copyCode" style="display:none;" onclick="copyVoterCode()">Copy Code</button>
+    <button onclick="generateEntryCode()">Generate Code</button>
+    <div id="entryCode"></div>
+    <button id="copyCode" style="display:none;" onclick="copyEntryCode()">Copy Code</button>
   </section>
+
+<script>
+  function generateEntryCode() {
+    const address = document.getElementById('shieldedAddress').value.trim();
+    if (!address.startsWith('u1') && !address.startsWith('zs1')) {
+      alert('Enter a valid shielded Zcash address (u1… or zs1…)');
+      return;
+    }
+    let hash = 0;
+    for (let i = 0; i < address.length; i++) {
+      hash = ((hash << 5) - hash) + address.charCodeAt(i);
+      hash |= 0;
+    }
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let code = '';
+    for (let i = 0; i < 6; i++) {
+      code += chars[Math.abs(hash % chars.length)];
+      hash = Math.floor(hash / chars.length);
+    }
+    document.getElementById('entryCode').innerText = code;
+    document.getElementById('copyCode').style.display = 'inline-block';
+  }
+
+  function copyEntryCode() {
+    navigator.clipboard.writeText(document.getElementById('entryCode').innerText)
+      .then(() => alert('Code copied!'))
+      .catch(() => alert('Failed to copy'));
+  }
+</script>
 
   <section id="send-zec">
     <h2>Send ZEC Here</h2>
