@@ -26,7 +26,7 @@
       line-height: 1.5;
       font-size: 1.2rem;
       overflow-x: hidden;
-      background-image: 
+      background-image:
         linear-gradient(rgba(57,255,20,0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(57,255,20,0.02) 1px, transparent 1px);
       background-size: 30px 30px;
@@ -136,7 +136,14 @@
       animation: scroll-binary 20s linear infinite;
     }
     @keyframes scroll-binary { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    #current-pot { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-hacker-silhouette-k-neon-glitch-effect-matrix-code-rain-tech-futuristic-projects-k-cyberpunk-hacker-neon-glitch-385841343.jpg'); }
+    #current-pot { background-image: url('https://images2.imgbox.com/0d/85/00dCtnAT_o.jpg'); }
+    #Super-Perks { background-image: url('https://images2.imgbox.com/f4/b5/P8rSD5FV_o.jpg'); filter: hue-rotate(40deg); }
+    #how-to-enter { background-image: url('https://images2.imgbox.com/1b/33/YTd9meoZ_o.jpg'); }
+    #referral-bonus { background-image: url('https://images2.imgbox.com/25/2b/VypwUm7P_o.jpg'); filter: hue-rotate(80deg); }
+    #generator { background-image: url('https://c8.alamy.com/comp/2N46W9R/matrix-background-ideal-to-use-to-create-digital-composite-about-cyberpunk-cyberspace-hacking-and-other-computer-related-topics-2N46W9R.jpg'); }
+    #send-zec { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-hacker-workstation-multiple-neon-screens-displaying-data-dystopian-scene-showing-s-dark-cluttered-filled-various-407066545.jpg'); filter: hue-rotate(120deg); }
+    #countries { background-image: url('https://i.pinimg.com/originals/5b/7e/34/5b7e344c4a09f04598a959bf51ceeca4.gif'); }
+    #rules { background-image: url('https://images2.imgbox.com/d7/64/cNCeqPla_o.jpg'); }
     #current-pot .pot-display {
       display: flex;
       align-items: center;
@@ -169,12 +176,6 @@
       text-align: left;
       margin-top: 1rem;
     }
-    #entry-codes { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-style-glitch-background-symbol-hacker-attacks-digital-technology-modern-design-error-textures-effects-371513913.jpg'); filter: hue-rotate(40deg); }
-    #how-to-vote { background-image: url('https://www.shutterstock.com/shutterstock/videos/3815663203/thumb/1.jpg?ip=x480'); }
-    #referral-bounty { background-image: url('https://imgbox.com/VypwUm7P" target="_blank"><img src="https://images2.imgbox.com/25/2b/VypwUm7P_o.jpg'); filter: hue-rotate(80deg); }
-    #generator { background-image: url('https://c8.alamy.com/comp/2N46W9R/matrix-background-ideal-to-use-to-create-digital-composite-about-cyberpunk-cyberspace-hacking-and-other-computer-related-topics-2N46W9R.jpg'); }
-    #send-zec { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-hacker-workstation-multiple-neon-screens-displaying-data-dystopian-scene-showing-s-dark-cluttered-filled-various-407066545.jpg'); filter: hue-rotate(120deg); }
-    #countries { background-image: url('https://i.pinimg.com/originals/5b/7e/34/5b7e344c4a09f04598a959bf51ceeca4.gif'); }
     h2 {
       font-family: 'Oxanium', sans-serif;
       font-size: clamp(2rem, 5vw, 3rem); /* Adjusted for mobile */
@@ -184,6 +185,22 @@
       border-bottom: 2px dashed var(--primary);
       padding-bottom: 0.5rem;
       text-align: left; /* Left align headers */
+    }
+    #rules h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    #rules h3 {
+      font-family: 'Oxanium', sans-serif;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      color: var(--accent);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px var(--accent);
+      text-align: left;
+    }
+    #rules p {
+      font-size: 1rem;
+      line-height: 1.6;
     }
     ul, ol { padding-left: 1rem; margin: 0.5rem 0; list-style: none; /* Remove bullets */ }
     li { margin: 0.5rem 0; }
@@ -260,7 +277,7 @@
       text-shadow: 0 0 10px var(--secondary);
       font-size: 1rem; /* Adjusted for mobile */
     }
-    .countries { 
+    .countries {
       display: grid;
       grid-template-columns: 1fr; /* Single column on mobile */
       gap: 0.5rem;
@@ -314,9 +331,7 @@
   </style>
 </head>
 <body>
-
 <canvas class="matrix-rain" id="matrix"></canvas>
-
 <header class="glitch">
   <img src="https://cryptologos.cc/logos/zcash-zec-logo.svg" alt="Zcash Logo" class="logo">
   <h1><span class="top">✊🏽 THE PEOPLE'S LOTTERY 🛡️</span></h1>
@@ -329,9 +344,7 @@
     Privacy must win.
   </div>
 </header>
-
 <main>
-
   <section id="current-pot">
     <h2>Current Pot</h2>
     <div class="pot-display">
@@ -348,7 +361,6 @@
     <p class="draw-info">Next draw happens when we hit 200 ZEC<br>50% of the pot paid to one shielded address<br>40% of the pot rolls over to the next pot<br>
       10% of the pot paid to a selected start up building the tools of privacy<br>There's a new draw everytime the pot doubles</p>
   </section>
-
   <section id="Super-Perks">
     <h2> Super Perks — Limited to 500</h2>
     <p>Increase your odds, get super perks.</p>
@@ -365,7 +377,6 @@
     <p>Spots remaining: 411 / 500</p>
     <p>Once the 500 are claimed — no more Super Perks.</p>
   </section>
-
   <section id="how-to-enter">
     <h2>How to Enter</h2>
     <ol>
@@ -374,7 +385,6 @@
       <li>Optional: use a friend’s Entry Code → they earn 5% cashback → you get 25% extra entries</li>
     </ol>
   </section>
-
   <section id="referral-bonus">
     <h2>Referral Bonus</h2>
     <p>Share your code.</p>
@@ -385,7 +395,6 @@
     </ul>
     <p>They get more entries. You earn cash because you helped grow the pot. Privacy wins.</p>
   </section>
-
  <section id="generator">
     <h2>Generate Your Entry Code</h2>
     <p>Paste your shielded Zcash address (u1… or zs1…)</p>
@@ -394,7 +403,6 @@
     <div id="entryCode"></div>
     <button id="copyCode" style="display:none;" onclick="copyEntryCode()">Copy Code</button>
   </section>
-
 <script>
   function generateEntryCode() {
     const address = document.getElementById('shieldedAddress').value.trim();
@@ -416,14 +424,12 @@
     document.getElementById('entryCode').innerText = code;
     document.getElementById('copyCode').style.display = 'inline-block';
   }
-
   function copyEntryCode() {
     navigator.clipboard.writeText(document.getElementById('entryCode').innerText)
       .then(() => alert('Code copied!'))
       .catch(() => alert('Failed to copy'));
   }
 </script>
-
   <section id="send-zec">
     <h2>Send ZEC = Get entries</h2>
     <p>Pot Wallet Address</p>
@@ -431,7 +437,6 @@
     <button onclick="copyAddress()">Copy Address</button>
     <p style="margin-top:1rem;">ZEC Note Example:<br>Country: UAE My Code: AU6771 Friends Code: BA3382</p>
   </section>
-
   <section id="countries">
     <h2>Countries Supporting Private Money</h2>
     <p>Leaderboard</p>
@@ -448,12 +453,10 @@
       <li><span class="flag">🇧🇷</span> BR 2,240 entries</li>
     </ul>
   </section>
-
   <section id="rules">
     <h2>Rules</h2>
     <p>These rules govern how The People's Lottery operates. It's designed as a privacy-focused "referendum on surveillance," where every entry is a "vote" for private money. 50% of the pot goes to the winner, 40% rolls over to the next pot and 10% funds privacy tools (e.g., Zcash development or similar projects). All transactions are on Zcash shielded pools for anonymity—no KYC, no logs. We use open-source scripts for draws, verifiable by anyone via Zcash block hashes.</p>
-
-    <h3 style="color: var(--accent);">1. Overview</h3>
+    <h3>1. Overview</h3>
     <p>This is a donation-driven lottery creating awareness and funding privacy tech.</p>
     <p>Users support private money and get entries by sending ZEC to the Pot Wallet address.</p>
     <p>1 ZEC = 1,000 entries. More ZEC = more entries = better odds.</p>
@@ -461,20 +464,17 @@
     <p>If no winner (or unclaimed), the pot rolls over to the next draw.</p>
     <p>Draws are triggered when the pot threshold is met.</p>
     <p>Winner selected randomly using Zcash block hash for fairness.</p>
-
-    <h3 style="color: var(--accent);">2. Entries and Odds</h3>
+    <h3>2. Entries and Odds</h3>
     <p>Send any amount of ZEC (min 0.01 ZEC for 10 entries and max 10 ZEC for 10000 entries) to the Pot Wallet Address.</p>
     <p>Use note format: "Country: [CODE] My Code: [YOURCODE] Friends Code: [FriendCODE]" to link entries to your shielded address and earn referral benefits.</p>
     <p>Your Entry Code (generated from shielded address) ties entries to you. If you lose it you lose your claim.</p>
     <p>Odds = (your entries / total entries). E.g., if pot is 200 ZEC (200,000 votes), 1 ZEC gives 0.5% odds for a 100x.</p>
     <p>Extra entries from referrals: +25% if using a ref code; Super Perk Code owners get +50% (1.5x).</p>
-
-    <h3 style="color: var(--accent);">3. Caps per Entry Code</h3>
+    <h3>3. Caps per Entry Code</h3>
     <p>Max 10 ZEC per Entry Code per draw to keep it fair and prevent 🐋 domination.</p>
     <p>Any ZEC sent over and above 10 ZEC is allocated entries into the next draw.</p>
     <p>One code per shielded address; no multiple codes to bypass cap.</p>
-
-    <h3 style="color: var(--accent);">4. Draws and Payouts</h3>
+    <h3>4. Draws and Payouts</h3>
     <p>First draw at 200 ZEC pot; next at 400 ZEC, then 800, etc.</p>
     <p>Draw triggers when pot reaches each threshold (monitored via Zcash node).</p>
     <p>Winner chosen by hashing the next Zcash block hash with total votes—provably fair, no trust needed (open-source script on GitHub).</p>
@@ -482,38 +482,31 @@
     <p>Rollover: 40% of pot rolls over to next draw to help grow the pot.</p>
     <p>Do Good: 10% of every pot is paid to someone/team/initiative to help evolve the tools of privacy.</p>
     <p>Rollover: Unclaimed pots add to the next threshold (e.g., if 200 ZEC unclaimed, next draw at 400 ZEC becomes 600 ZEC total).</p>
-
-    <h3 style="color: var(--accent);">5. Referrals</h3>
+    <h3>5. Referrals</h3>
     <p>Share your code: Referrer gets 5% cashback (sent to their address) based on ZEC sent by code user.</p>
     <p>Code user gets +25% extra votes (or +50% if the code used is a Super Perks Code).</p>
     <p>No cap on referrals.</p>
-
-    <h3 style="color: var(--accent);">6. Super Perks Codes</h3>
+    <h3>6. Super Perks Codes</h3>
     <p>500 limited codes at 1 ZEC each (one-time buy via ZEC notes Use "Super Perks YOURCODE").</p>
     <p>Perks: 1.5x entries on your ZEC, 10% cashback on your referrals entries, +10 free entries per draw forever.</p>
     <p>Super Perks funds go to: 1st pot = 40% and operator = 60% for admin and opsec.</p>
     <p>Once sold out, that's it, we want Super Perks code holders to have a real edge.</p>
-
-    <h3 style="color: var(--accent);">7. Fairness and Verification</h3>
+    <h3>7. Fairness and Verification</h3>
     <p>All draws use Zcash block hash, verifiable by anyone.</p>
     <p>More entries per code = better odds of winning.</p>
     <p>No operator entries; we don't play.</p>
     <p>Anonymity: Shielded sends mean we can't track who sends what.</p>
     <p>Audits: We'll figure out how to satisy transparency with opsec as priority</p>
     <p>Changes: Rules fixed for now but likely Super Perks holders will vote on changes, somehow.</p>
-
-    <h3 style="color: var(--accent);">8. Risks and Disclaimers</h3>
+    <h3>8. Risks and Disclaimers</h3>
     <p>ZEC volatility: Pot value fluctuates.</p>
     <p>No guarantees: Participation could delay draws.</p>
     <p>Legal: Donations in support of privacy 🤷‍♀️.</p>
   </section>
-
 </main>
-
 <footer>
   This is not gambling.<br>This is the sound of private money waking up.<br><br>Built by privacy degens. Funded by privacy degens. For everyone.
 </footer>
-
 <script>
   // Matrix rain
   const canvas = document.getElementById('matrix');
@@ -539,35 +532,6 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   });
-
-  // Voter code generator
-  function generateVoterCode() {
-    const address = document.getElementById('shieldedAddress').value.trim();
-    if (!address.startsWith('u1') && !address.startsWith('zs1')) {
-      alert('Enter a valid shielded Zcash address (u1… or zs1…)');
-      return;
-    }
-    let hash = 0;
-    for (let i = 0; i < address.length; i++) {
-      hash = ((hash << 5) - hash) + address.charCodeAt(i);
-      hash |= 0;
-    }
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let code = '';
-    for (let i = 0; i < 6; i++) {
-      code += chars[Math.abs(hash % chars.length)];
-      hash = Math.floor(hash / chars.length);
-    }
-    document.getElementById('voterCode').innerText = code;
-    document.getElementById('copyCode').style.display = 'inline-block';
-  }
-
-  function copyVoterCode() {
-    navigator.clipboard.writeText(document.getElementById('voterCode').innerText)
-      .then(() => alert('Code copied!'))
-      .catch(() => alert('Failed to copy'));
-  }
-
   function copyAddress() {
     navigator.clipboard.writeText(document.getElementById('purchaseAddress').innerText)
       .then(() => alert('Address copied!'))
