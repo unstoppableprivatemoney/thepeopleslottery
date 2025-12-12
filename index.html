@@ -179,7 +179,7 @@
     }
     h2 {
       font-family: 'Oxanium', sans-serif;
-      font-size: clamp(2rem, 5vw, 3rem); /* Adjusted for mobile */
+      font-size: clamp(1.8rem, 4vw, 2.8rem); /* Adjusted clamp for better mobile scaling */
       color: var(--secondary);
       margin-bottom: 1rem;
       text-shadow: 0 0 15px var(--secondary), 0 0 30px var(--accent);
@@ -188,11 +188,15 @@
       text-align: left; /* Left align headers */
     }
     #rules h2 {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-size: clamp(1.4rem, 3.5vw, 2.3rem); /* Adjusted for rules section */
+    }
+    #degen-dynamics h2, #risk-reward-comparison h2 {
+      text-align: center; /* Center for table header */
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem); /* Downsized for last two sections */
     }
     #rules h3 {
       font-family: 'Oxanium', sans-serif;
-      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      font-size: clamp(1rem, 2.8vw, 1.4rem); /* Adjusted h3 for mobile */
       color: var(--accent);
       margin-top: 1.5rem;
       margin-bottom: 0.5rem;
@@ -203,8 +207,10 @@
       font-size: 1rem;
       line-height: 1.6;
     }
-    #degen-dynamics h2, #risk-reward-comparison h2 {
-      text-align: center; /* Center for table header */
+    .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1rem 0;
     }
     #degen-dynamics table, #risk-reward-comparison table {
       width: 100%;
@@ -216,11 +222,13 @@
       overflow: hidden;
       font-family: 'Share Tech Mono', monospace;
       font-size: 0.9rem;
+      min-width: 600px; /* Ensures horizontal scroll on small screens */
     }
     #degen-dynamics th, #degen-dynamics td, #risk-reward-comparison th, #risk-reward-comparison td {
       padding: 0.8rem;
       text-align: left;
       border-bottom: 1px solid rgba(57,255,20,0.3);
+      white-space: nowrap; /* Prevents text wrapping in cells */
     }
     #degen-dynamics th, #risk-reward-comparison th {
       background: rgba(255,232,31,0.1);
@@ -236,11 +244,36 @@
     }
     @media (max-width: 600px) {
       #degen-dynamics table, #risk-reward-comparison table {
-        font-size: 0.8rem;
+        font-size: 0.85rem; /* Slightly larger than before for readability */
       }
       #degen-dynamics th, #degen-dynamics td, #risk-reward-comparison th, #risk-reward-comparison td {
-        padding: 0.5rem;
+        padding: 0.6rem 0.4rem; /* Reduced padding for compactness */
       }
+      h1 { font-size: 4.5rem; } /* Adjusted h1 for mobile */
+      h2 { 
+        font-size: clamp(1.6rem, 4vw, 2.2rem); /* Balanced mobile scaling for all h2 */
+      }
+      #rules h2 {
+        font-size: clamp(1.2rem, 3.2vw, 2rem);
+      }
+      #degen-dynamics h2, #risk-reward-comparison h2 {
+        font-size: clamp(1.4rem, 3.2vw, 2rem); /* Further downsized for last two on mobile */
+      }
+      #rules h3 {
+        font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+      }
+      section { padding: 1.5rem; } /* Reduced section padding on mobile */
+      button { width: 100%; }
+      header h1 {
+        text-shadow: none; /* Remove glow on mobile */
+      }
+      h2 {
+        text-shadow: -1px -1px 0 var(--accent), 1px -1px 0 var(--accent), -1px 1px 0 var(--accent), 1px 1px 0 var(--accent), 0 0 10px var(--accent); /* Sharper yellow outline with soft glow */
+      }
+      .matrix-rain { opacity: 0.05; } /* Reduce opacity on mobile for performance */
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
     ul, ol { padding-left: 1rem; margin: 0.5rem 0; list-style: none; /* Remove bullets */ }
     li { margin: 0.5rem 0; }
@@ -355,22 +388,6 @@
       pointer-events: none;
       opacity: 0.08;
       z-index: -1;
-    }
-    @media (max-width: 600px) {
-      h1 { font-size: 5rem; }
-      h2 { font-size: 2.5rem; }
-      section { padding: 2rem; }
-      button { width: 100%; }
-      header h1 {
-        text-shadow: none; /* Remove glow on mobile */
-      }
-      h2 {
-        text-shadow: -1px -1px 0 var(--accent), 1px -1px 0 var(--accent), -1px 1px 0 var(--accent), 1px 1px 0 var(--accent), 0 0 10px var(--accent); /* Sharper yellow outline with soft glow */
-      }
-      .matrix-rain { opacity: 0.05; } /* Reduce opacity on mobile for performance */
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
@@ -522,148 +539,152 @@
   </section>
   <section id="degen-dynamics">
     <h2>Degen Dynamics: Win Ratios & Rewards</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Pot Size (ZEC)</th>
-          <th>Spend</th>
-          <th>Win Rate</th>
-          <th>Avg Return (ZEC)</th>
-          <th>Max Return (ZEC)</th>
-          <th>$ Upside (at $450/ZEC)</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>200</strong> (First Draw)</td>
-          <td>1 ZEC (Base)</td>
-          <td>0.50%</td>
-          <td>-0.50</td>
-          <td>99</td>
-          <td>~$44,550 (100x)</td>
-          <td>Solid entry-level punt.</td>
-        </tr>
-        <tr>
-          <td><strong>200</strong></td>
-          <td>1 ZEC + 5 Refs</td>
-          <td>1.12%</td>
-          <td>+0.12</td>
-          <td>99.25</td>
-          <td>~$44,663 (100x)</td>
-          <td>Referrals turn EV positive; odds double.</td>
-        </tr>
-        <tr>
-          <td><strong>400</strong></td>
-          <td>1 ZEC (Base)</td>
-          <td>0.25%</td>
-          <td>-0.50</td>
-          <td>199</td>
-          <td>~$89,550 (200x)</td>
-          <td>Balanced risk/reward.</td>
-        </tr>
-        <tr>
-          <td><strong>400</strong></td>
-          <td>1 ZEC + 5 Refs</td>
-          <td>0.56%</td>
-          <td>+0.12</td>
-          <td>199.25</td>
-          <td>~$89,663 (200x)</td>
-          <td>Viral edge shines as pot grows.</td>
-        </tr>
-        <tr>
-          <td><strong>800</strong></td>
-          <td>1 ZEC (Base)</td>
-          <td>0.12%</td>
-          <td>-0.52</td>
-          <td>399</td>
-          <td>~$179,550 (400x)</td>
-          <td>High-variance thrill.</td>
-        </tr>
-        <tr>
-          <td><strong>800</strong></td>
-          <td>1 ZEC + 5 Refs</td>
-          <td>0.28%</td>
-          <td>+0.12</td>
-          <td>399.25</td>
-          <td>~$179,663 (400x)</td>
-          <td>Cashback cushions; still 400x potential.</td>
-        </tr>
-        <tr>
-          <td><strong>1600</strong></td>
-          <td>1 ZEC (Base)</td>
-          <td>0.06%</td>
-          <td>-0.52</td>
-          <td>799</td>
-          <td>~$359,550 (800x)</td>
-          <td>Ultimate moonshot.</td>
-        </tr>
-        <tr>
-          <td><strong>1600</strong></td>
-          <td>1 ZEC + 5 Refs</td>
-          <td>0.14%</td>
-          <td>+0.12</td>
-          <td>799.25</td>
-          <td>~$359,663 (800x)</td>
-          <td>Referrals make it "free" entry in EV terms.</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Pot Size (ZEC)</th>
+            <th>Spend</th>
+            <th>Win Rate</th>
+            <th>Avg Return (ZEC)</th>
+            <th>Max Return (ZEC)</th>
+            <th>$ Upside (at $450/ZEC)</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>200</strong> (First Draw)</td>
+            <td>1 ZEC (Base)</td>
+            <td>0.50%</td>
+            <td>-0.50</td>
+            <td>99</td>
+            <td>~$44,550 (100x)</td>
+            <td>Solid entry-level punt.</td>
+          </tr>
+          <tr>
+            <td><strong>200</strong></td>
+            <td>1 ZEC + 5 Refs</td>
+            <td>1.12%</td>
+            <td>+0.12</td>
+            <td>99.25</td>
+            <td>~$44,663 (100x)</td>
+            <td>Referrals turn EV positive; odds double.</td>
+          </tr>
+          <tr>
+            <td><strong>400</strong></td>
+            <td>1 ZEC (Base)</td>
+            <td>0.25%</td>
+            <td>-0.50</td>
+            <td>199</td>
+            <td>~$89,550 (200x)</td>
+            <td>Balanced risk/reward.</td>
+          </tr>
+          <tr>
+            <td><strong>400</strong></td>
+            <td>1 ZEC + 5 Refs</td>
+            <td>0.56%</td>
+            <td>+0.12</td>
+            <td>199.25</td>
+            <td>~$89,663 (200x)</td>
+            <td>Viral edge shines as pot grows.</td>
+          </tr>
+          <tr>
+            <td><strong>800</strong></td>
+            <td>1 ZEC (Base)</td>
+            <td>0.12%</td>
+            <td>-0.52</td>
+            <td>399</td>
+            <td>~$179,550 (400x)</td>
+            <td>High-variance thrill.</td>
+          </tr>
+          <tr>
+            <td><strong>800</strong></td>
+            <td>1 ZEC + 5 Refs</td>
+            <td>0.28%</td>
+            <td>+0.12</td>
+            <td>399.25</td>
+            <td>~$179,663 (400x)</td>
+            <td>Cashback cushions; still 400x potential.</td>
+          </tr>
+          <tr>
+            <td><strong>1600</strong></td>
+            <td>1 ZEC (Base)</td>
+            <td>0.06%</td>
+            <td>-0.52</td>
+            <td>799</td>
+            <td>~$359,550 (800x)</td>
+            <td>Ultimate moonshot.</td>
+          </tr>
+          <tr>
+            <td><strong>1600</strong></td>
+            <td>1 ZEC + 5 Refs</td>
+            <td>0.14%</td>
+            <td>+0.12</td>
+            <td>799.25</td>
+            <td>~$359,663 (800x)</td>
+            <td>Referrals make it "free" entry in EV terms.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--tertiary);">Ponder the odds, degens. Referrals flip the script—stack 'em for that edge.</p>
   </section>
   <section id="risk-reward-comparison">
     <h2>Risk/Reward Showdown: People's Lottery vs. Degen Traps</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Gamble Type</th>
-          <th>Risk Level</th>
-          <th>Upside Potential</th>
-          <th>Downside</th>
-          <th>EV (w/ Strategy)</th>
-          <th>Privacy Edge</th>
-          <th>Why It Stacks Up</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>People's Lottery</strong></td>
-          <td>Low-Med</td>
-          <td>100x–800x (pot-dependent)</td>
-          <td>Lose entry fee (capped spend)</td>
-          <td>Positive (+0.12 ZEC w/ refs)</td>
-          <td>100% Shielded (No KYC)</td>
-          <td>Fair draws via block hash. Referrals make it "free." Funds privacy tools. No rugs.</td>
-        </tr>
-        <tr>
-          <td><strong>NFTs</strong></td>
-          <td>High</td>
-          <td>10x–100x (hype flips)</td>
-          <td>90%+ floor crash to zero</td>
-          <td>Negative (-80% avg)</td>
-          <td>None (On-chain traceable)</td>
-          <td>Gas fees eat you alive. Celebrity pumps fade fast. Liquidity? Lol.</td>
-        </tr>
-        <tr>
-          <td><strong>Meme Coins</strong></td>
-          <td>Extreme</td>
-          <td>1000x moon or dust</td>
-          <td>Total wipeout (dev rugs)</td>
-          <td>Negative (-95% avg)</td>
-          <td>None (Public wallets dox you)</td>
-          <td>Pump/dump casino. Influencer lies. 99% go to zero. FOMO tax is brutal.</td>
-        </tr>
-        <tr>
-          <td><strong>Crypto Projects</strong></td>
-          <td>Med-High</td>
-          <td>5x–50x (adoption hits)</td>
-          <td>VC dumps, reg kills</td>
-          <td>Variable (-20% to +EV)</td>
-          <td>Low (Few shielded options)</td>
-          <td>Token unlocks crush. Team ghosts. Better than memes, but still a VC game.</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Gamble Type</th>
+            <th>Risk Level</th>
+            <th>Upside Potential</th>
+            <th>Downside</th>
+            <th>EV (w/ Strategy)</th>
+            <th>Privacy Edge</th>
+            <th>Why It Stacks Up</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>People's Lottery</strong></td>
+            <td>Low-Med</td>
+            <td>100x–800x (pot-dependent)</td>
+            <td>Lose entry fee (capped spend)</td>
+            <td>Positive (+0.12 ZEC w/ refs)</td>
+            <td>100% Shielded (No KYC)</td>
+            <td>Fair draws via block hash. Referrals make it "free." Funds privacy tools. No rugs.</td>
+          </tr>
+          <tr>
+            <td><strong>NFTs</strong></td>
+            <td>High</td>
+            <td>10x–100x (hype flips)</td>
+            <td>90%+ floor crash to zero</td>
+            <td>Negative (-80% avg)</td>
+            <td>None (On-chain traceable)</td>
+            <td>Gas fees eat you alive. Celebrity pumps fade fast. Liquidity? Lol.</td>
+          </tr>
+          <tr>
+            <td><strong>Meme Coins</strong></td>
+            <td>Extreme</td>
+            <td>1000x moon or dust</td>
+            <td>Total wipeout (dev rugs)</td>
+            <td>Negative (-95% avg)</td>
+            <td>None (Public wallets dox you)</td>
+            <td>Pump/dump casino. Influencer lies. 99% go to zero. FOMO tax is brutal.</td>
+          </tr>
+          <tr>
+            <td><strong>Crypto Projects</strong></td>
+            <td>Med-High</td>
+            <td>5x–50x (adoption hits)</td>
+            <td>VC dumps, reg kills</td>
+            <td>Variable (-20% to +EV)</td>
+            <td>Low (Few shielded options)</td>
+            <td>Token unlocks crush. Team ghosts. Better than memes, but still a VC game.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--tertiary);">See the matrix, degens? This ain't another trap—it's privacy with punch. Stack entries, not regrets.</p>
   </section>
 </main>
