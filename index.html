@@ -137,12 +137,14 @@
     @keyframes scroll-binary { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     #current-pot { background-image: url('https://images2.imgbox.com/0d/85/00dCtnAT_o.jpg'); }
     #Super-Perks { background-image: url('https://images2.imgbox.com/f4/b5/P8rSD5FV_o.jpg'); filter: hue-rotate(40deg); }
-    #how-to-enter { background-image: url('https://images2.imgbox.com/1b/33/YTd9meoZ_o.jpg'); }
     #referral-bonus { background-image: url('https://images2.imgbox.com/25/2b/VypwUm7P_o.jpg'); filter: hue-rotate(80deg); }
+    #how-to-enter { background-image: url('https://images2.imgbox.com/1b/33/YTd9meoZ_o.jpg'); }
     #generator { background-image: url('https://c8.alamy.com/comp/2N46W9R/matrix-background-ideal-to-use-to-create-digital-composite-about-cyberpunk-cyberspace-hacking-and-other-computer-related-topics-2N46W9R.jpg'); }
     #send-zec { background-image: url('https://thumbs.dreamstime.com/b/cyberpunk-hacker-workstation-multiple-neon-screens-displaying-data-dystopian-scene-showing-s-dark-cluttered-filled-various-407066545.jpg'); filter: hue-rotate(120deg); }
     #countries { background-image: url('https://i.pinimg.com/originals/5b/7e/34/5b7e344c4a09f04598a959bf51ceeca4.gif'); }
     #rules { background-image: url('https://images2.imgbox.com/d7/64/cNCeqPla_o.jpg'); }
+    #degen-dynamics { background-image: url('https://images2.imgbox.com/12/d1/EaUW1QJS_o.jpg'); } /* Full resolution */
+    #risk-reward-comparison { background-image: url('https://images2.imgbox.com/4e/60/gEnhPaoS_o.jpg'); } /* Full resolution */
     #current-pot .pot-display {
       display: flex;
       align-items: center;
@@ -200,6 +202,45 @@
     #rules p {
       font-size: 1rem;
       line-height: 1.6;
+    }
+    #degen-dynamics h2, #risk-reward-comparison h2 {
+      text-align: center; /* Center for table header */
+    }
+    #degen-dynamics table, #risk-reward-comparison table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(0,0,0,0.8);
+      border: 1px solid var(--secondary);
+      box-shadow: 0 0 15px var(--secondary);
+      border-radius: 5px;
+      overflow: hidden;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.9rem;
+    }
+    #degen-dynamics th, #degen-dynamics td, #risk-reward-comparison th, #risk-reward-comparison td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(57,255,20,0.3);
+    }
+    #degen-dynamics th, #risk-reward-comparison th {
+      background: rgba(255,232,31,0.1);
+      color: var(--accent);
+      text-shadow: 0 0 5px var(--accent);
+      font-weight: bold;
+    }
+    #degen-dynamics tr:hover, #risk-reward-comparison tr:hover {
+      background: rgba(57,255,20,0.05);
+    }
+    #degen-dynamics tr:nth-child(even), #risk-reward-comparison tr:nth-child(even) {
+      background: rgba(0,0,0,0.3);
+    }
+    @media (max-width: 600px) {
+      #degen-dynamics table, #risk-reward-comparison table {
+        font-size: 0.8rem;
+      }
+      #degen-dynamics th, #degen-dynamics td, #risk-reward-comparison th, #risk-reward-comparison td {
+        padding: 0.5rem;
+      }
     }
     ul, ol { padding-left: 1rem; margin: 0.5rem 0; list-style: none; /* Remove bullets */ }
     li { margin: 0.5rem 0; }
@@ -326,13 +367,17 @@
       h2 {
         text-shadow: -1px -1px 0 var(--accent), 1px -1px 0 var(--accent), -1px 1px 0 var(--accent), 1px 1px 0 var(--accent), 0 0 10px var(--accent); /* Sharper yellow outline with soft glow */
       }
+      .matrix-rain { opacity: 0.05; } /* Reduce opacity on mobile for performance */
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
 <body>
 <canvas class="matrix-rain" id="matrix"></canvas>
 <header class="glitch">
-  <img src="https://cryptologos.cc/logos/zcash-zec-logo.svg" alt="Zcash Logo" class="logo">
+  <img src="https://cryptologos.cc/logos/zcash-zec-logo.svg" alt="Zcash Logo" class="logo" loading="lazy">
   <h1><span class="top">✊🏽 THE PEOPLE'S LOTTERY 🛡️</span></h1>
   <div class="subtext">
     Private money preserves our consent.<br><br>
@@ -347,7 +392,7 @@
   <section id="current-pot">
     <h2>Current Pot</h2>
     <div class="pot-display">
-      <img src="https://cryptologos.cc/logos/zcash-zec-logo.svg" alt="Zcash Icon" style="width: 40px; height: auto; margin-right: 0.5rem;">
+      <img src="https://cryptologos.cc/logos/zcash-zec-logo.svg" alt="Zcash Icon" style="width: 40px; height: auto; margin-right: 0.5rem;" loading="lazy">
       <span style="font-size: 3rem; color: var(--accent); text-shadow: 0 0 15px var(--accent);">44.8</span>
     </div>
     <p class="votes-cast">Total entries so far: 44,800</p>
@@ -376,14 +421,6 @@
     <p>Spots remaining: 411 / 500</p>
     <p>Once the 500 are claimed — no more Super Perks.</p>
   </section>
-  <section id="how-to-enter">
-    <h2>How to Enter</h2>
-    <ol>
-      <li>Generate your Entry Code below (tied forever to your shielded address)</li>
-      <li>Buy as many entries as you want by sending ZEC to the Pot Wallet address (1 ZEC = 1,000 entries)</li>
-      <li>Optional: use a friend’s Entry Code → they earn 5% cashback → you get 25% extra entries</li>
-    </ol>
-  </section>
   <section id="referral-bonus">
     <h2>Referral Bonus</h2>
     <p>Share your code.</p>
@@ -394,7 +431,15 @@
     </ul>
     <p>They get more entries. You earn cash because you helped grow the pot. Privacy wins.</p>
   </section>
- <section id="generator">
+  <section id="how-to-enter">
+    <h2>How to Enter</h2>
+    <ol>
+      <li>Generate your Entry Code below (tied forever to your shielded address)</li>
+      <li>Buy as many entries as you want by sending ZEC to the Pot Wallet address (1 ZEC = 1,000 entries)</li>
+      <li>Optional: use a friend’s Entry Code → they earn 5% cashback → you get 25% extra entries</li>
+    </ol>
+  </section>
+  <section id="generator">
     <h2>Generate Your Entry Code</h2>
     <p>Paste your shielded Zcash address (u1… or zs1…)</p>
     <input type="text" id="shieldedAddress" placeholder="Enter your shielded address" aria-label="Shielded Zcash Address">
@@ -402,33 +447,6 @@
     <div id="entryCode"></div>
     <button id="copyCode" style="display:none;" onclick="copyEntryCode()">Copy Code</button>
   </section>
-<script>
-  function generateEntryCode() {
-    const address = document.getElementById('shieldedAddress').value.trim();
-    if (!address.startsWith('u1') && !address.startsWith('zs1')) {
-      alert('Enter a valid shielded Zcash address (u1… or zs1…)');
-      return;
-    }
-    let hash = 0;
-    for (let i = 0; i < address.length; i++) {
-      hash = ((hash << 5) - hash) + address.charCodeAt(i);
-      hash |= 0;
-    }
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let code = '';
-    for (let i = 0; i < 6; i++) {
-      code += chars[Math.abs(hash % chars.length)];
-      hash = Math.floor(hash / chars.length);
-    }
-    document.getElementById('entryCode').innerText = code;
-    document.getElementById('copyCode').style.display = 'inline-block';
-  }
-  function copyEntryCode() {
-    navigator.clipboard.writeText(document.getElementById('entryCode').innerText)
-      .then(() => alert('Code copied!'))
-      .catch(() => alert('Failed to copy'));
-  }
-</script>
   <section id="send-zec">
     <h2>Send ZEC = Get entries</h2>
     <p>Pot Wallet Address</p>
@@ -502,22 +520,173 @@
     <p>No guarantees: Participation could delay draws.</p>
     <p>Legal: Donations in support of privacy 🤷‍♀️.</p>
   </section>
+  <section id="degen-dynamics">
+    <h2>Degen Dynamics: Win Ratios & Rewards</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pot Size (ZEC)</th>
+          <th>Spend</th>
+          <th>Win Rate</th>
+          <th>Avg Return (ZEC)</th>
+          <th>Max Return (ZEC)</th>
+          <th>$ Upside (at $450/ZEC)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>200</strong> (First Draw)</td>
+          <td>1 ZEC (Base)</td>
+          <td>0.50%</td>
+          <td>-0.50</td>
+          <td>99</td>
+          <td>~$44,550 (100x)</td>
+          <td>Solid entry-level punt.</td>
+        </tr>
+        <tr>
+          <td><strong>200</strong></td>
+          <td>1 ZEC + 5 Refs</td>
+          <td>1.12%</td>
+          <td>+0.12</td>
+          <td>99.25</td>
+          <td>~$44,663 (100x)</td>
+          <td>Referrals turn EV positive; odds double.</td>
+        </tr>
+        <tr>
+          <td><strong>400</strong></td>
+          <td>1 ZEC (Base)</td>
+          <td>0.25%</td>
+          <td>-0.50</td>
+          <td>199</td>
+          <td>~$89,550 (200x)</td>
+          <td>Balanced risk/reward.</td>
+        </tr>
+        <tr>
+          <td><strong>400</strong></td>
+          <td>1 ZEC + 5 Refs</td>
+          <td>0.56%</td>
+          <td>+0.12</td>
+          <td>199.25</td>
+          <td>~$89,663 (200x)</td>
+          <td>Viral edge shines as pot grows.</td>
+        </tr>
+        <tr>
+          <td><strong>800</strong></td>
+          <td>1 ZEC (Base)</td>
+          <td>0.12%</td>
+          <td>-0.52</td>
+          <td>399</td>
+          <td>~$179,550 (400x)</td>
+          <td>High-variance thrill.</td>
+        </tr>
+        <tr>
+          <td><strong>800</strong></td>
+          <td>1 ZEC + 5 Refs</td>
+          <td>0.28%</td>
+          <td>+0.12</td>
+          <td>399.25</td>
+          <td>~$179,663 (400x)</td>
+          <td>Cashback cushions; still 400x potential.</td>
+        </tr>
+        <tr>
+          <td><strong>1600</strong></td>
+          <td>1 ZEC (Base)</td>
+          <td>0.06%</td>
+          <td>-0.52</td>
+          <td>799</td>
+          <td>~$359,550 (800x)</td>
+          <td>Ultimate moonshot.</td>
+        </tr>
+        <tr>
+          <td><strong>1600</strong></td>
+          <td>1 ZEC + 5 Refs</td>
+          <td>0.14%</td>
+          <td>+0.12</td>
+          <td>799.25</td>
+          <td>~$359,663 (800x)</td>
+          <td>Referrals make it "free" entry in EV terms.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--tertiary);">Ponder the odds, degens. Referrals flip the script—stack 'em for that edge.</p>
+  </section>
+  <section id="risk-reward-comparison">
+    <h2>Risk/Reward Showdown: People's Lottery vs. Degen Traps</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Gamble Type</th>
+          <th>Risk Level</th>
+          <th>Upside Potential</th>
+          <th>Downside</th>
+          <th>EV (w/ Strategy)</th>
+          <th>Privacy Edge</th>
+          <th>Why It Stacks Up</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>People's Lottery</strong></td>
+          <td>Low-Med</td>
+          <td>100x–800x (pot-dependent)</td>
+          <td>Lose entry fee (capped spend)</td>
+          <td>Positive (+0.12 ZEC w/ refs)</td>
+          <td>100% Shielded (No KYC)</td>
+          <td>Fair draws via block hash. Referrals make it "free." Funds privacy tools. No rugs.</td>
+        </tr>
+        <tr>
+          <td><strong>NFTs</strong></td>
+          <td>High</td>
+          <td>10x–100x (hype flips)</td>
+          <td>90%+ floor crash to zero</td>
+          <td>Negative (-80% avg)</td>
+          <td>None (On-chain traceable)</td>
+          <td>Gas fees eat you alive. Celebrity pumps fade fast. Liquidity? Lol.</td>
+        </tr>
+        <tr>
+          <td><strong>Meme Coins</strong></td>
+          <td>Extreme</td>
+          <td>1000x moon or dust</td>
+          <td>Total wipeout (dev rugs)</td>
+          <td>Negative (-95% avg)</td>
+          <td>None (Public wallets dox you)</td>
+          <td>Pump/dump casino. Influencer lies. 99% go to zero. FOMO tax is brutal.</td>
+        </tr>
+        <tr>
+          <td><strong>Crypto Projects</strong></td>
+          <td>Med-High</td>
+          <td>5x–50x (adoption hits)</td>
+          <td>VC dumps, reg kills</td>
+          <td>Variable (-20% to +EV)</td>
+          <td>Low (Few shielded options)</td>
+          <td>Token unlocks crush. Team ghosts. Better than memes, but still a VC game.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--tertiary);">See the matrix, degens? This ain't another trap—it's privacy with punch. Stack entries, not regrets.</p>
+  </section>
 </main>
 <footer>
   This is not gambling.<br>This is the sound of private money waking up.<br><br>Built by privacy degens. Funded by privacy degens. For everyone.
 </footer>
 <script>
-  // Matrix rain
+  // Matrix rain - Optimized for performance
   const canvas = document.getElementById('matrix');
   const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  let animationId;
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
   const columns = Math.floor(canvas.width / 15);
   const drops = Array(columns).fill(1);
   function draw() {
     ctx.fillStyle = 'rgba(10,10,10,0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'rgba(57,255,20,0.8)'; /* Kept green for matrix as per previous */
+    ctx.fillStyle = 'rgba(57,255,20,0.8)';
     ctx.font = '14px VT323';
     for (let i = 0; i < drops.length; i++) {
       const text = String.fromCharCode(0x30A0 + Math.random() * 96);
@@ -525,12 +694,36 @@
       if (drops[i] * 15 > canvas.height && Math.random() > 0.97) drops[i] = 0;
       drops[i]++;
     }
+    animationId = requestAnimationFrame(draw);
   }
-  setInterval(draw, 35);
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    draw();
+  }
+  function generateEntryCode() {
+    const address = document.getElementById('shieldedAddress').value.trim();
+    if (!address.startsWith('u1') && !address.startsWith('zs1')) {
+      alert('Enter a valid shielded Zcash address (u1… or zs1…)');
+      return;
+    }
+    let hash = 0;
+    for (let i = 0; i < address.length; i++) {
+      hash = ((hash << 5) - hash) + address.charCodeAt(i);
+      hash |= 0;
+    }
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let code = '';
+    for (let i = 0; i < 6; i++) {
+      code += chars[Math.abs(hash % chars.length)];
+      hash = Math.floor(hash / chars.length);
+    }
+    document.getElementById('entryCode').innerText = code;
+    document.getElementById('copyCode').style.display = 'inline-block';
+  }
+  function copyEntryCode() {
+    navigator.clipboard.writeText(document.getElementById('entryCode').innerText)
+      .then(() => alert('Code copied!'))
+      .catch(() => alert('Failed to copy'));
+  }
   function copyAddress() {
     navigator.clipboard.writeText(document.getElementById('purchaseAddress').innerText)
       .then(() => alert('Address copied!'))
